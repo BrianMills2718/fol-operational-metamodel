@@ -1,5 +1,7 @@
 import json
+import lzma
 import re
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -484,6 +486,25 @@ class ModelTests(unittest.TestCase):
         self.assertEqual(len(ir["source"]["files"]), 1)
         self.assertEqual(ir["source"]["files"][0]["format"], "legacy-rel")
         self.assertTrue(any(edge["kind"] == "includes" for edge in ir["edges"]))
+
+
+    def test_omdoc_directory_reads_historical_xz_content(self):
+        source = (ROOT / "tests/fixtures/fol-compiled.omdoc").read_bytes()
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            compressed = root / "FOL.omdoc.xz"
+            compressed.write_bytes(lzma.compress(source))
+            ir = extract_omdoc_directory(root, "mmt://fixture-xz-content")
+        self.assertEqual(ir["source"]["input_kind"], "omdoc-directory")
+        self.assertEqual(len(ir["source"]["files"]), 1)
+        self.assertEqual(ir["source"]["files"][0]["compression"], "xz")
+        self.assertIn("stored_sha256", ir["source"]["files"][0])
+        self.assertTrue(
+            any(
+                node.get("kind") == "theory" and node.get("name") == "FOL"
+                for node in ir["nodes"]
+            )
+        )
 
 
 if __name__ == "__main__":
