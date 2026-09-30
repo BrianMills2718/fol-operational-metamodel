@@ -1,0 +1,8 @@
+<mmtabox xmlns="http://omdoc.org/abox">
+  <individual path="http://mydomain.org/testarchive/mmt-example?FOL" predicate="theory"/>
+  <individual path="http://mydomain.org/testarchive/mmt-example?FOL?proof" predicate="constant"/>
+  <individual path="http://mydomain.org/testarchive/mmt-example?FOL?proof" predicate="judgementconstructor"/>
+  <relation subject="http://mydomain.org/testarchive/mmt-example?FOL" predicate="has meta-theory" object="http://cds.omdoc.org/urtheories?LF"/>
+  <relation subject="http://mydomain.org/testarchive/mmt-example?FOL" predicate="contains declaration of" object="http://mydomain.org/testarchive/mmt-example?FOL?proof"/>
+  <relation subject="http://mydomain.org/testarchive/mmt-example?FOL?proof" predicate="refers to" object="http://mydomain.org/testarchive/mmt-example?FOL?prop"/>
+</mmtabox>

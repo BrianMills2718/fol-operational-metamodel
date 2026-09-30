@@ -274,6 +274,117 @@ def extract_archivegraph(json_text, source_uri, source_path, source_hash):
     }
 
 
+
+RELATIONAL_PRIMARY_KINDS = (
+    "document", "theory", "view", "structure", "constant",
+    "pattern", "instance", "deriveddeclaration", "notation",
+)
+
+
+def _choose_relational_kind(predicates):
+    for kind in RELATIONAL_PRIMARY_KINDS:
+        if kind in predicates:
+            return kind
+    return "relational-item"
+
+
+def extract_relational(xml_text, source_uri, source_path, source_hash):
+    """Import MMT relational ABox XML without reinterpreting its predicates."""
+    try:
+        root = ET.fromstring(xml_text)
+    except ET.ParseError as exc:
+        raise ValueError(f"invalid relational XML: {exc}") from exc
+    if _local(root.tag) != "mmtabox":
+        raise ValueError("relational XML root must be mmtabox")
+
+    nodes_by_id = {}
+    edges = []
+    for child in root:
+        kind = _local(child.tag)
+        if kind == "individual":
+            path = child.attrib.get("path") or child.attrib.get("uri")
+            predicate = child.attrib.get("predicate") or child.attrib.get("type")
+            if not path or not predicate:
+                continue
+            node = nodes_by_id.setdefault(path, {
+                "id": path,
+                "uri": path,
+                "name": path.rsplit("?", 1)[-1],
+                "kind": "relational-item",
+                "description": "MMT relational ontology individual.",
+                "references": [],
+                "mmt_predicates": [],
+                "source": {"uri": source_uri, "path": source_path},
+            })
+            if predicate not in node["mmt_predicates"]:
+                node["mmt_predicates"].append(predicate)
+            node["kind"] = _choose_relational_kind(node["mmt_predicates"])
+        elif kind == "relation":
+            subject = child.attrib.get("subject")
+            predicate = child.attrib.get("predicate")
+            obj = child.attrib.get("object")
+            if subject and predicate and obj:
+                edges.append({
+                    "source": subject,
+                    "target": obj,
+                    "kind": predicate,
+                    "mmt_relation": True,
+                })
+
+    return {
+        "format": "mmt-ir/v2",
+        "source": {
+            "uri": source_uri,
+            "path": source_path,
+            "sha256": source_hash,
+            "input_kind": "relational",
+            "extractor": "mmt-abox-structural",
+        },
+        "scope": "MMT relational ontology predicates preserved verbatim; no name-based inference",
+        "nodes": list(nodes_by_id.values()),
+        "edges": edges,
+    }
+
+
+def extract_relational_directory(directory, source_uri):
+    """Recursively import every XML file whose root is an MMT mmtabox."""
+    root = Path(directory)
+    if not root.is_dir():
+        raise ValueError(f"relational directory does not exist: {root}")
+
+    irs = []
+    manifest = []
+    for path in sorted(p for p in root.rglob("*") if p.is_file()):
+        try:
+            text = path.read_text(encoding="utf-8")
+            parsed = ET.fromstring(text)
+        except (UnicodeError, ET.ParseError):
+            continue
+        if _local(parsed.tag) != "mmtabox":
+            continue
+        rel = path.relative_to(root).as_posix()
+        digest = source_sha256(text)
+        file_uri = source_uri.rstrip("/") + "/" + urllib.parse.quote(rel, safe="/$.-_")
+        irs.append(extract_relational(text, file_uri, rel, digest))
+        manifest.append({"path": rel, "uri": file_uri, "sha256": digest})
+
+    if not irs:
+        raise ValueError(f"no MMT mmtabox XML files found below {root}")
+
+    merged = merge_irs(irs, source_uri=source_uri)
+    merged["source"].update({
+        "path": root.as_posix(),
+        "input_kind": "relational-directory",
+        "extractor": "recursive-mmt-abox-directory",
+        "files": manifest,
+        "sha256": hashlib.sha256(
+            json.dumps(manifest, sort_keys=True, ensure_ascii=False).encode("utf-8")
+        ).hexdigest(),
+    })
+    merged["scope"] = "all MMT relational ABox XML under one archive relational directory"
+    return merged
+
+
 def merge_irs(irs, source_uri="merged://mmt-graph"):
     """Merge archive-level and declaration-level IR by stable MMT URI.
 
@@ -380,23 +491,44 @@ def extract_omdoc_directory(directory, source_uri):
     return merged
 
 
-def assemble_archive(archivegraph_text, archive_uri, archive_path, archive_hash, content_directory, content_uri):
-    """Combine an MMT archivegraph with every compiled OMDoc module in content/."""
+def assemble_archive(
+    archivegraph_text,
+    archive_uri,
+    archive_path,
+    archive_hash,
+    content_directory,
+    content_uri,
+    relational_directory=None,
+    relational_uri=None,
+):
+    """Combine archivegraph, optional relational ABox, and compiled OMDoc content."""
     archive_ir = extract_archivegraph(
         archivegraph_text, archive_uri, archive_path, archive_hash
     )
+    layers = [archive_ir]
+    relational_ir = None
+    if relational_directory:
+        relational_ir = extract_relational_directory(
+            relational_directory,
+            relational_uri or "mmt://relational",
+        )
+        layers.append(relational_ir)
     content_ir = extract_omdoc_directory(content_directory, content_uri)
+    layers.append(content_ir)
+
     merged = merge_irs(
-        [archive_ir, content_ir],
+        layers,
         source_uri=f"assembled://{urllib.parse.quote(archive_uri, safe='')}",
     )
     merged["source"]["input_kind"] = "assembled-archive"
-    merged["source"]["extractor"] = "archivegraph-plus-omdoc-directory"
+    merged["source"]["extractor"] = "archivegraph-plus-relational-plus-omdoc"
     merged["source"]["archivegraph"] = archive_ir["source"]
+    if relational_ir:
+        merged["source"]["relational"] = relational_ir["source"]
     merged["source"]["content"] = content_ir["source"]
     merged["scope"] = (
-        "MMT archive/theory topology merged with all declaration-level compiled OMDoc "
-        "modules from the archive content directory; no added semantic inference"
+        "MMT archive topology, optional relational ontology, and all declaration-level "
+        "compiled OMDoc modules merged by stable URI; no added semantic inference"
     )
     return merged
 
@@ -544,6 +676,17 @@ def main():
     p_archive.add_argument("--source-path")
     p_archive.add_argument("--output", default=str(IR_PATH))
 
+    p_rel = commands.add_parser("relational", help="import one MMT mmtabox relational XML file")
+    p_rel.add_argument("source")
+    p_rel.add_argument("--uri", required=True)
+    p_rel.add_argument("--source-path")
+    p_rel.add_argument("--output", default=str(IR_PATH))
+
+    p_rel_dir = commands.add_parser("relational-dir", help="recursively import an MMT relational directory")
+    p_rel_dir.add_argument("directory")
+    p_rel_dir.add_argument("--uri", required=True)
+    p_rel_dir.add_argument("--output", default=str(IR_PATH))
+
     p_merge = commands.add_parser("merge", help="merge multiple normalized IR files by stable URI")
     p_merge.add_argument("sources", nargs="+")
     p_merge.add_argument("--uri", default="merged://mmt-graph")
@@ -559,6 +702,8 @@ def main():
     p_assemble.add_argument("--content", required=True)
     p_assemble.add_argument("--archive-uri", required=True)
     p_assemble.add_argument("--content-uri", required=True)
+    p_assemble.add_argument("--relational")
+    p_assemble.add_argument("--relational-uri")
     p_assemble.add_argument("--output", default=str(IR_PATH))
 
     args = parser.parse_args()
@@ -570,6 +715,8 @@ def main():
             write_ir(merge_irs(irs, args.uri), args.output)
         elif args.command == "omdoc-dir":
             write_ir(extract_omdoc_directory(args.directory, args.uri), args.output)
+        elif args.command == "relational-dir":
+            write_ir(extract_relational_directory(args.directory, args.uri), args.output)
         elif args.command == "assemble":
             archive_path = Path(args.archivegraph)
             archive_text = archive_path.read_text(encoding="utf-8")
@@ -580,6 +727,8 @@ def main():
                 source_sha256(archive_text),
                 args.content,
                 args.content_uri,
+                args.relational,
+                args.relational_uri,
             )
             write_ir(ir, args.output)
         else:
@@ -591,6 +740,8 @@ def main():
                 ir = extract_omdoc(text, args.uri, source_path, digest)
             elif args.command == "archivegraph":
                 ir = extract_archivegraph(text, args.uri, source_path, digest)
+            elif args.command == "relational":
+                ir = extract_relational(text, args.uri, source_path, digest)
             else:
                 ir = extract(text, args.uri, source_path, digest)
             write_ir(ir, args.output)

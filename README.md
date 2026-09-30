@@ -101,6 +101,41 @@ This is the preferred large-scale workflow: MMT supplies the theory/morphism gra
 
 A small evidence-backed source inventory remains in `upstream/latin2-fol-inventory.json` for orientation, but it is not used as the formal authority.
 
+## Add MMT's relational ontology layer
+
+MMT also builds a `relational/` dimension. Its ABox XML records unary classifications such as `theory`, `view`, `structure`, `constant`, `rule`, and `judgementconstructor`, plus binary relations such as `has meta-theory`, `includes`, `has domain`, `has codomain`, `contains declaration of`, and `refers to`.
+
+Import one relational file:
+
+```sh
+python3 scripts/import_mmt.py relational /path/to/file.xml \
+  --uri 'mmt://MMT/LATIN2/relational/file.xml' \
+  --output generated/latin2-relational-ir.json
+```
+
+Or recursively import an archive's whole relational directory:
+
+```sh
+python3 scripts/import_mmt.py relational-dir /path/to/LATIN2/relational \
+  --uri 'mmt://MMT/LATIN2/relational' \
+  --output generated/latin2-relational-ir.json
+```
+
+For the richest graph, include all three generated layers in one assembly:
+
+```sh
+python3 scripts/import_mmt.py assemble \
+  --archivegraph upstream/cache/latin2-archivegraph.json \
+  --content /path/to/LATIN2/content \
+  --relational /path/to/LATIN2/relational \
+  --archive-uri 'http://localhost:8080/:jgraph/json?key=archivegraph&uri=MMT/LATIN2' \
+  --content-uri 'mmt://MMT/LATIN2/content' \
+  --relational-uri 'mmt://MMT/LATIN2/relational' \
+  --output generated/mmt-ir.json
+```
+
+This preserves MMT's own ontology predicates on nodes and edges instead of inferring categories from names.
+
 ## Fallback source extraction
 
 When compiled OMDoc is unavailable:
@@ -118,7 +153,7 @@ That mode only recognizes a small source-level subset and does not replace MMT p
 - `upstream/sources.json` — immutable upstream provenance where verified.
 - `upstream/README.md` — provenance, evidence, and unresolved source boundaries.
 - `upstream/latin2-fol-inventory.json` — partial evidence-backed orientation to confirmed FOL files/theories at the pinned LATIN2 revision.
-- `scripts/import_mmt.py` — verified fetcher, OMDoc structural importer, and fallback source extractor.
+- `scripts/import_mmt.py` — verified fetcher plus archivegraph, relational-ABox, OMDoc, whole-archive, merge, and fallback-source importers.
 - `generated/mmt-ir.json` — derived graph IR consumed by the visualizer.
 - `tests/fixtures/fol-compiled.omdoc` — compact representative compiled-OMDoc fixture.
 - `tests/fixtures/sfol-mini.mmt` — reduced fallback-source fixture.
@@ -130,6 +165,6 @@ That mode only recognizes a small source-level subset and does not replace MMT p
 
 ## Scope
 
-The OMDoc adapter extracts explicit structural facts: documents, theories/views, constants, imports/structures, meta-theory/view links, source references, type/definition XML, roles/aliases, and explicit OpenMath `OMS` symbol dependencies.
+The OMDoc adapter extracts explicit structural facts: documents, theories/views, constants, imports/structures, meta-theory/view links, source references, type/definition XML, roles/aliases, and explicit OpenMath `OMS` symbol dependencies. The relational adapter separately preserves MMT's own unary and binary ontology predicates.
 
-It intentionally does **not** infer that a constant is a quantifier, connective, axiom, proof rule, semantic clause, etc. Those classifications should come from MMT roles/relational indexes or a separately provenance-marked annotation layer, not from guessing based on names.
+It intentionally does **not** infer that a constant is a quantifier, connective, axiom, proof rule, semantic clause, etc. Richer classifications come from MMT roles/relational indexes or a separately provenance-marked annotation layer, not from guessing based on names.

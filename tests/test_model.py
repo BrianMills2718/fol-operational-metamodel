@@ -9,6 +9,8 @@ from scripts.import_mmt import (
     extract_archivegraph,
     extract_omdoc,
     extract_omdoc_directory,
+    extract_relational,
+    extract_relational_directory,
     merge_irs,
     source_download_url,
     source_sha256,
@@ -340,6 +342,72 @@ class ModelTests(unittest.TestCase):
             },
         )
         self.assertIn("SFOLEQ", inventory["observed_theories"])
+
+
+    def test_relational_abox_preserves_mmt_unary_and_binary_predicates(self):
+        path = ROOT / "tests/fixtures/relational/abox.xml"
+        text = path.read_text(encoding="utf-8")
+        ir = extract_relational(
+            text,
+            "mmt://fixture-relational/abox.xml",
+            path.relative_to(ROOT).as_posix(),
+            source_sha256(text),
+        )
+        by_id = {item["id"]: item for item in ir["nodes"]}
+        fol = by_id["http://mydomain.org/testarchive/mmt-example?FOL"]
+        proof = by_id["http://mydomain.org/testarchive/mmt-example?FOL?proof"]
+        self.assertEqual(fol["kind"], "theory")
+        self.assertEqual(proof["kind"], "constant")
+        self.assertEqual(
+            proof["mmt_predicates"],
+            ["constant", "judgementconstructor"],
+        )
+        self.assertTrue(
+            any(edge["kind"] == "has meta-theory" for edge in ir["edges"])
+        )
+        self.assertTrue(
+            any(edge["kind"] == "contains declaration of" for edge in ir["edges"])
+        )
+        self.assertTrue(any(edge["kind"] == "refers to" for edge in ir["edges"]))
+
+    def test_relational_directory_merges_abox_files(self):
+        ir = extract_relational_directory(
+            ROOT / "tests/fixtures/relational",
+            "mmt://fixture-relational",
+        )
+        self.assertEqual(ir["source"]["input_kind"], "relational-directory")
+        self.assertEqual(len(ir["source"]["files"]), 1)
+        proof = next(
+            item
+            for item in ir["nodes"]
+            if item["id"] == "http://mydomain.org/testarchive/mmt-example?FOL?proof"
+        )
+        self.assertIn("judgementconstructor", proof["mmt_predicates"])
+
+    def test_assemble_retains_relational_classification_with_omdoc_detail(self):
+        archive_path = ROOT / "tests/fixtures/archivegraph.json"
+        archive_text = archive_path.read_text(encoding="utf-8")
+        ir = assemble_archive(
+            archive_text,
+            "http://localhost:8080/:jgraph/json?key=archivegraph&uri=MMT/LATIN2",
+            archive_path.relative_to(ROOT).as_posix(),
+            source_sha256(archive_text),
+            ROOT / "tests/fixtures/omdoc-archive",
+            "mmt://fixture-content",
+            ROOT / "tests/fixtures/relational",
+            "mmt://fixture-relational",
+        )
+        self.assertEqual(ir["source"]["input_kind"], "assembled-archive")
+        fol = next(
+            item
+            for item in ir["nodes"]
+            if item["id"] == "http://mydomain.org/testarchive/mmt-example?FOL"
+        )
+        self.assertEqual(fol["kind"], "theory")
+        self.assertIn("theory", fol["mmt_predicates"])
+        self.assertTrue(
+            any(edge["kind"] == "has meta-theory" for edge in ir["edges"])
+        )
 
 
 if __name__ == "__main__":

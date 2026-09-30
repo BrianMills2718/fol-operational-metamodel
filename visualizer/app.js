@@ -120,11 +120,13 @@ fetch("../generated/mmt-ir.json")
       node.classed("selected", n => n.id === d.id);
       const aside = document.querySelector("#detail");
       aside.innerHTML =
-        '<p class="eyebrow"></p><h2></h2><p class="description"></p><p class="refs"></p>' +
+        '<p class="eyebrow"></p><h2></h2><p class="description"></p><p class="classifications"></p><p class="refs"></p>' +
         '<p class="location"></p><pre class="type"></pre><pre class="definition"></pre>';
       aside.querySelector(".eyebrow").textContent = labels[d.category] || d.kind;
       aside.querySelector("h2").textContent = d.name;
       aside.querySelector(".description").textContent = d.description || "";
+      aside.querySelector(".classifications").textContent =
+        d.mmt_predicates?.length ? "MMT classifications: " + d.mmt_predicates.join(", ") : "";
       aside.querySelector(".refs").textContent =
         "Links: " + (links.filter(e => e.source.id === d.id || e.source === d.id)
           .map(e => `${e.kind} → ${byId.get(e.target.id || e.target)?.name || e.target.id || e.target}`)
