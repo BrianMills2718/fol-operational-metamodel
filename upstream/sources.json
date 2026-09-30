@@ -1,0 +1,35 @@
+{
+  "format": "upstream-source-manifest/v1",
+  "sources": [
+    {
+      "id": "mmt-examples-sfol-tutorial",
+      "repository": "https://gl.mathhub.info/MMT/examples.git",
+      "browse_url": "https://gl.mathhub.info/MMT/examples/-/blob/master/source/tutorial/1-sfol.mmt",
+      "path": "source/tutorial/1-sfol.mmt",
+      "discovery_ref": "master",
+      "revision": null,
+      "revision_status": "unresolved",
+      "sha256": null,
+      "role": "tutorial first-order logic formalization",
+      "inspection": "The upstream page and MMT tutorial confirm this path and that it contains the FOL theory; this environment could not retrieve the file body or resolve master to a commit. Fetching is deliberately disabled until revision and sha256 are pinned."
+    },
+    {
+      "id": "mmt-latin2",
+      "repository": "https://gl.mathhub.info/MMT/LATIN2.git",
+      "browse_url": "https://gl.mathhub.info/MMT/LATIN2",
+      "discovery_ref": "devel",
+      "revision": null,
+      "revision_status": "unresolved",
+      "sha256": null,
+      "role": "modular logic atlas",
+      "license": "CC-BY-SA-4.0",
+      "inspection": "The devel README was inspected. It identifies source/ as human-edited MMT content and states that master is co-released with MMT. Exact FOL-related paths and a resolved source revision could not be verified here."
+    }
+  ],
+  "test_fixture": {
+    "path": "tests/fixtures/sfol-mini.mmt",
+    "sha256": "3a470f908632dab203b37e4ceb4bab738e0edd75078bd9239015e617c51ca79c",
+    "status": "local reduced syntax fixture, not a byte-for-byte upstream copy",
+    "derived_from": "https://uniformal.github.io/doc/tutorials/prototyping/"
+  }
+}
