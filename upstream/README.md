@@ -23,7 +23,7 @@ The public LATIN2 GitLab index exposes immutable revision:
 
 `39dc7046f457ff02f695387a8ebd80366789a465`
 
-LATIN2 is the larger modular logic atlas. Its README states that human-edited MMT sources are under `source/`. We have pinned the repository revision, but have not yet completed an inventory of the FOL/SFOL module file paths at that revision.
+LATIN2 is the larger modular logic atlas. Its README states that human-edited MMT sources are under `source/`. The pinned-revision inventory in `latin2-fol-inventory.json` now records three externally confirmed paths: `source/logic/fol_like/fol.mmt`, `source/logic/fol_like/fol_derived.mmt`, and `source/fundamentals/equality.mmt`. It also records observed theory names such as `SFOL`, `SFOLND`, and `SFOLEQ` without guessing unverified file paths.
 
 ### MMT tutorial FOL source
 
@@ -68,12 +68,14 @@ That graph is useful for archive/theory-level structure. It is complementary to 
 
 MMT's relational indexes are another promising input because they already classify declaration and dependency relations. They should be preferred over name-based heuristics when we add richer classifications.
 
+The repository can now recursively ingest an entire generated `content/` directory with `omdoc-dir`, or combine that directory with an MMT archivegraph in one step using `assemble`. This removes any requirement to maintain a complete manual LATIN2 file inventory.
+
 ## Current limitations
 
-- LATIN2 is pinned, but its exact FOL/SFOL source-module inventory is not yet captured here.
+- LATIN2 is pinned and a partial evidence-backed FOL inventory is captured, but not every SFOL-related file path has been independently verified.
 - The MMT examples tutorial FOL source path is known, but its repository commit is still unresolved.
 - The OMDoc adapter is structural, not a complete semantic interpretation of OpenMath.
-- MMT relational-store ingestion and `:jgraph/json` ingestion are not implemented yet.
+- MMT relational-store ingestion is not implemented yet. `:jgraph/json` archivegraph ingestion and whole-`content/` OMDoc ingestion are implemented.
 - The checked-in OMDoc fixture is compact and representative; the real pinned FOL OMDoc should be fetched for full exploration.
 
 ## References
