@@ -73,6 +73,34 @@ python3 scripts/import_mmt.py merge \
 
 The archive graph supplies the large-scale theory/morphism topology; OMDoc supplies declaration-level detail. The merge does not invent additional semantic relations.
 
+## Ingest a complete built LATIN2 archive
+
+MMT's `mmt-omdoc` target writes one compiled OMDoc file per module into the archive's `content/` directory, with relational indexes alongside it. For LATIN2, prefer importing that whole generated directory instead of maintaining a manual list of logic files.
+
+```sh
+python3 scripts/import_mmt.py omdoc-dir /path/to/LATIN2/content \
+  --uri 'mmt://MMT/LATIN2/content' \
+  --output generated/latin2-content-ir.json
+```
+
+If an MMT server is running, save its archivegraph and assemble both layers in one command:
+
+```sh
+curl 'http://localhost:8080/:jgraph/json?key=archivegraph&uri=MMT/LATIN2' \
+  -o upstream/cache/latin2-archivegraph.json
+
+python3 scripts/import_mmt.py assemble \
+  --archivegraph upstream/cache/latin2-archivegraph.json \
+  --content /path/to/LATIN2/content \
+  --archive-uri 'http://localhost:8080/:jgraph/json?key=archivegraph&uri=MMT/LATIN2' \
+  --content-uri 'mmt://MMT/LATIN2/content' \
+  --output generated/mmt-ir.json
+```
+
+This is the preferred large-scale workflow: MMT supplies the theory/morphism graph and all compiled module content; this repository only normalizes and joins those existing structures by MMT URI.
+
+A small evidence-backed source inventory remains in `upstream/latin2-fol-inventory.json` for orientation, but it is not used as the formal authority.
+
 ## Fallback source extraction
 
 When compiled OMDoc is unavailable:
@@ -89,6 +117,7 @@ That mode only recognizes a small source-level subset and does not replace MMT p
 
 - `upstream/sources.json` — immutable upstream provenance where verified.
 - `upstream/README.md` — provenance, evidence, and unresolved source boundaries.
+- `upstream/latin2-fol-inventory.json` — partial evidence-backed orientation to confirmed FOL files/theories at the pinned LATIN2 revision.
 - `scripts/import_mmt.py` — verified fetcher, OMDoc structural importer, and fallback source extractor.
 - `generated/mmt-ir.json` — derived graph IR consumed by the visualizer.
 - `tests/fixtures/fol-compiled.omdoc` — compact representative compiled-OMDoc fixture.
