@@ -2,6 +2,7 @@ import json
 import re
 import unittest
 from pathlib import Path
+from scripts.import_mmt import extract, source_sha256
 
 ROOT = Path(__file__).resolve().parents[1]
 MODEL = json.loads((ROOT / "spec/fol.json").read_text())
@@ -95,12 +96,31 @@ class ModelTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "sort mismatch"):
             eval_formula({"pred": "Sibling", "args": [{"const": "A"}, {"const": "B"}]}, wrong_sort_example)
 
-    def test_finite_semantic_consequence_example(self):
-        # In this fixed finite structure, Sibling(A,B) and its converse hold;
-        # a theory containing the former therefore entails itself.
+    def test_finite_structure_does_not_establish_semantic_consequence(self):
+        # This structure witnesses that the premise is true and the conclusion
+        # false. One countermodel refutes consequence; a finite pass never proves it.
         premise = EXAMPLE["cases"][0]["formula"]
+        conclusion = EXAMPLE["cases"][1]["formula"]
         self.assertTrue(eval_formula(premise, EXAMPLE))
-        self.assertTrue(eval_formula(premise, EXAMPLE))
+        self.assertFalse(eval_formula(conclusion, EXAMPLE))
+
+    def test_mmt_fixture_extracts_stable_uris_kinds_and_locations(self):
+        path = ROOT / "tests/fixtures/sfol-mini.mmt"
+        source = path.read_text(encoding="utf-8")
+        ir = extract(source, "https://example.org/fixture.mmt", path.relative_to(ROOT).as_posix(), source_sha256(source))
+        by_name = {item["name"]: item for item in ir["nodes"]}
+        self.assertEqual(by_name["FOL"]["kind"], "theory")
+        self.assertEqual(by_name["forall"]["kind"], "constant")
+        self.assertEqual(by_name["forall"]["uri"], "https://example.org/fol-operational-metamodel/fixture?FOL?forall")
+        self.assertEqual(by_name["forall"]["source"]["line"], 6)
+        self.assertTrue(any(edge["kind"] == "declares" and edge["target"] == by_name["forall"]["id"] for edge in ir["edges"]))
+        self.assertIn("no MMT parsing", ir["scope"])
+
+    def test_fixture_checksum_is_pinned_in_upstream_manifest(self):
+        manifest = json.loads((ROOT / "upstream/sources.json").read_text())
+        fixture = ROOT / manifest["test_fixture"]["path"]
+        self.assertEqual(source_sha256(fixture.read_text(encoding="utf-8")), manifest["test_fixture"]["sha256"])
+        self.assertIn("not a byte-for-byte upstream copy", manifest["test_fixture"]["status"])
 
 
 if __name__ == "__main__":
