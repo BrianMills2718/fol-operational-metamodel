@@ -1,35 +1,85 @@
 # Upstream provenance
 
-`sources.json` records authoritative project URLs and the limits of what this checkout could inspect. It intentionally does not pretend that a branch name is an immutable revision. The runner requires a 40-character Git commit and expected SHA-256 before downloading any upstream source.
+This repository is a projection layer over existing MMT formalizations. It does not attempt to redefine first-order logic independently.
 
-The MMT examples project publishes `source/tutorial/1-sfol.mmt`; the official MMT tutorial identifies it as the full FOL definition. Its GitLab file page was reachable through the web index, but its body and current commit were not. Direct Git access failed because this environment could not resolve `gl.mathhub.info`. No upstream source has been vendored.
+## Verified upstream anchors
 
-The LATIN2 README says human-edited MMT files live under `source/`, and official LATIN materials identify the modular logic families PL, FOL, SFOL, and DFOL. A LATIN2-oriented MMT presentation names modules `TypedLogic`, `SFOLEQ`, and `RelativizedUniversalQuantification`; these are module names, not verified current file paths. The exact current `.mmt` paths for these modules remain unverified in this checkout. Do not treat the names as an exhaustive inventory until the repository can be cloned at a pinned revision.
+### Compiled MMT FOL OMDoc
 
-The test input `tests/fixtures/sfol-mini.mmt` is a small local fixture using the documented MMT theory/declaration surface shape. It is pinned by its SHA-256 in `sources.json`, but is explicitly not represented as a verbatim upstream file. Once GitLab access is available, replace or supplement it with a byte-exact excerpt from `1-sfol.mmt`, pinning both repository commit and file hash.
+The strongest current anchor is an actual compiled FOL OMDoc artifact already committed in the MMT repository:
 
-## MMT-native extraction path
+- repository: `https://github.com/UniFormal/MMT.git`
+- commit: `fca5d7e12db5b4e9d6329590f9d25380017981d8`
+- path: `src/test/testarchive/content/http..mydomain.org/testarchive/mmt-example/$F$O$L.omdoc`
+- Git blob SHA: `76ccd4bc3968272d2e16d4fc51d8950c6b28fbe7`
 
-When an MMT installation and the archive are available, build the selected source through MMT rather than treating the Python extractor as a parser:
+That artifact was inspected directly. It contains a theory `FOL` with meta-theory `http://cds.omdoc.org/urtheories?LF` and constants including `prop`, `true`, `false`, Boolean connectives, `sort`, `term`, equality, quantifiers, and `proof`.
+
+This is the preferred regression target because MMT has already produced the OMDoc representation. The fetcher validates the downloaded bytes against the recorded Git blob SHA before accepting them.
+
+### LATIN2
+
+The public LATIN2 GitLab index exposes immutable revision:
+
+`39dc7046f457ff02f695387a8ebd80366789a465`
+
+LATIN2 is the larger modular logic atlas. Its README states that human-edited MMT sources are under `source/`. We have pinned the repository revision, but have not yet completed an inventory of the FOL/SFOL module file paths at that revision.
+
+### MMT tutorial FOL source
+
+The official MMT language-design tutorial identifies:
+
+`MMT/examples/source/tutorial/1-sfol.mmt`
+
+as the complete tutorial FOL definition. The path is verified, but an immutable commit for the examples repository has not yet been established in this project, so that source remains intentionally unpinned.
+
+## Why OMDoc is preferred
+
+MMT documents the `mmt-omdoc` build target as the path from MMT source to its internal OMDoc XML representation. The build produces content, narration, and relational indexes. That means OMDoc is downstream of MMT parsing/type-checking and is a better graph input than reimplementing the MMT parser.
+
+Typical MMT workflow:
 
 ```text
 build MMT/examples mmt-omdoc source/tutorial/1-sfol.mmt
 ```
 
-The MMT tutorial documents `mmt-omdoc` as the source-to-OMDoc build target; it writes OMDoc content and relational indexes into the archive's generated `narration/`, `content/`, and `relational/` trees. The local IR does not yet consume OMDoc XML or MMT's relational store. A future native adapter should read the built OMDoc structural declarations (documents, theories/views, constants) or query the relational store, preserving MMT paths rather than reparsing surface text.
+The importer in this repository reads explicit OMDoc structure only. It currently recognizes:
 
-For a graph directly from a running MMT server, the MMT project documents this archive graph endpoint after loading/building an archive and starting the server:
+- `theory` and `view` modules;
+- module meta-theory/domain/codomain attributes;
+- `constant` declarations;
+- `import` elements as includes or named structures;
+- `derived` declarations conservatively;
+- source-reference metadata;
+- type and definition XML;
+- explicit OpenMath `OMS` references inside constants.
+
+It does not infer logical semantics from names or OpenMath term shapes.
+
+## MMT-native graph alternatives
+
+MMT also documents an archive graph JSON endpoint after an archive is built and served:
 
 ```text
 http://localhost:8081/:jgraph/json?key=archivegraph&uri=MMT/LATIN2
 ```
 
-This endpoint is an alternate MMT-generated graph view, not currently an input format supported by `scripts/import_mmt.py`. MMT API docs describe structural elements as URI-bearing and distinguish modules (theories/views) from declarations (constants); the local IR's kinds follow that distinction. Sources: [MMT tutorial](https://uniformal.github.io/doc/tutorials/prototyping/), [MMT API overview](https://uniformal.github.io/apidoc/info/kwarc/mmt/api/ontology/index.html), [MMT archivegraph instructions](https://github.com/UniFormal/MMT/issues/525), [LATIN2 repository README](https://gl.mathhub.info/MMT/LATIN2/-/blob/devel/README.md).
+That graph is useful for archive/theory-level structure. It is complementary to the declaration-level OMDoc projection here. A future adapter can ingest this endpoint and merge theory-level and declaration-level views by URI.
+
+MMT's relational indexes are another promising input because they already classify declaration and dependency relations. They should be preferred over name-based heuristics when we add richer classifications.
 
 ## Current limitations
 
-- Upstream commit revisions are unresolved and upstream fetch is intentionally blocked until both a full commit SHA and expected source SHA-256 are entered in `sources.json`.
-- Current LATIN2 file paths for FOL/SFOL modules have not been verified; only module names and project-level scope are documented above.
-- The extractor is a conservative line-oriented subset, not a complete MMT parser. Nested/inline declarations, multiline expressions, comments inside objects, aliases, assignments, structures, views beyond the header, and extension-defined syntax are not reliably represented.
-- No term-level semantics, proofs, truth conditions, theorem validity, or type-checking are inferred by the IR.
-- OMDoc XML and MMT relational JSON ingestion remain unimplemented; use `mmt-omdoc` and the archivegraph endpoint for native MMT inspection today.
+- LATIN2 is pinned, but its exact FOL/SFOL source-module inventory is not yet captured here.
+- The MMT examples tutorial FOL source path is known, but its repository commit is still unresolved.
+- The OMDoc adapter is structural, not a complete semantic interpretation of OpenMath.
+- MMT relational-store ingestion and `:jgraph/json` ingestion are not implemented yet.
+- The checked-in OMDoc fixture is compact and representative; the real pinned FOL OMDoc should be fetched for full exploration.
+
+## References
+
+- MMT FOL tutorial: https://uniformal.github.io/doc/tutorials/prototyping/
+- MMT build targets: https://uniformal.github.io/doc/archives/building
+- MMT declaration format: https://uniformal.github.io/doc/language/declarations
+- MMT archive graph instructions: https://github.com/UniFormal/MMT/issues/525
+- LATIN2 repository: https://gl.mathhub.info/MMT/LATIN2
