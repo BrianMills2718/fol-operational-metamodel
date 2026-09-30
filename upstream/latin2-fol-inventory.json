@@ -1,0 +1,37 @@
+{
+  "format": "latin2-fol-inventory/v1",
+  "repository": "https://gl.mathhub.info/MMT/LATIN2.git",
+  "revision": "39dc7046f457ff02f695387a8ebd80366789a465",
+  "status": "partial, evidence-backed inventory; whole-archive ingestion is preferred",
+  "confirmed_paths": [
+    {
+      "path": "source/logic/fol_like/fol.mmt",
+      "role": "LATIN2 first-order logic formalization",
+      "evidence": "https://kwarc.info/people/frabe/students/roux_msc.pdf"
+    },
+    {
+      "path": "source/logic/fol_like/fol_derived.mmt",
+      "role": "derived FOL declarations and proof-rule shorthands",
+      "evidence": "https://kwarc.info/people/frabe/students/roux_msc.pdf"
+    },
+    {
+      "path": "source/fundamentals/equality.mmt",
+      "role": "equality formalization used with FOL",
+      "evidence": "https://kwarc.info/people/frabe/students/roux_msc.pdf"
+    }
+  ],
+  "observed_theories": [
+    "UntypedLogic",
+    "TypedLogic",
+    "UniversalQuantification",
+    "TypedUniversalQuantification",
+    "RelativizedUniversalQuantification",
+    "RelativizedUniversalQuantificationND",
+    "FOLND",
+    "SFOL",
+    "SFOLND",
+    "SFOLEQ"
+  ],
+  "theory_evidence": "https://navid-roux.netlify.app/wadt-2020/slides.pdf",
+  "note": "Theory names are evidence-backed, but file paths are not inferred from names. Build LATIN2 with MMT and ingest the generated content/ directory plus archivegraph instead of maintaining a complete manual path inventory."
+}

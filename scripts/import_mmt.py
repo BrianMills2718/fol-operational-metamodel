@@ -342,6 +342,65 @@ def merge_irs(irs, source_uri="merged://mmt-graph"):
         "edges": list(edge_map.values()),
     }
 
+
+def extract_omdoc_directory(directory, source_uri):
+    """Recursively import every compiled .omdoc file below an MMT content directory."""
+    root = Path(directory)
+    if not root.is_dir():
+        raise ValueError(f"OMDoc directory does not exist: {root}")
+    files = sorted(path for path in root.rglob("*.omdoc") if path.is_file())
+    if not files:
+        raise ValueError(f"no .omdoc files found below {root}")
+
+    irs = []
+    manifest = []
+    for path in files:
+        rel = path.relative_to(root).as_posix()
+        text = path.read_text(encoding="utf-8")
+        digest = source_sha256(text)
+        file_uri = source_uri.rstrip("/") + "/" + urllib.parse.quote(rel, safe="/$.-_")
+        irs.append(extract_omdoc(text, file_uri, rel, digest))
+        manifest.append({"path": rel, "uri": file_uri, "sha256": digest})
+
+    merged = merge_irs(irs, source_uri=source_uri)
+    manifest_digest = hashlib.sha256(
+        json.dumps(manifest, sort_keys=True, ensure_ascii=False).encode("utf-8")
+    ).hexdigest()
+    merged["source"].update({
+        "path": root.as_posix(),
+        "sha256": manifest_digest,
+        "input_kind": "omdoc-directory",
+        "extractor": "recursive-omdoc-directory",
+        "files": manifest,
+    })
+    merged["scope"] = (
+        "all compiled OMDoc files recursively imported from one MMT content directory; "
+        "no semantic inference beyond explicit OMDoc structure"
+    )
+    return merged
+
+
+def assemble_archive(archivegraph_text, archive_uri, archive_path, archive_hash, content_directory, content_uri):
+    """Combine an MMT archivegraph with every compiled OMDoc module in content/."""
+    archive_ir = extract_archivegraph(
+        archivegraph_text, archive_uri, archive_path, archive_hash
+    )
+    content_ir = extract_omdoc_directory(content_directory, content_uri)
+    merged = merge_irs(
+        [archive_ir, content_ir],
+        source_uri=f"assembled://{urllib.parse.quote(archive_uri, safe='')}",
+    )
+    merged["source"]["input_kind"] = "assembled-archive"
+    merged["source"]["extractor"] = "archivegraph-plus-omdoc-directory"
+    merged["source"]["archivegraph"] = archive_ir["source"]
+    merged["source"]["content"] = content_ir["source"]
+    merged["scope"] = (
+        "MMT archive/theory topology merged with all declaration-level compiled OMDoc "
+        "modules from the archive content directory; no added semantic inference"
+    )
+    return merged
+
+
 def extract(text, source_uri, source_path, source_hash):
     """Fallback extractor for a conservative line-oriented subset of MMT source."""
     lines = text.splitlines()
@@ -490,6 +549,18 @@ def main():
     p_merge.add_argument("--uri", default="merged://mmt-graph")
     p_merge.add_argument("--output", default=str(IR_PATH))
 
+    p_dir = commands.add_parser("omdoc-dir", help="recursively import an MMT archive content directory")
+    p_dir.add_argument("directory")
+    p_dir.add_argument("--uri", required=True)
+    p_dir.add_argument("--output", default=str(IR_PATH))
+
+    p_assemble = commands.add_parser("assemble", help="combine archivegraph JSON with an OMDoc content directory")
+    p_assemble.add_argument("--archivegraph", required=True)
+    p_assemble.add_argument("--content", required=True)
+    p_assemble.add_argument("--archive-uri", required=True)
+    p_assemble.add_argument("--content-uri", required=True)
+    p_assemble.add_argument("--output", default=str(IR_PATH))
+
     args = parser.parse_args()
     try:
         if args.command == "fetch":
@@ -497,6 +568,20 @@ def main():
         elif args.command == "merge":
             irs = [json.loads(Path(source).read_text(encoding="utf-8")) for source in args.sources]
             write_ir(merge_irs(irs, args.uri), args.output)
+        elif args.command == "omdoc-dir":
+            write_ir(extract_omdoc_directory(args.directory, args.uri), args.output)
+        elif args.command == "assemble":
+            archive_path = Path(args.archivegraph)
+            archive_text = archive_path.read_text(encoding="utf-8")
+            ir = assemble_archive(
+                archive_text,
+                args.archive_uri,
+                archive_path.as_posix(),
+                source_sha256(archive_text),
+                args.content,
+                args.content_uri,
+            )
+            write_ir(ir, args.output)
         else:
             path = Path(args.source)
             text = path.read_text(encoding="utf-8")

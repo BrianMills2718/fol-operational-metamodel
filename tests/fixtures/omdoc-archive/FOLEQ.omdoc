@@ -1,0 +1,8 @@
+<omdoc xmlns="http://omdoc.org/ns" xmlns:om="http://www.openmath.org/OpenMath">
+  <theory name="FOLEQ" base="http://mydomain.org/testarchive/mmt-example" meta="http://cds.omdoc.org/urtheories?LF">
+    <import from="http://mydomain.org/testarchive/mmt-example?FOL"/>
+    <constant name="equal" role="Eq">
+      <type><om:OMOBJ><om:OMS base="http://mydomain.org/testarchive/mmt-example" module="FOL" name="prop"/></om:OMOBJ></type>
+    </constant>
+  </theory>
+</omdoc>

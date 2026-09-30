@@ -34,7 +34,8 @@
       "sha256": null,
       "role": "modular logic atlas",
       "license": "CC-BY-SA-4.0",
-      "inspection": "The public GitLab index exposes this immutable LATIN2 revision. Human-edited MMT sources live under source/. Exact FOL/SFOL module paths still need inventory from the pinned tree."
+      "inspection": "Pinned LATIN2 revision. A partial evidence-backed FOL inventory records confirmed fol.mmt, fol_derived.mmt, and equality.mmt paths; complete ingestion should use MMT-generated content/ plus archivegraph.",
+      "inventory": "upstream/latin2-fol-inventory.json"
     }
   ],
   "test_fixture": {
