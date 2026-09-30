@@ -2,22 +2,43 @@
   "format": "latin2-fol-inventory/v1",
   "repository": "https://gl.mathhub.info/MMT/LATIN2.git",
   "revision": "39dc7046f457ff02f695387a8ebd80366789a465",
-  "status": "partial, evidence-backed inventory; whole-archive ingestion is preferred",
+  "status": "verified directly against pinned LATIN2 checkout; whole-archive ingestion remains preferred",
   "confirmed_paths": [
     {
       "path": "source/logic/fol_like/fol.mmt",
-      "role": "LATIN2 first-order logic formalization",
-      "evidence": "https://kwarc.info/people/frabe/students/roux_msc.pdf"
+      "role": "first-order logic"
     },
     {
       "path": "source/logic/fol_like/fol_derived.mmt",
-      "role": "derived FOL declarations and proof-rule shorthands",
-      "evidence": "https://kwarc.info/people/frabe/students/roux_msc.pdf"
+      "role": "derived FOL"
+    },
+    {
+      "path": "source/logic/fol_like/fol_hilbert.mmt",
+      "role": "Hilbert-style FOL"
+    },
+    {
+      "path": "source/logic/fol_like/fol-tableaux.mmt",
+      "role": "FOL tableaux"
+    },
+    {
+      "path": "source/logic/fol_like/sfol.mmt",
+      "role": "sorted first-order logic"
+    },
+    {
+      "path": "source/logic/fol_like/sfol_derived.mmt",
+      "role": "derived sorted FOL"
+    },
+    {
+      "path": "source/logic/fol_like/pl-sfol.mmt",
+      "role": "propositional-to-sorted-FOL material"
+    },
+    {
+      "path": "source/logic/fol_like/stfol.mmt",
+      "role": "soft-typed FOL"
     },
     {
       "path": "source/fundamentals/equality.mmt",
-      "role": "equality formalization used with FOL",
-      "evidence": "https://kwarc.info/people/frabe/students/roux_msc.pdf"
+      "role": "equality formalization"
     }
   ],
   "observed_theories": [
@@ -33,5 +54,9 @@
     "SFOLEQ"
   ],
   "theory_evidence": "https://navid-roux.netlify.app/wadt-2020/slides.pdf",
-  "note": "Theory names are evidence-backed, but file paths are not inferred from names. Build LATIN2 with MMT and ingest the generated content/ directory plus archivegraph instead of maintaining a complete manual path inventory."
+  "note": "Paths above were verified directly in a clean checkout of the pinned LATIN2 revision. The importer does not depend on this list; build LATIN2 with MMT and ingest archivegraph + content/ + relational/.",
+  "verified_checkout": {
+    "revision": "39dc7046f457ff02f695387a8ebd80366789a465",
+    "source_files": 175
+  }
 }
