@@ -1,0 +1,77 @@
+{
+  "format": "latin2-repro/v1",
+  "generated_at": "2026-09-30",
+  "stack": {
+    "mmt": {
+      "repository": "https://github.com/UniFormal/MMT.git",
+      "revision": "bbe82c71b5723af0092389ac731115092bfd8df8",
+      "commit_date": "2022-01-12T10:13:04+01:00"
+    },
+    "urtheories": {
+      "repository": "https://gl.mathhub.info/MMT/urtheories.git",
+      "revision": "e10572adac862f640c73303b3a2556a25325a781"
+    },
+    "lfx": {
+      "repository": "https://gl.mathhub.info/MMT/LFX.git",
+      "revision": "3d5eed3a87c3d24c0e65f7a54b4e967d61dd0e4b"
+    },
+    "latin2": {
+      "repository": "https://gl.mathhub.info/MMT/LATIN2.git",
+      "revision": "39dc7046f457ff02f695387a8ebd80366789a465",
+      "commit_date": "2022-01-12T09:38:16+01:00"
+    }
+  },
+  "build": {
+    "script": "build.msl",
+    "mmt_docker_builder": "mozilla/sbt:8u212_1.2.8 with sbt ++2.13.4 deploy",
+    "runtime_substitution": "Historical openjdk:jre-alpine no longer exists; runtime only was replaced with eclipse-temurin:8-jre-alpine. MMT source and builder toolchain remained pinned.",
+    "result": "MMT process exited 0; historical archive emitted some module-level errors in later HOL/algebra material, while FOL/SFOL modules generated compiled content and relational indexes."
+  },
+  "inputs": {
+    "archivegraph": {
+      "sha256": "f60bb63eaeb1aa6c799609681c7ccacf09090755c834273c67a8994f54a6f4f8"
+    },
+    "content": {
+      "files": 798,
+      "formats": [
+        ".omdoc.xz"
+      ]
+    },
+    "relational": {
+      "files": 891,
+      "format": "historical line-based .rel"
+    }
+  },
+  "output": {
+    "filename": "latin2-full-ir.json",
+    "sha256": "f7513ab3144fad0058ffab4b0d8b6ddc794e9f65dfbfbf70e7564bdb6b0e6e04",
+    "bytes": 39736899,
+    "lines": 603242,
+    "nodes": 6482,
+    "edges": 46782,
+    "fol_or_quantification_theories": 71,
+    "node_kinds": {
+      "constant": 2595,
+      "include": 1551,
+      "document": 891,
+      "theory": 700,
+      "structure": 633,
+      "view": 112
+    },
+    "leading_edge_kinds": {
+      "depends on": 15182,
+      "uses-symbol": 15041,
+      "contains declaration of": 3963,
+      "declares": 3248,
+      "imports": 1616,
+      "includes": 1551,
+      "include": 1403,
+      "contains-module": 805,
+      "has meta-theory": 686,
+      "meta-theory": 686,
+      "has domain": 680,
+      "has codomain": 680
+    }
+  },
+  "artifact_policy": "The 39.7 MB generated IR is reproducible and intentionally not committed by default. This manifest pins its hash and counts."
+}

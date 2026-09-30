@@ -1,5 +1,7 @@
 import json
+import lzma
 import re
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -11,6 +13,7 @@ from scripts.import_mmt import (
     extract_omdoc_directory,
     extract_relational,
     extract_relational_directory,
+    extract_relational_legacy,
     merge_irs,
     source_download_url,
     source_sha256,
@@ -333,14 +336,19 @@ class ModelTests(unittest.TestCase):
             "39dc7046f457ff02f695387a8ebd80366789a465",
         )
         paths = {item["path"] for item in inventory["confirmed_paths"]}
-        self.assertEqual(
-            paths,
-            {
-                "source/logic/fol_like/fol.mmt",
-                "source/logic/fol_like/fol_derived.mmt",
-                "source/fundamentals/equality.mmt",
-            },
-        )
+        expected = {
+            "source/logic/fol_like/fol.mmt",
+            "source/logic/fol_like/fol_derived.mmt",
+            "source/logic/fol_like/fol_hilbert.mmt",
+            "source/logic/fol_like/fol-tableaux.mmt",
+            "source/logic/fol_like/sfol.mmt",
+            "source/logic/fol_like/sfol_derived.mmt",
+            "source/logic/fol_like/pl-sfol.mmt",
+            "source/logic/fol_like/stfol.mmt",
+            "source/fundamentals/equality.mmt",
+        }
+        self.assertTrue(expected <= paths)
+        self.assertEqual(inventory["verified_checkout"]["source_files"], 175)
         self.assertIn("SFOLEQ", inventory["observed_theories"])
 
 
@@ -438,6 +446,70 @@ class ModelTests(unittest.TestCase):
         }
         self.assertEqual(by_name["equal"]["role"], "Eq")
         self.assertEqual(by_name["proof"]["role"], "Judgment")
+
+
+    def test_legacy_relational_preserves_2022_mmt_predicates(self):
+        path = ROOT / "tests/fixtures/relational-legacy/fol.rel"
+        text = path.read_text(encoding="utf-8")
+        ir = extract_relational_legacy(
+            text,
+            "mmt://fixture-relational-legacy/fol.rel",
+            path.relative_to(ROOT).as_posix(),
+            source_sha256(text),
+        )
+        by_id = {item["id"]: item for item in ir["nodes"]}
+        folnd = by_id["latin:/?FOLND"]
+        forall_i = by_id["latin:/?FOLND?forallI"]
+        self.assertEqual(ir["source"]["input_kind"], "relational-legacy")
+        self.assertEqual(folnd["kind"], "theory")
+        self.assertEqual(forall_i["kind"], "constant")
+        self.assertEqual(
+            forall_i["mmt_predicates"],
+            ["constant", "judgementconstructor"],
+        )
+        kinds = {edge["kind"] for edge in ir["edges"]}
+        self.assertIn("has meta-theory", kinds)
+        self.assertIn("includes", kinds)
+        self.assertIn("contains declaration of", kinds)
+        self.assertIn("depends on", kinds)
+        self.assertIn("refers to", kinds)
+        self.assertIn("is alias for", kinds)
+        depends = next(edge for edge in ir["edges"] if edge["kind"] == "depends on")
+        self.assertEqual(depends["legacy_token"], "DependsOn")
+        self.assertEqual(depends["source"], "latin:/?FOLND?forallI?type")
+        self.assertEqual(
+            depends["target"],
+            "latin:/?UniversalQuantification?uforall?type",
+        )
+
+    def test_legacy_relational_directory_is_detected_by_suffix(self):
+        ir = extract_relational_directory(
+            ROOT / "tests/fixtures/relational-legacy",
+            "mmt://fixture-relational-legacy",
+        )
+        self.assertEqual(ir["source"]["input_kind"], "relational-directory")
+        self.assertEqual(len(ir["source"]["files"]), 1)
+        self.assertEqual(ir["source"]["files"][0]["format"], "legacy-rel")
+        self.assertTrue(any(edge["kind"] == "includes" for edge in ir["edges"]))
+
+
+    def test_omdoc_directory_reads_historical_xz_content(self):
+        source = (ROOT / "tests/fixtures/fol-compiled.omdoc").read_bytes()
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            compressed = root / "FOL.omdoc.xz"
+            compressed.write_bytes(lzma.compress(source))
+            ir = extract_omdoc_directory(root, "mmt://fixture-xz-content")
+        self.assertEqual(ir["source"]["input_kind"], "omdoc-directory")
+        self.assertEqual(len(ir["source"]["files"]), 1)
+        self.assertEqual(ir["source"]["files"][0]["compression"], "xz")
+        self.assertIn("stored_sha256", ir["source"]["files"][0])
+        self.assertTrue(
+            any(
+                node.get("kind") == "theory" and node.get("name") == "FOL"
+                for node in ir["nodes"]
+            )
+        )
 
 
 if __name__ == "__main__":

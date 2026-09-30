@@ -136,6 +136,12 @@ python3 scripts/import_mmt.py assemble \
 
 This preserves MMT's own ontology predicates on nodes and edges instead of inferring categories from names.
 
+## Reproduced historical LATIN2 atlas
+
+The pinned 2022 LATIN2 stack has now been rebuilt end-to-end. The assembled graph contains 6,482 nodes and 46,782 edges from 798 compiled OMDoc modules and 891 relational files. Exact revisions, hashes, build notes, and output counts are recorded in `upstream/latin2-reproduction.json`.
+
+Historical MMT compatibility is supported directly: 2022 archives use compressed `.omdoc.xz` content and line-based `.rel` relational indexes, while newer MMT archives use the newer formats already supported by this importer. The reproducible 39.7 MB full IR is not committed by default; its SHA-256 is pinned in the reproduction manifest.
+
 ## Fallback source extraction
 
 When compiled OMDoc is unavailable:

@@ -7,6 +7,7 @@ The source extractor remains a deliberately conservative fallback.
 import argparse
 import hashlib
 import json
+import lzma
 import re
 import sys
 import urllib.parse
@@ -277,8 +278,25 @@ def extract_archivegraph(json_text, source_uri, source_path, source_hash):
 
 RELATIONAL_PRIMARY_KINDS = (
     "document", "theory", "view", "structure", "constant",
-    "pattern", "instance", "deriveddeclaration", "notation",
+    "untypedconstant", "dataconstructor", "rule", "judgementconstructor",
+    "datatypeconstructor", "highuniverse", "pattern", "instance",
+    "deriveddeclaration", "conass", "strass", "notation",
 )
+
+LEGACY_BINARY_PREDICATES = {
+    "DependsOn": "depends on",
+    "HasMeta": "has meta-theory",
+    "Includes": "includes",
+    "HasDomain": "has domain",
+    "HasCodomain": "has codomain",
+    "IsImplicitly": "implicitly realizes",
+    "HasViewFrom": "has view from",
+    "IsInstanceOf": "is instance of",
+    "RefersTo": "refers to",
+    "Declares": "contains declaration of",
+    "IsAliasFor": "is alias for",
+    "IsAlignedWith": "is aligned with",
+}
 
 
 def _choose_relational_kind(predicates):
@@ -346,8 +364,85 @@ def extract_relational(xml_text, source_uri, source_path, source_hash):
     }
 
 
+def extract_relational_legacy(text, source_uri, source_path, source_hash):
+    """Import the line-based .rel format emitted by historical MMT versions.
+
+    Historical MMT serializes unary facts as:
+      <predicate> <path>
+    and binary facts as:
+      <predicate-token> <subject> <object>
+
+    The binary token mapping below comes directly from MMT's ontology/TBox.scala
+    for the historical revision used to build the pinned LATIN2 archive.
+    """
+    nodes_by_id = {}
+    edges = []
+    unparsed = []
+
+    def note_predicate(path, predicate, line_number):
+        node = nodes_by_id.setdefault(path, {
+            "id": path,
+            "uri": path,
+            "name": path.rsplit("?", 1)[-1],
+            "kind": "relational-item",
+            "description": "MMT relational ontology individual.",
+            "references": [],
+            "mmt_predicates": [],
+            "source": {
+                "uri": source_uri,
+                "path": source_path,
+                "line": line_number,
+            },
+        })
+        if predicate not in node["mmt_predicates"]:
+            node["mmt_predicates"].append(predicate)
+        node["kind"] = _choose_relational_kind(node["mmt_predicates"])
+
+    for line_number, raw in enumerate(text.splitlines(), 1):
+        line = raw.strip()
+        if not line or line.startswith("#"):
+            continue
+        parts = line.split()
+        if len(parts) == 2:
+            predicate, path = parts
+            note_predicate(path, predicate, line_number)
+        elif len(parts) == 3:
+            token, subject, obj = parts
+            edges.append({
+                "source": subject,
+                "target": obj,
+                "kind": LEGACY_BINARY_PREDICATES.get(token, token),
+                "legacy_token": token,
+                "mmt_relation": True,
+                "source_ref": {
+                    "uri": source_uri,
+                    "path": source_path,
+                    "line": line_number,
+                },
+            })
+        else:
+            unparsed.append({"line": line_number, "text": raw})
+
+    ir = {
+        "format": "mmt-ir/v2",
+        "source": {
+            "uri": source_uri,
+            "path": source_path,
+            "sha256": source_hash,
+            "input_kind": "relational-legacy",
+            "extractor": "mmt-rel-text-structural",
+        },
+        "scope": "historical MMT .rel predicates preserved using the version-matched MMT ontology; no name-based inference",
+        "nodes": list(nodes_by_id.values()),
+        "edges": edges,
+    }
+    if unparsed:
+        ir["unparsed_lines"] = unparsed
+    return ir
+
+
 def extract_relational_directory(directory, source_uri):
-    """Recursively import every XML file whose root is an MMT mmtabox."""
+    """Recursively import modern mmtabox XML and historical line-based .rel files."""
     root = Path(directory)
     if not root.is_dir():
         raise ValueError(f"relational directory does not exist: {root}")
@@ -356,32 +451,48 @@ def extract_relational_directory(directory, source_uri):
     manifest = []
     for path in sorted(p for p in root.rglob("*") if p.is_file()):
         try:
-            text = path.read_text(encoding="utf-8")
-            parsed = ET.fromstring(text)
-        except (UnicodeError, ET.ParseError):
-            continue
-        if _local(parsed.tag) != "mmtabox":
+            text = path.read_text(encoding="utf-8-sig")
+        except UnicodeError:
             continue
         rel = path.relative_to(root).as_posix()
         digest = source_sha256(text)
         file_uri = source_uri.rstrip("/") + "/" + urllib.parse.quote(rel, safe="/$.-_")
-        irs.append(extract_relational(text, file_uri, rel, digest))
-        manifest.append({"path": rel, "uri": file_uri, "sha256": digest})
+
+        if path.suffix.lower() == ".rel":
+            ir = extract_relational_legacy(text, file_uri, rel, digest)
+            format_name = "legacy-rel"
+        else:
+            try:
+                parsed = ET.fromstring(text)
+            except ET.ParseError:
+                continue
+            if _local(parsed.tag) != "mmtabox":
+                continue
+            ir = extract_relational(text, file_uri, rel, digest)
+            format_name = "mmtabox-xml"
+
+        irs.append(ir)
+        manifest.append({
+            "path": rel,
+            "uri": file_uri,
+            "sha256": digest,
+            "format": format_name,
+        })
 
     if not irs:
-        raise ValueError(f"no MMT mmtabox XML files found below {root}")
+        raise ValueError(f"no MMT relational XML or .rel files found below {root}")
 
     merged = merge_irs(irs, source_uri=source_uri)
     merged["source"].update({
         "path": root.as_posix(),
         "input_kind": "relational-directory",
-        "extractor": "recursive-mmt-abox-directory",
+        "extractor": "recursive-mmt-relational-directory",
         "files": manifest,
         "sha256": hashlib.sha256(
             json.dumps(manifest, sort_keys=True, ensure_ascii=False).encode("utf-8")
         ).hexdigest(),
     })
-    merged["scope"] = "all MMT relational ABox XML under one archive relational directory"
+    merged["scope"] = "MMT relational ontology imported from modern mmtabox XML and/or historical .rel text"
     return merged
 
 
@@ -455,23 +566,42 @@ def merge_irs(irs, source_uri="merged://mmt-graph"):
 
 
 def extract_omdoc_directory(directory, source_uri):
-    """Recursively import every compiled .omdoc file below an MMT content directory."""
+    """Recursively import compiled .omdoc and historical .omdoc.xz files."""
     root = Path(directory)
     if not root.is_dir():
         raise ValueError(f"OMDoc directory does not exist: {root}")
-    files = sorted(path for path in root.rglob("*.omdoc") if path.is_file())
+    files = sorted(
+        path for path in root.rglob("*")
+        if path.is_file() and (
+            path.name.endswith(".omdoc") or path.name.endswith(".omdoc.xz")
+        )
+    )
     if not files:
-        raise ValueError(f"no .omdoc files found below {root}")
+        raise ValueError(f"no .omdoc or .omdoc.xz files found below {root}")
 
     irs = []
     manifest = []
     for path in files:
         rel = path.relative_to(root).as_posix()
-        text = path.read_text(encoding="utf-8")
+        stored = path.read_bytes()
+        compression = "xz" if path.name.endswith(".omdoc.xz") else None
+        try:
+            data = lzma.decompress(stored) if compression == "xz" else stored
+            text = data.decode("utf-8")
+        except (lzma.LZMAError, UnicodeDecodeError) as exc:
+            raise ValueError(f"could not read compiled OMDoc {path}: {exc}") from exc
         digest = source_sha256(text)
         file_uri = source_uri.rstrip("/") + "/" + urllib.parse.quote(rel, safe="/$.-_")
         irs.append(extract_omdoc(text, file_uri, rel, digest))
-        manifest.append({"path": rel, "uri": file_uri, "sha256": digest})
+        entry = {
+            "path": rel,
+            "uri": file_uri,
+            "sha256": digest,
+            "stored_sha256": bytes_sha256(stored),
+        }
+        if compression:
+            entry["compression"] = compression
+        manifest.append(entry)
 
     merged = merge_irs(irs, source_uri=source_uri)
     manifest_digest = hashlib.sha256(
@@ -646,7 +776,10 @@ def fetch(source_id, output):
 def write_ir(ir, output):
     path = Path(output)
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(ir, indent=2, ensure_ascii=False) + "\n")
+    path.write_text(
+        json.dumps(ir, indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+    )
     print(f"wrote {path}: {len(ir['nodes'])} nodes, {len(ir['edges'])} edges")
 
 
@@ -682,7 +815,13 @@ def main():
     p_rel.add_argument("--source-path")
     p_rel.add_argument("--output", default=str(IR_PATH))
 
-    p_rel_dir = commands.add_parser("relational-dir", help="recursively import an MMT relational directory")
+    p_rel_legacy = commands.add_parser("relational-legacy", help="import one historical MMT line-based .rel file")
+    p_rel_legacy.add_argument("source")
+    p_rel_legacy.add_argument("--uri", required=True)
+    p_rel_legacy.add_argument("--source-path")
+    p_rel_legacy.add_argument("--output", default=str(IR_PATH))
+
+    p_rel_dir = commands.add_parser("relational-dir", help="recursively import modern XML and historical .rel relational files")
     p_rel_dir.add_argument("directory")
     p_rel_dir.add_argument("--uri", required=True)
     p_rel_dir.add_argument("--output", default=str(IR_PATH))
@@ -742,6 +881,8 @@ def main():
                 ir = extract_archivegraph(text, args.uri, source_path, digest)
             elif args.command == "relational":
                 ir = extract_relational(text, args.uri, source_path, digest)
+            elif args.command == "relational-legacy":
+                ir = extract_relational_legacy(text, args.uri, source_path, digest)
             else:
                 ir = extract(text, args.uri, source_path, digest)
             write_ir(ir, args.output)
