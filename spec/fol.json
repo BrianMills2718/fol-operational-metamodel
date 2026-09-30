@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
-  "title": "Classical First-Order Logic Operational Metamodel",
-  "description": "A typed vocabulary and executable rule map for classical first-order logic and finite-model evaluation.",
+  "title": "Legacy FOL Comparison Fixture",
+  "description": "Legacy hand-authored comparison fixture only. It is not a formal authority; upstream MMT source and generated IR are authoritative for imported declarations.",
   "schema": {
     "declaration_fields": {"required": ["id", "name", "description", "references"], "id_pattern": "^[a-z][a-z0-9-]*$"},
     "collections": ["entity_types", "relations", "constructors", "judgments", "semantic_rules", "satisfaction", "theory", "semantic_consequence"],
