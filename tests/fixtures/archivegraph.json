@@ -1,0 +1,37 @@
+{
+  "nodes": [
+    {
+      "id": "http://mydomain.org/testarchive/mmt-example?FOL",
+      "style": "theory",
+      "label": "FOL",
+      "url": "/?http://mydomain.org/testarchive/mmt-example?FOL"
+    },
+    {
+      "id": "http://mydomain.org/testarchive/mmt-example?FOLEQ",
+      "style": "theory",
+      "label": "FOLEQ",
+      "url": "/?http://mydomain.org/testarchive/mmt-example?FOLEQ"
+    }
+  ],
+  "edges": [
+    {
+      "id": "http://mydomain.org/testarchive/mmt-example?FOL?Meta",
+      "style": "meta",
+      "from": "http://cds.omdoc.org/urtheories?LF",
+      "to": "http://mydomain.org/testarchive/mmt-example?FOL"
+    },
+    {
+      "id": "http://mydomain.org/testarchive/mmt-example?FOLEQ?include-FOL",
+      "style": "include",
+      "from": "http://mydomain.org/testarchive/mmt-example?FOL",
+      "to": "http://mydomain.org/testarchive/mmt-example?FOLEQ"
+    },
+    {
+      "id": "http://mydomain.org/testarchive/mmt-example?fol-to-foleq",
+      "style": "view",
+      "from": "http://mydomain.org/testarchive/mmt-example?FOL",
+      "to": "http://mydomain.org/testarchive/mmt-example?FOLEQ",
+      "label": "fol-to-foleq"
+    }
+  ]
+}
