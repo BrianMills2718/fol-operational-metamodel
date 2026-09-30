@@ -1,0 +1,19 @@
+<omdoc xmlns="http://omdoc.org/ns" xmlns:om="http://www.openmath.org/OpenMath">
+  <theory name="FOL" base="http://mydomain.org/testarchive/mmt-example" meta="http://cds.omdoc.org/urtheories?LF">
+    <metadata><link rel="http://cds.omdoc.org/mmt?metadata?sourceRef" resource="http://mydomain.org/testarchive/fol.mmt#57.2.0:746.27.1"/></metadata>
+    <import from="http://mydomain.org/testarchive/mmt-example?Logic">
+      <metadata><link rel="http://cds.omdoc.org/mmt?metadata?sourceRef" resource="http://mydomain.org/testarchive/fol.mmt#80.3.0:100.3.20"/></metadata>
+    </import>
+    <constant name="prop">
+      <metadata><link rel="http://cds.omdoc.org/mmt?metadata?sourceRef" resource="http://mydomain.org/testarchive/fol.mmt#108.4.0:122.4.14"/></metadata>
+      <type><om:OMOBJ><om:OMS base="http://cds.omdoc.org/urtheories" module="Typed" name="type"/></om:OMOBJ></type>
+    </constant>
+    <constant name="forall">
+      <metadata><link rel="http://cds.omdoc.org/mmt?metadata?sourceRef" resource="http://mydomain.org/testarchive/fol.mmt#602.21.0:642.21.40"/></metadata>
+      <type><om:OMOBJ><om:OMA>
+        <om:OMS base="http://cds.omdoc.org/urtheories" module="LambdaPi" name="arrow"/>
+        <om:OMS base="http://mydomain.org/testarchive/mmt-example" module="FOL" name="prop"/>
+      </om:OMA></om:OMOBJ></type>
+    </constant>
+  </theory>
+</omdoc>

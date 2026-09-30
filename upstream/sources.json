@@ -1,6 +1,17 @@
 {
-  "format": "upstream-source-manifest/v1",
+  "format": "upstream-source-manifest/v2",
   "sources": [
+    {
+      "id": "mmt-compiled-fol-omdoc",
+      "repository": "https://github.com/UniFormal/MMT.git",
+      "browse_url": "https://github.com/UniFormal/MMT/blob/fca5d7e12db5b4e9d6329590f9d25380017981d8/src/test/testarchive/content/http..mydomain.org/testarchive/mmt-example/$F$O$L.omdoc",
+      "path": "src/test/testarchive/content/http..mydomain.org/testarchive/mmt-example/$F$O$L.omdoc",
+      "revision": "fca5d7e12db5b4e9d6329590f9d25380017981d8",
+      "revision_status": "immutable",
+      "git_blob_sha": "76ccd4bc3968272d2e16d4fc51d8950c6b28fbe7",
+      "role": "compiled MMT OMDoc artifact for first-order logic",
+      "inspection": "The complete compiled FOL OMDoc artifact was read from this exact Git commit. It contains theory FOL with meta-theory LF and constants including prop, true, false, connectives, sort, term, equality, quantifiers, and proof."
+    },
     {
       "id": "mmt-examples-sfol-tutorial",
       "repository": "https://gl.mathhub.info/MMT/examples.git",
@@ -10,26 +21,32 @@
       "revision": null,
       "revision_status": "unresolved",
       "sha256": null,
-      "role": "tutorial first-order logic formalization",
-      "inspection": "The upstream page and MMT tutorial confirm this path and that it contains the FOL theory; this environment could not retrieve the file body or resolve master to a commit. Fetching is deliberately disabled until revision and sha256 are pinned."
+      "role": "tutorial first-order logic source formalization",
+      "inspection": "The official MMT tutorial confirms this path and identifies it as the complete tutorial FOL definition; an immutable repository revision has not yet been verified."
     },
     {
       "id": "mmt-latin2",
       "repository": "https://gl.mathhub.info/MMT/LATIN2.git",
-      "browse_url": "https://gl.mathhub.info/MMT/LATIN2",
-      "discovery_ref": "devel",
-      "revision": null,
-      "revision_status": "unresolved",
+      "browse_url": "https://gl.mathhub.info/MMT/LATIN2/-/tree/39dc7046f457ff02f695387a8ebd80366789a465",
+      "discovery_ref": "master",
+      "revision": "39dc7046f457ff02f695387a8ebd80366789a465",
+      "revision_status": "immutable revision exposed by public GitLab index",
       "sha256": null,
       "role": "modular logic atlas",
       "license": "CC-BY-SA-4.0",
-      "inspection": "The devel README was inspected. It identifies source/ as human-edited MMT content and states that master is co-released with MMT. Exact FOL-related paths and a resolved source revision could not be verified here."
+      "inspection": "The public GitLab index exposes this immutable LATIN2 revision. Human-edited MMT sources live under source/. Exact FOL/SFOL module paths still need inventory from the pinned tree."
     }
   ],
   "test_fixture": {
     "path": "tests/fixtures/sfol-mini.mmt",
     "sha256": "3a470f908632dab203b37e4ceb4bab738e0edd75078bd9239015e617c51ca79c",
-    "status": "local reduced syntax fixture, not a byte-for-byte upstream copy",
+    "status": "local reduced MMT syntax fixture, not a byte-for-byte upstream copy",
     "derived_from": "https://uniformal.github.io/doc/tutorials/prototyping/"
+  },
+  "omdoc_test_fixture": {
+    "path": "tests/fixtures/fol-compiled.omdoc",
+    "sha256": "a5e7ab07de12727647b65b2fe73d2c248923ffd85fb8e58839c5bc66f2dbe2b0",
+    "status": "small representative MMT OMDoc fixture shaped from inspected compiled MMT output",
+    "derived_from": "https://github.com/UniFormal/MMT/blob/fca5d7e12db5b4e9d6329590f9d25380017981d8/src/test/testarchive/content/http..mydomain.org/testarchive/mmt-example/$F$O$L.omdoc"
   }
 }
