@@ -11,6 +11,7 @@ from scripts.import_mmt import (
     extract_omdoc_directory,
     extract_relational,
     extract_relational_directory,
+    extract_relational_legacy,
     merge_irs,
     source_download_url,
     source_sha256,
@@ -438,6 +439,51 @@ class ModelTests(unittest.TestCase):
         }
         self.assertEqual(by_name["equal"]["role"], "Eq")
         self.assertEqual(by_name["proof"]["role"], "Judgment")
+
+
+    def test_legacy_relational_preserves_2022_mmt_predicates(self):
+        path = ROOT / "tests/fixtures/relational-legacy/fol.rel"
+        text = path.read_text(encoding="utf-8")
+        ir = extract_relational_legacy(
+            text,
+            "mmt://fixture-relational-legacy/fol.rel",
+            path.relative_to(ROOT).as_posix(),
+            source_sha256(text),
+        )
+        by_id = {item["id"]: item for item in ir["nodes"]}
+        folnd = by_id["latin:/?FOLND"]
+        forall_i = by_id["latin:/?FOLND?forallI"]
+        self.assertEqual(ir["source"]["input_kind"], "relational-legacy")
+        self.assertEqual(folnd["kind"], "theory")
+        self.assertEqual(forall_i["kind"], "constant")
+        self.assertEqual(
+            forall_i["mmt_predicates"],
+            ["constant", "judgementconstructor"],
+        )
+        kinds = {edge["kind"] for edge in ir["edges"]}
+        self.assertIn("has meta-theory", kinds)
+        self.assertIn("includes", kinds)
+        self.assertIn("contains declaration of", kinds)
+        self.assertIn("depends on", kinds)
+        self.assertIn("refers to", kinds)
+        self.assertIn("is alias for", kinds)
+        depends = next(edge for edge in ir["edges"] if edge["kind"] == "depends on")
+        self.assertEqual(depends["legacy_token"], "DependsOn")
+        self.assertEqual(depends["source"], "latin:/?FOLND?forallI?type")
+        self.assertEqual(
+            depends["target"],
+            "latin:/?UniversalQuantification?uforall?type",
+        )
+
+    def test_legacy_relational_directory_is_detected_by_suffix(self):
+        ir = extract_relational_directory(
+            ROOT / "tests/fixtures/relational-legacy",
+            "mmt://fixture-relational-legacy",
+        )
+        self.assertEqual(ir["source"]["input_kind"], "relational-directory")
+        self.assertEqual(len(ir["source"]["files"]), 1)
+        self.assertEqual(ir["source"]["files"][0]["format"], "legacy-rel")
+        self.assertTrue(any(edge["kind"] == "includes" for edge in ir["edges"]))
 
 
 if __name__ == "__main__":
