@@ -776,7 +776,10 @@ def fetch(source_id, output):
 def write_ir(ir, output):
     path = Path(output)
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(ir, indent=2, ensure_ascii=False) + "\n")
+    path.write_text(
+        json.dumps(ir, indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+    )
     print(f"wrote {path}: {len(ir['nodes'])} nodes, {len(ir['edges'])} edges")
 
 
