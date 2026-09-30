@@ -336,14 +336,19 @@ class ModelTests(unittest.TestCase):
             "39dc7046f457ff02f695387a8ebd80366789a465",
         )
         paths = {item["path"] for item in inventory["confirmed_paths"]}
-        self.assertEqual(
-            paths,
-            {
-                "source/logic/fol_like/fol.mmt",
-                "source/logic/fol_like/fol_derived.mmt",
-                "source/fundamentals/equality.mmt",
-            },
-        )
+        expected = {
+            "source/logic/fol_like/fol.mmt",
+            "source/logic/fol_like/fol_derived.mmt",
+            "source/logic/fol_like/fol_hilbert.mmt",
+            "source/logic/fol_like/fol-tableaux.mmt",
+            "source/logic/fol_like/sfol.mmt",
+            "source/logic/fol_like/sfol_derived.mmt",
+            "source/logic/fol_like/pl-sfol.mmt",
+            "source/logic/fol_like/stfol.mmt",
+            "source/fundamentals/equality.mmt",
+        }
+        self.assertTrue(expected <= paths)
+        self.assertEqual(inventory["verified_checkout"]["source_files"], 175)
         self.assertIn("SFOLEQ", inventory["observed_theories"])
 
 
