@@ -1,0 +1,9 @@
+theory latin:/?FOLND
+HasMeta latin:/?FOLND http://cds.omdoc.org/urtheories?LF
+Includes latin:/?FOLND latin:/?FOL
+Declares latin:/?FOLND latin:/?FOLND?forallI
+constant latin:/?FOLND?forallI
+judgementconstructor latin:/?FOLND?forallI
+DependsOn latin:/?FOLND?forallI?type latin:/?UniversalQuantification?uforall?type
+RefersTo latin:/?FOLND?forallI latin:/?Proofs?ded
+IsAliasFor latin:/?FOLND?forallIntro latin:/?FOLND?forallI
