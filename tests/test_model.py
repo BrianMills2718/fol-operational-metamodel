@@ -4,9 +4,11 @@ import unittest
 from pathlib import Path
 
 from scripts.import_mmt import (
+    assemble_archive,
     extract,
     extract_archivegraph,
     extract_omdoc,
+    extract_omdoc_directory,
     merge_irs,
     source_download_url,
     source_sha256,
@@ -278,6 +280,63 @@ class ModelTests(unittest.TestCase):
         self.assertIn("provenance", fol)
         self.assertTrue(any(edge["kind"] == "declares" and edge["source"] == fol["id"] for edge in merged["edges"]))
         self.assertTrue(any(edge["kind"] == "view" for edge in merged["edges"]))
+
+
+    def test_omdoc_directory_imports_every_module_recursively(self):
+        directory = ROOT / "tests/fixtures/omdoc-archive"
+        ir = extract_omdoc_directory(directory, "mmt://fixture-content")
+        by_name = {item["name"]: item for item in ir["nodes"]}
+        self.assertEqual(ir["source"]["input_kind"], "omdoc-directory")
+        self.assertEqual(len(ir["source"]["files"]), 2)
+        self.assertEqual(by_name["FOL"]["kind"], "theory")
+        self.assertEqual(by_name["FOLEQ"]["kind"], "theory")
+        self.assertEqual(by_name["equal"]["role"], "Eq")
+        self.assertTrue(
+            any(
+                edge["kind"] == "imports"
+                and edge["source"].startswith("http://mydomain.org/testarchive/mmt-example?FOLEQ?@import-")
+                and edge["target"] == "http://mydomain.org/testarchive/mmt-example?FOL"
+                for edge in ir["edges"]
+            )
+        )
+
+    def test_assemble_combines_archivegraph_and_whole_content_directory(self):
+        archive_path = ROOT / "tests/fixtures/archivegraph.json"
+        archive_text = archive_path.read_text(encoding="utf-8")
+        ir = assemble_archive(
+            archive_text,
+            "http://localhost:8080/:jgraph/json?key=archivegraph&uri=MMT/LATIN2",
+            archive_path.relative_to(ROOT).as_posix(),
+            source_sha256(archive_text),
+            ROOT / "tests/fixtures/omdoc-archive",
+            "mmt://fixture-content",
+        )
+        self.assertEqual(ir["source"]["input_kind"], "assembled-archive")
+        ids = [item["id"] for item in ir["nodes"]]
+        self.assertEqual(len(ids), len(set(ids)))
+        fol = next(item for item in ir["nodes"] if item["id"] == "http://mydomain.org/testarchive/mmt-example?FOL")
+        foleq = next(item for item in ir["nodes"] if item["id"] == "http://mydomain.org/testarchive/mmt-example?FOLEQ")
+        self.assertEqual(fol["kind"], "theory")
+        self.assertEqual(foleq["kind"], "theory")
+        self.assertTrue(any(edge["kind"] == "include" for edge in ir["edges"]))
+        self.assertTrue(any(edge["kind"] == "declares" and edge["source"] == foleq["id"] for edge in ir["edges"]))
+
+    def test_latin2_inventory_records_confirmed_fol_paths_at_pinned_revision(self):
+        inventory = json.loads((ROOT / "upstream/latin2-fol-inventory.json").read_text())
+        self.assertEqual(
+            inventory["revision"],
+            "39dc7046f457ff02f695387a8ebd80366789a465",
+        )
+        paths = {item["path"] for item in inventory["confirmed_paths"]}
+        self.assertEqual(
+            paths,
+            {
+                "source/logic/fol_like/fol.mmt",
+                "source/logic/fol_like/fol_derived.mmt",
+                "source/fundamentals/equality.mmt",
+            },
+        )
+        self.assertIn("SFOLEQ", inventory["observed_theories"])
 
 
 if __name__ == "__main__":
