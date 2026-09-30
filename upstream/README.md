@@ -66,7 +66,7 @@ http://localhost:8081/:jgraph/json?key=archivegraph&uri=MMT/LATIN2
 
 That graph is useful for archive/theory-level structure. It is complementary to the declaration-level OMDoc projection here. The repository now ingests this endpoint with `scripts/import_mmt.py archivegraph` and merges it with OMDoc IR using `scripts/import_mmt.py merge`. MMT's own graph styles (`meta`, `include`, `structure`, `view`) are preserved verbatim rather than reclassified.
 
-MMT's relational indexes are another promising input because they already classify declaration and dependency relations. They should be preferred over name-based heuristics when we add richer classifications.
+MMT's relational indexes are now an implemented input. The importer preserves the unary and binary predicates serialized by MMT's ontology (for example `theory`, `constant`, `judgementconstructor`, `has meta-theory`, `includes`, `contains declaration of`, and `refers to`) rather than mapping names to invented categories.
 
 The repository can now recursively ingest an entire generated `content/` directory with `omdoc-dir`, or combine that directory with an MMT archivegraph in one step using `assemble`. This removes any requirement to maintain a complete manual LATIN2 file inventory.
 
@@ -75,7 +75,7 @@ The repository can now recursively ingest an entire generated `content/` directo
 - LATIN2 is pinned and a partial evidence-backed FOL inventory is captured, but not every SFOL-related file path has been independently verified.
 - The MMT examples tutorial FOL source path is known, but its repository commit is still unresolved.
 - The OMDoc adapter is structural, not a complete semantic interpretation of OpenMath.
-- MMT relational-store ingestion is not implemented yet. `:jgraph/json` archivegraph ingestion and whole-`content/` OMDoc ingestion are implemented.
+- `:jgraph/json` archivegraph ingestion, whole-`content/` OMDoc ingestion, and relational ABox ingestion are implemented. Direct querying of a live MMT dependency store is not implemented.
 - The checked-in OMDoc fixture is compact and representative; the real pinned FOL OMDoc should be fetched for full exploration.
 
 ## References
