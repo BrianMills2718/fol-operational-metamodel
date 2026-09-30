@@ -1,0 +1,5 @@
+<omdoc xmlns="http://omdoc.org/ns" xmlns:om="http://www.openmath.org/OpenMath">
+  <theory name="FOL" base="http://mydomain.org/testarchive/mmt-example" meta="http://cds.omdoc.org/urtheories?LF">
+    <constant name="prop"><type><om:OMOBJ><om:OMS base="http://cds.omdoc.org/urtheories" module="Typed" name="type"/></om:OMOBJ></type></constant>
+  </theory>
+</omdoc>
