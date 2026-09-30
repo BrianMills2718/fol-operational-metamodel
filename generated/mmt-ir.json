@@ -1,114 +1,143 @@
 {
-  "format": "mmt-source-ir/v1",
+  "format": "mmt-ir/v2",
   "source": {
-    "uri": "https://example.org/fixture.mmt",
-    "path": "tests/fixtures/sfol-mini.mmt",
-    "sha256": "3a470f908632dab203b37e4ceb4bab738e0edd75078bd9239015e617c51ca79c",
-    "extractor": "conservative-line-extractor"
+    "uri": "https://example.org/fol-compiled.omdoc",
+    "path": "tests/fixtures/fol-compiled.omdoc",
+    "sha256": "a5e7ab07de12727647b65b2fe73d2c248923ffd85fb8e58839c5bc66f2dbe2b0",
+    "input_kind": "omdoc",
+    "extractor": "omdoc-xml-structural"
   },
-  "scope": "surface declarations only; no MMT parsing, checking, elaboration, or semantic inference",
+  "scope": "compiled OMDoc structure and explicit OpenMath symbol references; no semantic inference",
   "nodes": [
     {
-      "id": "https://example.org/fol-operational-metamodel/fixture?FOL",
-      "uri": "https://example.org/fol-operational-metamodel/fixture?FOL",
+      "id": "https://example.org/fol-compiled.omdoc",
+      "uri": "https://example.org/fol-compiled.omdoc",
+      "name": "fol-compiled.omdoc",
+      "kind": "document",
+      "description": "Compiled OMDoc document.",
+      "references": [],
+      "source": {
+        "uri": "https://example.org/fol-compiled.omdoc",
+        "path": "tests/fixtures/fol-compiled.omdoc"
+      }
+    },
+    {
+      "id": "http://mydomain.org/testarchive/mmt-example?FOL",
+      "uri": "http://mydomain.org/testarchive/mmt-example?FOL",
       "name": "FOL",
       "kind": "theory",
-      "meta_theory": "http://cds.omdoc.org/urtheories?LF",
-      "description": "MMT theory declaration imported from source.",
+      "description": "MMT theory from compiled OMDoc.",
       "references": [],
       "source": {
-        "uri": "https://example.org/fixture.mmt",
-        "path": "tests/fixtures/sfol-mini.mmt",
-        "line": 2,
-        "column": 1
-      }
+        "uri": "https://example.org/fol-compiled.omdoc",
+        "path": "tests/fixtures/fol-compiled.omdoc",
+        "source_ref": "http://mydomain.org/testarchive/fol.mmt#57.2.0:746.27.1"
+      },
+      "meta": "http://cds.omdoc.org/urtheories?LF"
     },
     {
-      "id": "https://example.org/fol-operational-metamodel/fixture?FOL?term",
-      "uri": "https://example.org/fol-operational-metamodel/fixture?FOL?term",
-      "name": "term",
-      "kind": "constant",
-      "type_surface": "type",
-      "description": "MMT constant; type surface retained without interpretation.",
-      "references": [],
+      "id": "http://mydomain.org/testarchive/mmt-example?FOL?@import-1",
+      "uri": "http://mydomain.org/testarchive/mmt-example?FOL?@import-1",
+      "name": "Logic",
+      "kind": "include",
+      "description": "MMT structure/import from compiled OMDoc.",
+      "references": [
+        "http://mydomain.org/testarchive/mmt-example?Logic"
+      ],
       "source": {
-        "uri": "https://example.org/fixture.mmt",
-        "path": "tests/fixtures/sfol-mini.mmt",
-        "line": 3,
-        "column": 3
-      }
+        "uri": "https://example.org/fol-compiled.omdoc",
+        "path": "tests/fixtures/fol-compiled.omdoc",
+        "source_ref": "http://mydomain.org/testarchive/fol.mmt#80.3.0:100.3.20"
+      },
+      "from": "http://mydomain.org/testarchive/mmt-example?Logic",
+      "implicit": null,
+      "total": null
     },
     {
-      "id": "https://example.org/fol-operational-metamodel/fixture?FOL?prop",
-      "uri": "https://example.org/fol-operational-metamodel/fixture?FOL?prop",
+      "id": "http://mydomain.org/testarchive/mmt-example?FOL?prop",
+      "uri": "http://mydomain.org/testarchive/mmt-example?FOL?prop",
       "name": "prop",
       "kind": "constant",
-      "type_surface": "type",
-      "description": "MMT constant; type surface retained without interpretation.",
-      "references": [],
+      "description": "MMT constant from compiled OMDoc.",
+      "references": [
+        "http://cds.omdoc.org/urtheories?Typed?type"
+      ],
       "source": {
-        "uri": "https://example.org/fixture.mmt",
-        "path": "tests/fixtures/sfol-mini.mmt",
-        "line": 4,
-        "column": 3
-      }
+        "uri": "https://example.org/fol-compiled.omdoc",
+        "path": "tests/fixtures/fol-compiled.omdoc",
+        "source_ref": "http://mydomain.org/testarchive/fol.mmt#108.4.0:122.4.14"
+      },
+      "type_xml": "<ns0:type xmlns:ns0=\"http://omdoc.org/ns\" xmlns:ns1=\"http://www.openmath.org/OpenMath\"><ns1:OMOBJ><ns1:OMS base=\"http://cds.omdoc.org/urtheories\" module=\"Typed\" name=\"type\" /></ns1:OMOBJ></ns0:type>\n    ",
+      "definition_xml": null,
+      "role": null,
+      "aliases": []
     },
     {
-      "id": "https://example.org/fol-operational-metamodel/fixture?FOL?ded",
-      "uri": "https://example.org/fol-operational-metamodel/fixture?FOL?ded",
-      "name": "ded",
-      "kind": "constant",
-      "type_surface": "prop → type",
-      "description": "MMT constant; type surface retained without interpretation.",
-      "references": [],
-      "source": {
-        "uri": "https://example.org/fixture.mmt",
-        "path": "tests/fixtures/sfol-mini.mmt",
-        "line": 5,
-        "column": 3
-      }
-    },
-    {
-      "id": "https://example.org/fol-operational-metamodel/fixture?FOL?forall",
-      "uri": "https://example.org/fol-operational-metamodel/fixture?FOL?forall",
+      "id": "http://mydomain.org/testarchive/mmt-example?FOL?forall",
+      "uri": "http://mydomain.org/testarchive/mmt-example?FOL?forall",
       "name": "forall",
       "kind": "constant",
-      "type_surface": "(term → prop) → prop",
-      "description": "MMT constant; type surface retained without interpretation.",
-      "references": [],
+      "description": "MMT constant from compiled OMDoc.",
+      "references": [
+        "http://cds.omdoc.org/urtheories?LambdaPi?arrow",
+        "http://mydomain.org/testarchive/mmt-example?FOL?prop"
+      ],
       "source": {
-        "uri": "https://example.org/fixture.mmt",
-        "path": "tests/fixtures/sfol-mini.mmt",
-        "line": 6,
-        "column": 3
-      }
+        "uri": "https://example.org/fol-compiled.omdoc",
+        "path": "tests/fixtures/fol-compiled.omdoc",
+        "source_ref": "http://mydomain.org/testarchive/fol.mmt#602.21.0:642.21.40"
+      },
+      "type_xml": "<ns0:type xmlns:ns0=\"http://omdoc.org/ns\" xmlns:ns1=\"http://www.openmath.org/OpenMath\"><ns1:OMOBJ><ns1:OMA>\n        <ns1:OMS base=\"http://cds.omdoc.org/urtheories\" module=\"LambdaPi\" name=\"arrow\" />\n        <ns1:OMS base=\"http://mydomain.org/testarchive/mmt-example\" module=\"FOL\" name=\"prop\" />\n      </ns1:OMA></ns1:OMOBJ></ns0:type>\n    ",
+      "definition_xml": null,
+      "role": null,
+      "aliases": []
     }
   ],
   "edges": [
     {
-      "source": "https://example.org/fol-operational-metamodel/fixture?FOL",
+      "source": "https://example.org/fol-compiled.omdoc",
+      "target": "http://mydomain.org/testarchive/mmt-example?FOL",
+      "kind": "contains-module"
+    },
+    {
+      "source": "http://mydomain.org/testarchive/mmt-example?FOL",
       "target": "http://cds.omdoc.org/urtheories?LF",
       "kind": "meta-theory"
     },
     {
-      "source": "https://example.org/fol-operational-metamodel/fixture?FOL",
-      "target": "https://example.org/fol-operational-metamodel/fixture?FOL?term",
+      "source": "http://mydomain.org/testarchive/mmt-example?FOL",
+      "target": "http://mydomain.org/testarchive/mmt-example?FOL?@import-1",
       "kind": "declares"
     },
     {
-      "source": "https://example.org/fol-operational-metamodel/fixture?FOL",
-      "target": "https://example.org/fol-operational-metamodel/fixture?FOL?prop",
+      "source": "http://mydomain.org/testarchive/mmt-example?FOL?@import-1",
+      "target": "http://mydomain.org/testarchive/mmt-example?Logic",
+      "kind": "imports"
+    },
+    {
+      "source": "http://mydomain.org/testarchive/mmt-example?FOL",
+      "target": "http://mydomain.org/testarchive/mmt-example?FOL?prop",
       "kind": "declares"
     },
     {
-      "source": "https://example.org/fol-operational-metamodel/fixture?FOL",
-      "target": "https://example.org/fol-operational-metamodel/fixture?FOL?ded",
+      "source": "http://mydomain.org/testarchive/mmt-example?FOL?prop",
+      "target": "http://cds.omdoc.org/urtheories?Typed?type",
+      "kind": "uses-symbol"
+    },
+    {
+      "source": "http://mydomain.org/testarchive/mmt-example?FOL",
+      "target": "http://mydomain.org/testarchive/mmt-example?FOL?forall",
       "kind": "declares"
     },
     {
-      "source": "https://example.org/fol-operational-metamodel/fixture?FOL",
-      "target": "https://example.org/fol-operational-metamodel/fixture?FOL?forall",
-      "kind": "declares"
+      "source": "http://mydomain.org/testarchive/mmt-example?FOL?forall",
+      "target": "http://cds.omdoc.org/urtheories?LambdaPi?arrow",
+      "kind": "uses-symbol"
+    },
+    {
+      "source": "http://mydomain.org/testarchive/mmt-example?FOL?forall",
+      "target": "http://mydomain.org/testarchive/mmt-example?FOL?prop",
+      "kind": "uses-symbol"
     }
   ]
 }
