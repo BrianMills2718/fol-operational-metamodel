@@ -1,0 +1,114 @@
+{
+  "format": "mmt-source-ir/v1",
+  "source": {
+    "uri": "https://example.org/fixture.mmt",
+    "path": "tests/fixtures/sfol-mini.mmt",
+    "sha256": "3a470f908632dab203b37e4ceb4bab738e0edd75078bd9239015e617c51ca79c",
+    "extractor": "conservative-line-extractor"
+  },
+  "scope": "surface declarations only; no MMT parsing, checking, elaboration, or semantic inference",
+  "nodes": [
+    {
+      "id": "https://example.org/fol-operational-metamodel/fixture?FOL",
+      "uri": "https://example.org/fol-operational-metamodel/fixture?FOL",
+      "name": "FOL",
+      "kind": "theory",
+      "meta_theory": "http://cds.omdoc.org/urtheories?LF",
+      "description": "MMT theory declaration imported from source.",
+      "references": [],
+      "source": {
+        "uri": "https://example.org/fixture.mmt",
+        "path": "tests/fixtures/sfol-mini.mmt",
+        "line": 2,
+        "column": 1
+      }
+    },
+    {
+      "id": "https://example.org/fol-operational-metamodel/fixture?FOL?term",
+      "uri": "https://example.org/fol-operational-metamodel/fixture?FOL?term",
+      "name": "term",
+      "kind": "constant",
+      "type_surface": "type",
+      "description": "MMT constant; type surface retained without interpretation.",
+      "references": [],
+      "source": {
+        "uri": "https://example.org/fixture.mmt",
+        "path": "tests/fixtures/sfol-mini.mmt",
+        "line": 3,
+        "column": 3
+      }
+    },
+    {
+      "id": "https://example.org/fol-operational-metamodel/fixture?FOL?prop",
+      "uri": "https://example.org/fol-operational-metamodel/fixture?FOL?prop",
+      "name": "prop",
+      "kind": "constant",
+      "type_surface": "type",
+      "description": "MMT constant; type surface retained without interpretation.",
+      "references": [],
+      "source": {
+        "uri": "https://example.org/fixture.mmt",
+        "path": "tests/fixtures/sfol-mini.mmt",
+        "line": 4,
+        "column": 3
+      }
+    },
+    {
+      "id": "https://example.org/fol-operational-metamodel/fixture?FOL?ded",
+      "uri": "https://example.org/fol-operational-metamodel/fixture?FOL?ded",
+      "name": "ded",
+      "kind": "constant",
+      "type_surface": "prop → type",
+      "description": "MMT constant; type surface retained without interpretation.",
+      "references": [],
+      "source": {
+        "uri": "https://example.org/fixture.mmt",
+        "path": "tests/fixtures/sfol-mini.mmt",
+        "line": 5,
+        "column": 3
+      }
+    },
+    {
+      "id": "https://example.org/fol-operational-metamodel/fixture?FOL?forall",
+      "uri": "https://example.org/fol-operational-metamodel/fixture?FOL?forall",
+      "name": "forall",
+      "kind": "constant",
+      "type_surface": "(term → prop) → prop",
+      "description": "MMT constant; type surface retained without interpretation.",
+      "references": [],
+      "source": {
+        "uri": "https://example.org/fixture.mmt",
+        "path": "tests/fixtures/sfol-mini.mmt",
+        "line": 6,
+        "column": 3
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "https://example.org/fol-operational-metamodel/fixture?FOL",
+      "target": "http://cds.omdoc.org/urtheories?LF",
+      "kind": "meta-theory"
+    },
+    {
+      "source": "https://example.org/fol-operational-metamodel/fixture?FOL",
+      "target": "https://example.org/fol-operational-metamodel/fixture?FOL?term",
+      "kind": "declares"
+    },
+    {
+      "source": "https://example.org/fol-operational-metamodel/fixture?FOL",
+      "target": "https://example.org/fol-operational-metamodel/fixture?FOL?prop",
+      "kind": "declares"
+    },
+    {
+      "source": "https://example.org/fol-operational-metamodel/fixture?FOL",
+      "target": "https://example.org/fol-operational-metamodel/fixture?FOL?ded",
+      "kind": "declares"
+    },
+    {
+      "source": "https://example.org/fol-operational-metamodel/fixture?FOL",
+      "target": "https://example.org/fol-operational-metamodel/fixture?FOL?forall",
+      "kind": "declares"
+    }
+  ]
+}
