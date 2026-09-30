@@ -285,12 +285,15 @@ class ModelTests(unittest.TestCase):
     def test_omdoc_directory_imports_every_module_recursively(self):
         directory = ROOT / "tests/fixtures/omdoc-archive"
         ir = extract_omdoc_directory(directory, "mmt://fixture-content")
-        by_name = {item["name"]: item for item in ir["nodes"]}
+        by_id = {item["id"]: item for item in ir["nodes"]}
         self.assertEqual(ir["source"]["input_kind"], "omdoc-directory")
         self.assertEqual(len(ir["source"]["files"]), 2)
-        self.assertEqual(by_name["FOL"]["kind"], "theory")
-        self.assertEqual(by_name["FOLEQ"]["kind"], "theory")
-        self.assertEqual(by_name["equal"]["role"], "Eq")
+        fol_id = "http://mydomain.org/testarchive/mmt-example?FOL"
+        foleq_id = "http://mydomain.org/testarchive/mmt-example?FOLEQ"
+        equal_id = "http://mydomain.org/testarchive/mmt-example?FOLEQ?equal"
+        self.assertEqual(by_id[fol_id]["kind"], "theory")
+        self.assertEqual(by_id[foleq_id]["kind"], "theory")
+        self.assertEqual(by_id[equal_id]["role"], "Eq")
         self.assertTrue(
             any(
                 edge["kind"] == "imports"
