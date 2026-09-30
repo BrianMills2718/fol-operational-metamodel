@@ -1,6 +1,8 @@
 # FOL Operational Metamodel
 
-A generated graph projection over existing MMT formalizations of first-order logic. The project does **not** treat its own hand-written FOL schema as the authority.
+A generated graph projection over existing standards and MMT formalizations of first-order logic. The project does **not** treat its own hand-written FOL schema as the authority.
+
+The conceptual/metamodel layer is also standards-derived. OMG ODM's normative Common Logic XMI supplies the abstract-syntax metamodel; Common Logic supplies the model-theoretic semantics; OMG DOL/institution theory supplies the logic/interoperability layer; and MMT/LATIN2 supplies the mechanized formal instances. See `docs/standards-metamodel.md`.
 
 The preferred pipeline is:
 
@@ -25,6 +27,18 @@ python3 -m http.server 8000
 ```
 
 Then open <http://localhost:8000/visualizer/>.
+
+## Import standards metamodels
+
+```sh
+python3 scripts/import_standards.py odm-cl \
+  --output generated/odm-cl-metamodel-ir.json
+
+python3 scripts/import_standards.py dol --package oms \
+  --output generated/dol-oms-metamodel-ir.json
+```
+
+These commands import normative OMG XMI directly. They do not infer additional FOL categories from names.
 
 ## Import the real pinned MMT FOL artifact
 

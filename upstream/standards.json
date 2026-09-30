@@ -1,0 +1,45 @@
+{
+  "format": "standards-sources/v1",
+  "sources": [
+    {
+      "id": "omg-odm-1.1",
+      "role": "normative machine-readable metamodel source for Common Logic abstract syntax",
+      "url": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+      "specification": "https://www.omg.org/spec/ODM/1.1",
+      "package": "CL",
+      "status": "normative XMI"
+    },
+    {
+      "id": "omg-dol-1.0",
+      "role": "normative MOF metamodel for heterogeneous ontology/model/specification structure",
+      "url": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi",
+      "specification": "https://www.omg.org/spec/DOL/1.0/",
+      "status": "normative XMI"
+    },
+    {
+      "id": "iso-common-logic-2018",
+      "role": "current Common Logic syntax and model-theoretic semantics standard",
+      "url": "https://www.iso.org/standard/66249.html",
+      "status": "current ISO standard; confirmed in 2023"
+    },
+    {
+      "id": "iso-common-logic-2007",
+      "role": "publicly inspectable edition containing section 6.1.2 UML metamodel diagrams and normative semantics",
+      "url": "https://standards.iteh.ai/catalog/standards/iso/192b470e-c232-4423-95e5-62061c892312/iso-iec-24707-2007",
+      "status": "superseded by 2018; used only to inspect published metamodel structure"
+    },
+    {
+      "id": "omdoc-system-ontology",
+      "role": "OWL-based ontology of OMDoc entities and relations",
+      "url": "https://www.omdoc.org/distribution/",
+      "status": "OMDoc distribution resource; exact ontology artifact import pending"
+    }
+  ],
+  "architecture": [
+    "ODM/Common Logic: standards-derived internal abstract syntax metamodel",
+    "Common Logic semantics: interpretation, universe/domain, denotation, satisfaction, validity, entailment",
+    "DOL/institution layer: generic heterogeneous logic/OMS structure and translations",
+    "MMT/LATIN2: mechanized formal logic instances and dependencies"
+  ],
+  "policy": "Do not invent a replacement FOL ontology when a standards-defined concept or relation exists. Any bridge classification added by this project must be explicit, provenance-marked, and kept separate from imported standards facts."
+}

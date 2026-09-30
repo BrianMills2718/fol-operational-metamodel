@@ -1,0 +1,2887 @@
+{
+  "format": "standards-ir/v1",
+  "source": {
+    "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+    "sha256": "3ea06c4d0fed8f796072b55cb4899ae7ed995c5de2d624b48ee625b198f5a56a",
+    "input_kind": "omg-uml-xmi",
+    "package": "CL"
+  },
+  "scope": "UML/XMI structure imported verbatim; no logical-semantic classifications inferred",
+  "nodes": [
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_934831_3084",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_934831_3084",
+      "name": "CL",
+      "kind": "uml-package",
+      "xmi_id": "_15_5_2c17055e_1218847223559_934831_3084",
+      "xmi_uuid": "a1e0ffef-4b49-4aed-9a0d-3a919811cc87",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_534574_3478",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_534574_3478",
+      "name": "CommentedTerm",
+      "kind": "uml-class",
+      "xmi_id": "_15_5_2c17055e_1218847223579_534574_3478",
+      "xmi_uuid": "b1ee7d8b-741c-4501-b06a-55a08ec9cc02",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_155034_3431",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_155034_3431",
+      "name": "comment",
+      "kind": "uml-property",
+      "xmi_id": "_15_5_2c17055e_1218847223579_155034_3431",
+      "xmi_uuid": "8dfbfaa0-c9dc-4868-b066-7f3da4d14442",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "multiplicity": {
+        "lower": null,
+        "upper": null
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_253093_3396",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_253093_3396",
+      "name": "term",
+      "kind": "uml-property",
+      "xmi_id": "_15_5_2c17055e_1218847223579_253093_3396",
+      "xmi_uuid": "02715cd1-e5b0-405c-a340-46893f1d434c",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "multiplicity": {
+        "lower": null,
+        "upper": null
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_123975_3135",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_123975_3135",
+      "name": "ConsequentForImplication",
+      "kind": "uml-association",
+      "xmi_id": "_15_5_2c17055e_1218847223559_123975_3135",
+      "xmi_uuid": "0db439f4-ef45-4306-a544-7f17bd2444cb",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_889639_2947",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_889639_2947",
+      "name": "implication",
+      "kind": "uml-property",
+      "xmi_id": "_15_5_2c17055e_1218847223559_889639_2947",
+      "xmi_uuid": "d5e62e50-9dba-43a1-8771-3c01866ce985",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "multiplicity": {
+        "lower": "0",
+        "upper": null
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_681355_3570",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_681355_3570",
+      "name": "Disjunction",
+      "kind": "uml-class",
+      "xmi_id": "_15_5_2c17055e_1218847223579_681355_3570",
+      "xmi_uuid": "0bef187e-3d50-4ade-948a-610adcb7e233",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_538_3559",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_538_3559",
+      "name": "disjunct",
+      "kind": "uml-property",
+      "xmi_id": "_15_5_2c17055e_1218847223579_538_3559",
+      "xmi_uuid": "58f48d19-13e3-4441-a9df-a181b7de0d4c",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "multiplicity": {
+        "lower": "0",
+        "upper": "*"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_375692_3385",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_375692_3385",
+      "name": "Importation",
+      "kind": "uml-class",
+      "xmi_id": "_15_5_2c17055e_1218847223579_375692_3385",
+      "xmi_uuid": "babb6117-3c1a-4b88-84c0-958d46bc0d21",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_378537_3163",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_378537_3163",
+      "name": "assertedContent",
+      "kind": "uml-property",
+      "xmi_id": "_15_5_2c17055e_1218847223559_378537_3163",
+      "xmi_uuid": "755fd307-e05c-499c-8bd5-4a26b28f97b8",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "multiplicity": {
+        "lower": null,
+        "upper": null
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_453558_3170",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_453558_3170",
+      "name": "BooleanSentence",
+      "kind": "uml-class",
+      "xmi_id": "_15_5_2c17055e_1218847223559_453558_3170",
+      "xmi_uuid": "ff5013e6-6283-4b92-b964-5d7eee7df6d1",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "abstract": true
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_360040_3157",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_360040_3157",
+      "name": "Biconditional",
+      "kind": "uml-class",
+      "xmi_id": "_15_5_2c17055e_1218847223559_360040_3157",
+      "xmi_uuid": "046a6fc0-cb34-4dcf-80e6-74bd4fb6b3ee",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_150610_3461",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_150610_3461",
+      "name": "lvalue",
+      "kind": "uml-property",
+      "xmi_id": "_15_5_2c17055e_1218847223579_150610_3461",
+      "xmi_uuid": "5547fbfc-3a3e-42c4-9990-eb808fbcd55b",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "multiplicity": {
+        "lower": null,
+        "upper": null
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_194941_3504",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_194941_3504",
+      "name": "rvalue",
+      "kind": "uml-property",
+      "xmi_id": "_15_5_2c17055e_1218847223579_194941_3504",
+      "xmi_uuid": "ba4226bf-ac55-4fba-899d-8cbf37e2cb40",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "multiplicity": {
+        "lower": null,
+        "upper": null
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_602995_3008",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_602995_3008",
+      "name": "ArgumentSequenceForAtomicSentence",
+      "kind": "uml-association",
+      "xmi_id": "_15_5_2c17055e_1218847223559_602995_3008",
+      "xmi_uuid": "3eee5838-026a-407e-aa7e-0fdefe84e033",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223569_492964_3271",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223569_492964_3271",
+      "name": "atomicSentence",
+      "kind": "uml-property",
+      "xmi_id": "_15_5_2c17055e_1218847223569_492964_3271",
+      "xmi_uuid": "0efbfe39-dd26-441e-b42a-658499079a76",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "multiplicity": {
+        "lower": "0",
+        "upper": "*"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_849547_3510",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_849547_3510",
+      "name": "Argument",
+      "kind": "uml-class",
+      "xmi_id": "_15_5_2c17055e_1218847223579_849547_3510",
+      "xmi_uuid": "9833b4a4-410d-4bd0-9574-be53f5c337d4",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_895172_3500",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_895172_3500",
+      "name": "NameForImportation",
+      "kind": "uml-association",
+      "xmi_id": "_15_5_2c17055e_1218847223579_895172_3500",
+      "xmi_uuid": "517332a8-13b9-49ef-90de-a7a31ec1e980",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_715569_3162",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_715569_3162",
+      "name": "context",
+      "kind": "uml-property",
+      "xmi_id": "_15_5_2c17055e_1218847223559_715569_3162",
+      "xmi_uuid": "6201f704-510c-46b2-a44c-a4e4cd48ede7",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "multiplicity": {
+        "lower": "0",
+        "upper": "*"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_762758_3474",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_762758_3474",
+      "name": "Binding",
+      "kind": "uml-class",
+      "xmi_id": "_15_5_2c17055e_1218847223579_762758_3474",
+      "xmi_uuid": "7133a39e-f4d6-45e7-80eb-1261d866d502",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223569_394981_3283",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223569_394981_3283",
+      "name": "boundName",
+      "kind": "uml-property",
+      "xmi_id": "_15_5_2c17055e_1218847223569_394981_3283",
+      "xmi_uuid": "cd631b92-7c1c-467c-aa30-f4e37c6a8dfb",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "multiplicity": {
+        "lower": "0",
+        "upper": null
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_424018_3353",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_424018_3353",
+      "name": "boundSequenceMarker",
+      "kind": "uml-property",
+      "xmi_id": "_15_5_2c17055e_1218847223579_424018_3353",
+      "xmi_uuid": "5abd2eb5-8e23-474b-913c-8ca7924842e3",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "multiplicity": {
+        "lower": "0",
+        "upper": null
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_769788_3367",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_769788_3367",
+      "name": "BoundSequenceMarker",
+      "kind": "uml-association",
+      "xmi_id": "_15_5_2c17055e_1218847223579_769788_3367",
+      "xmi_uuid": "8ddc4221-47e0-4717-b1e4-14733c0a36da",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_593168_3357",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_593168_3357",
+      "name": "binding",
+      "kind": "uml-property",
+      "xmi_id": "_15_5_2c17055e_1218847223579_593168_3357",
+      "xmi_uuid": "e069d22a-1e63-4065-b310-246899dca0da",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "multiplicity": {
+        "lower": null,
+        "upper": null
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_827313_3014",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_827313_3014",
+      "name": "QuantifiedSentence",
+      "kind": "uml-class",
+      "xmi_id": "_15_5_2c17055e_1218847223559_827313_3014",
+      "xmi_uuid": "995fe0db-3b47-4c48-b5f0-3cbb827d4844",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "abstract": true
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_437692_3213",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_437692_3213",
+      "name": "body",
+      "kind": "uml-property",
+      "xmi_id": "_15_5_2c17055e_1218847223559_437692_3213",
+      "xmi_uuid": "1c6ad44d-5c24-4839-96a8-38abf36c65c9",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "multiplicity": {
+        "lower": null,
+        "upper": null
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223569_627861_3285",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223569_627861_3285",
+      "name": "binding",
+      "kind": "uml-property",
+      "xmi_id": "_15_5_2c17055e_1218847223569_627861_3285",
+      "xmi_uuid": "5920e5b1-9efe-4ec3-8dc3-09bfd3babbda",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "multiplicity": {
+        "lower": "0",
+        "upper": "*"
+      },
+      "ordered": true
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_627902_3446",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_627902_3446",
+      "name": "Phrase",
+      "kind": "uml-class",
+      "xmi_id": "_15_5_2c17055e_1218847223579_627902_3446",
+      "xmi_uuid": "6563bc91-1765-40e6-8366-4ec739a29370",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_613811_3148",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_613811_3148",
+      "name": "ExcludedSet",
+      "kind": "uml-association",
+      "xmi_id": "_15_5_2c17055e_1218847223559_613811_3148",
+      "xmi_uuid": "69ef352c-477f-40a9-8324-0a02bd3d0dc5",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_293709_3180",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_293709_3180",
+      "name": "module",
+      "kind": "uml-property",
+      "xmi_id": "_15_5_2c17055e_1218847223559_293709_3180",
+      "xmi_uuid": "71b07943-d1f8-4c90-b078-aa246b8da745",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "multiplicity": {
+        "lower": "0",
+        "upper": "*"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_801839_2978",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_801839_2978",
+      "name": "CommentedSentence",
+      "kind": "uml-class",
+      "xmi_id": "_15_5_2c17055e_1218847223559_801839_2978",
+      "xmi_uuid": "f5caffb8-753a-4aba-b5bc-7755c0d50190",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_386580_2957",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_386580_2957",
+      "name": "comment",
+      "kind": "uml-property",
+      "xmi_id": "_15_5_2c17055e_1218847223559_386580_2957",
+      "xmi_uuid": "5cdeeb9b-3994-499c-ac4b-57858b5fb7e3",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "multiplicity": {
+        "lower": null,
+        "upper": null
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_886023_3196",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_886023_3196",
+      "name": "sentence",
+      "kind": "uml-property",
+      "xmi_id": "_15_5_2c17055e_1218847223559_886023_3196",
+      "xmi_uuid": "fecd2c4c-4038-4814-aa81-397358fed983",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "multiplicity": {
+        "lower": null,
+        "upper": null
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_8002_2956",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_8002_2956",
+      "name": "BindingSequenceForQuantifiedSentence",
+      "kind": "uml-association",
+      "xmi_id": "_15_5_2c17055e_1218847223559_8002_2956",
+      "xmi_uuid": "1a76b65b-6030-4f21-924f-11a5fdf92cd0",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223569_791419_3289",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223569_791419_3289",
+      "name": "quantifiedSentence",
+      "kind": "uml-property",
+      "xmi_id": "_15_5_2c17055e_1218847223569_791419_3289",
+      "xmi_uuid": "4914a881-addc-4852-8fa6-196ba4507122",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "multiplicity": {
+        "lower": "0",
+        "upper": null
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_446296_3119",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_446296_3119",
+      "name": "Disjunction",
+      "kind": "uml-association",
+      "xmi_id": "_15_5_2c17055e_1218847223559_446296_3119",
+      "xmi_uuid": "a85085fd-5ce1-472e-b950-843e3b902680",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_935779_3560",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_935779_3560",
+      "name": "disjunction",
+      "kind": "uml-property",
+      "xmi_id": "_15_5_2c17055e_1218847223579_935779_3560",
+      "xmi_uuid": "54ab6271-5cc5-494d-8d1c-4e9712a32331",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "multiplicity": {
+        "lower": "0",
+        "upper": null
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_460381_2971",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_460381_2971",
+      "name": "ExistentialQuantification",
+      "kind": "uml-class",
+      "xmi_id": "_15_5_2c17055e_1218847223559_460381_2971",
+      "xmi_uuid": "0838278f-99fb-4901-83ad-f52f407ffbdf",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_129530_3042",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_129530_3042",
+      "name": "Conjunction",
+      "kind": "uml-association",
+      "xmi_id": "_15_5_2c17055e_1218847223559_129530_3042",
+      "xmi_uuid": "7e61726c-d183-4f64-954b-343240f99c92",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_327496_3571",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_327496_3571",
+      "name": "conjunction",
+      "kind": "uml-property",
+      "xmi_id": "_15_5_2c17055e_1218847223579_327496_3571",
+      "xmi_uuid": "572279f5-cd56-46a8-bfc0-34632562da82",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "multiplicity": {
+        "lower": "0",
+        "upper": null
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_775375_3485",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_775375_3485",
+      "name": "ModuleBody",
+      "kind": "uml-association",
+      "xmi_id": "_15_5_2c17055e_1218847223579_775375_3485",
+      "xmi_uuid": "09004482-1bf9-4b12-9ed1-2f71d9604af0",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_979672_2808",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_979672_2808",
+      "name": "moduleForBody",
+      "kind": "uml-property",
+      "xmi_id": "_15_5_2c17055e_1218847223559_979672_2808",
+      "xmi_uuid": "6cc4851d-6418-414f-bae3-464960b8b9ea",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "multiplicity": {
+        "lower": "0",
+        "upper": "*"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_501286_3480",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_501286_3480",
+      "name": "Negation",
+      "kind": "uml-class",
+      "xmi_id": "_15_5_2c17055e_1218847223579_501286_3480",
+      "xmi_uuid": "c8a2bce3-cca2-4479-a6d3-eab204bd5b29",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_196334_3171",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_196334_3171",
+      "name": "sentence",
+      "kind": "uml-property",
+      "xmi_id": "_15_5_2c17055e_1218847223559_196334_3171",
+      "xmi_uuid": "0d639127-3212-4413-bfb5-498333080496",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "multiplicity": {
+        "lower": null,
+        "upper": null
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_575394_3261",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_575394_3261",
+      "name": "BoundName",
+      "kind": "uml-association",
+      "xmi_id": "_15_5_2c17055e_1218847223559_575394_3261",
+      "xmi_uuid": "385dfddd-a7ef-43db-9e8f-9d1c0580be58",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223569_679654_3284",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223569_679654_3284",
+      "name": "binding",
+      "kind": "uml-property",
+      "xmi_id": "_15_5_2c17055e_1218847223569_679654_3284",
+      "xmi_uuid": "875e95ae-6e67-4657-a119-a4e58ed20f47",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "multiplicity": {
+        "lower": null,
+        "upper": null
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_961714_3553",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_961714_3553",
+      "name": "ArgumentSequenceForFunctionalTerm",
+      "kind": "uml-association",
+      "xmi_id": "_15_5_2c17055e_1218847223579_961714_3553",
+      "xmi_uuid": "436c5775-ba54-4deb-92fb-26efd9351c0f",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_633559_2968",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_633559_2968",
+      "name": "functionalTerm",
+      "kind": "uml-property",
+      "xmi_id": "_15_5_2c17055e_1218847223559_633559_2968",
+      "xmi_uuid": "16e78f79-9fe5-47c7-a379-b77983f1cec7",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "multiplicity": {
+        "lower": "0",
+        "upper": "*"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_701702_3338",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_701702_3338",
+      "name": "Conjunction",
+      "kind": "uml-class",
+      "xmi_id": "_15_5_2c17055e_1218847223579_701702_3338",
+      "xmi_uuid": "43536723-ab87-46b7-b56e-2e244c34cc87",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_918413_3534",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_918413_3534",
+      "name": "conjunct",
+      "kind": "uml-property",
+      "xmi_id": "_15_5_2c17055e_1218847223579_918413_3534",
+      "xmi_uuid": "96e0a587-d9d0-4a21-a257-6f2645844309",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "multiplicity": {
+        "lower": "0",
+        "upper": "*"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_903900_2917",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_903900_2917",
+      "name": "SequenceMarker",
+      "kind": "uml-class",
+      "xmi_id": "_15_5_2c17055e_1218847223559_903900_2917",
+      "xmi_uuid": "64a46a50-816d-465a-8e28-7dad4bef80b6",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_532770_2977",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_532770_2977",
+      "name": "PhraseForText",
+      "kind": "uml-association",
+      "xmi_id": "_15_5_2c17055e_1218847223559_532770_2977",
+      "xmi_uuid": "48b0ed04-d6a1-4d60-baf7-faec8e3f2898",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_894308_3247",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_894308_3247",
+      "name": "text",
+      "kind": "uml-property",
+      "xmi_id": "_15_5_2c17055e_1218847223559_894308_3247",
+      "xmi_uuid": "f217057d-975a-472d-be36-1d08b3b193b7",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "multiplicity": {
+        "lower": "0",
+        "upper": "*"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_497700_3420",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_497700_3420",
+      "name": "QuantificationForSentence",
+      "kind": "uml-association",
+      "xmi_id": "_15_5_2c17055e_1218847223579_497700_3420",
+      "xmi_uuid": "8c046c55-ea13-4c4c-baf7-19c7ad50457f",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_416284_3215",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_416284_3215",
+      "name": "quantification",
+      "kind": "uml-property",
+      "xmi_id": "_15_5_2c17055e_1218847223559_416284_3215",
+      "xmi_uuid": "8db25b82-829b-499f-9d06-99df5c7f7571",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "multiplicity": {
+        "lower": "0",
+        "upper": null
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_97112_3116",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_97112_3116",
+      "name": "Sentence",
+      "kind": "uml-class",
+      "xmi_id": "_15_5_2c17055e_1218847223559_97112_3116",
+      "xmi_uuid": "6a15372f-84fe-4e1a-8d3e-5ded5ef6db71",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "abstract": true
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_431186_2887",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_431186_2887",
+      "name": "Module",
+      "kind": "uml-class",
+      "xmi_id": "_15_5_2c17055e_1218847223559_431186_2887",
+      "xmi_uuid": "bce9e3b4-4d21-411b-a9fa-bebd15d71254",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223549_201982_2807",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223549_201982_2807",
+      "name": "body",
+      "kind": "uml-property",
+      "xmi_id": "_15_5_2c17055e_1218847223549_201982_2807",
+      "xmi_uuid": "a326d862-31da-4994-9b17-c0d16c425032",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "multiplicity": {
+        "lower": null,
+        "upper": null
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_416820_3378",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_416820_3378",
+      "name": "localDomain",
+      "kind": "uml-property",
+      "xmi_id": "_15_5_2c17055e_1218847223579_416820_3378",
+      "xmi_uuid": "f1059562-e2d4-4554-87b7-63a330e5af02",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "multiplicity": {
+        "lower": null,
+        "upper": null
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_893202_3179",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_893202_3179",
+      "name": "exclusionSet",
+      "kind": "uml-property",
+      "xmi_id": "_15_5_2c17055e_1218847223559_893202_3179",
+      "xmi_uuid": "26beda23-9ca9-4712-8cfb-68114ede6b9d",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "multiplicity": {
+        "lower": "0",
+        "upper": null
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_289848_3045",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_289848_3045",
+      "name": "NameForText",
+      "kind": "uml-association",
+      "xmi_id": "_15_5_2c17055e_1218847223559_289848_3045",
+      "xmi_uuid": "5765760d-0862-4496-ae6c-a58594ccc403",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_790883_3339",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_790883_3339",
+      "name": "namedText",
+      "kind": "uml-property",
+      "xmi_id": "_15_5_2c17055e_1218847223579_790883_3339",
+      "xmi_uuid": "30bdcf31-0cbe-4d90-bc4d-c62627d933af",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "multiplicity": {
+        "lower": "0",
+        "upper": "*"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_344660_2934",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_344660_2934",
+      "name": "CommentedText",
+      "kind": "uml-association",
+      "xmi_id": "_15_5_2c17055e_1218847223559_344660_2934",
+      "xmi_uuid": "dd59ba27-61cf-413c-ad40-cad9c02c2a33",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_236361_2920",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_236361_2920",
+      "name": "commentedText",
+      "kind": "uml-property",
+      "xmi_id": "_15_5_2c17055e_1218847223559_236361_2920",
+      "xmi_uuid": "111882fc-ba37-4fc7-a1d6-440756a05e8e",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "multiplicity": {
+        "lower": "0",
+        "upper": null
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_792682_3421",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_792682_3421",
+      "name": "Comment",
+      "kind": "uml-class",
+      "xmi_id": "_15_5_2c17055e_1218847223579_792682_3421",
+      "xmi_uuid": "32b7b038-6d1f-4a56-b15e-b47008691d35",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_704589_2985",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_704589_2985",
+      "name": "comment",
+      "kind": "uml-property",
+      "xmi_id": "_15_5_2c17055e_1218847223559_704589_2985",
+      "xmi_uuid": "a74a1050-86ee-4370-9eea-9b1d74d68cba",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "multiplicity": {
+        "lower": null,
+        "upper": null
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_263131_3269",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_263131_3269",
+      "name": "CommentForSentence",
+      "kind": "uml-association",
+      "xmi_id": "_15_5_2c17055e_1218847223559_263131_3269",
+      "xmi_uuid": "d7e57d22-ca69-4d13-82aa-7a3c54790ae9",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_515651_3198",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_515651_3198",
+      "name": "comment",
+      "kind": "uml-property",
+      "xmi_id": "_15_5_2c17055e_1218847223559_515651_3198",
+      "xmi_uuid": "94f156fe-b131-4acd-ad96-bbb17d37c794",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "multiplicity": {
+        "lower": "0",
+        "upper": null
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_101496_2930",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_101496_2930",
+      "name": "Equation",
+      "kind": "uml-class",
+      "xmi_id": "_15_5_2c17055e_1218847223559_101496_2930",
+      "xmi_uuid": "b25413e8-3308-4387-a05e-a20b940a2d02",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_634181_3026",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_634181_3026",
+      "name": "rvalue",
+      "kind": "uml-property",
+      "xmi_id": "_15_5_2c17055e_1218847223559_634181_3026",
+      "xmi_uuid": "fcff5f0f-2443-4344-b809-47c4844df739",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "multiplicity": {
+        "lower": null,
+        "upper": null
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_579834_3511",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_579834_3511",
+      "name": "lvalue",
+      "kind": "uml-property",
+      "xmi_id": "_15_5_2c17055e_1218847223579_579834_3511",
+      "xmi_uuid": "0387d9ce-1192-4213-bcbb-48e6d1e81d03",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "multiplicity": {
+        "lower": null,
+        "upper": null
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_419932_2999",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_419932_2999",
+      "name": "RvalueForBiconditional",
+      "kind": "uml-association",
+      "xmi_id": "_15_5_2c17055e_1218847223559_419932_2999",
+      "xmi_uuid": "b635eb0a-eaf6-43dc-a480-113c6c81a09b",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_273965_3505",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_273965_3505",
+      "name": "biconditional",
+      "kind": "uml-property",
+      "xmi_id": "_15_5_2c17055e_1218847223579_273965_3505",
+      "xmi_uuid": "faf49f30-dd56-4a1c-96c8-c811b2cc9734",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "multiplicity": {
+        "lower": "0",
+        "upper": null
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_88603_3128",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_88603_3128",
+      "name": "Implication",
+      "kind": "uml-class",
+      "xmi_id": "_15_5_2c17055e_1218847223559_88603_3128",
+      "xmi_uuid": "67501d65-74c7-499d-9e9a-35ed6217f3f1",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_808148_2943",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_808148_2943",
+      "name": "consequent",
+      "kind": "uml-property",
+      "xmi_id": "_15_5_2c17055e_1218847223559_808148_2943",
+      "xmi_uuid": "57e8b704-fb4f-4e33-a4ab-d5e5b2e587de",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "multiplicity": {
+        "lower": null,
+        "upper": null
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_536037_3154",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_536037_3154",
+      "name": "antecedent",
+      "kind": "uml-property",
+      "xmi_id": "_15_5_2c17055e_1218847223559_536037_3154",
+      "xmi_uuid": "bc8b020f-0bb9-4d0a-b0b6-a3e50c673015",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "multiplicity": {
+        "lower": null,
+        "upper": null
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_452998_3210",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_452998_3210",
+      "name": "ModuleName",
+      "kind": "uml-association",
+      "xmi_id": "_15_5_2c17055e_1218847223559_452998_3210",
+      "xmi_uuid": "b9bcfcc2-163c-4b8b-a662-42f361f9b795",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_234062_3381",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_234062_3381",
+      "name": "module",
+      "kind": "uml-property",
+      "xmi_id": "_15_5_2c17055e_1218847223579_234062_3381",
+      "xmi_uuid": "46cc2f30-726a-4af1-9042-4a584ddd1edc",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "multiplicity": {
+        "lower": "0",
+        "upper": null
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_881274_3228",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_881274_3228",
+      "name": "PredicateForAtomicSentence",
+      "kind": "uml-association",
+      "xmi_id": "_15_5_2c17055e_1218847223559_881274_3228",
+      "xmi_uuid": "a3368d1d-c8ec-4a24-a8ba-9cb625ae49b2",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_272062_3514",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_272062_3514",
+      "name": "atomicSentence",
+      "kind": "uml-property",
+      "xmi_id": "_15_5_2c17055e_1218847223579_272062_3514",
+      "xmi_uuid": "b89bfdeb-a77b-4d3a-baae-db48253f3308",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "multiplicity": {
+        "lower": "0",
+        "upper": "*"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_109099_3372",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_109099_3372",
+      "name": "UniversalQuantification",
+      "kind": "uml-class",
+      "xmi_id": "_15_5_2c17055e_1218847223579_109099_3372",
+      "xmi_uuid": "0e6ecf15-45df-4e59-97d7-cb7787769862",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_698293_3224",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_698293_3224",
+      "name": "CommentForTerm",
+      "kind": "uml-association",
+      "xmi_id": "_15_5_2c17055e_1218847223559_698293_3224",
+      "xmi_uuid": "2c8087ed-b131-42fd-87b8-e705e6771f6d",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_910126_3392",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_910126_3392",
+      "name": "commentedTerm",
+      "kind": "uml-property",
+      "xmi_id": "_15_5_2c17055e_1218847223579_910126_3392",
+      "xmi_uuid": "ac323f50-4a76-40d1-ad63-4e8751341293",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "multiplicity": {
+        "lower": "0",
+        "upper": null
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_985680_3201",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_985680_3201",
+      "name": "LvalueForEquation",
+      "kind": "uml-association",
+      "xmi_id": "_15_5_2c17055e_1218847223559_985680_3201",
+      "xmi_uuid": "2b46206e-75d8-44b0-9211-7ef1611bf605",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_750328_3512",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_750328_3512",
+      "name": "equation",
+      "kind": "uml-property",
+      "xmi_id": "_15_5_2c17055e_1218847223579_750328_3512",
+      "xmi_uuid": "03e8174e-fffc-4850-a302-5f20f67295ce",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "multiplicity": {
+        "lower": "0",
+        "upper": "*"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_324924_3386",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_324924_3386",
+      "name": "Identifier",
+      "kind": "uml-class",
+      "xmi_id": "_15_5_2c17055e_1218847223579_324924_3386",
+      "xmi_uuid": "934225c9-95c7-4682-b77a-e03b18228025",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_892015_3422",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_892015_3422",
+      "name": "OperatorForFunctionalTerm",
+      "kind": "uml-association",
+      "xmi_id": "_15_5_2c17055e_1218847223579_892015_3422",
+      "xmi_uuid": "c4f27bbe-4c89-4228-baf0-dfdfdbc59dd5",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_845198_3444",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_845198_3444",
+      "name": "functionalTerm",
+      "kind": "uml-property",
+      "xmi_id": "_15_5_2c17055e_1218847223579_845198_3444",
+      "xmi_uuid": "9fca73d8-64db-44e8-aeae-6db6bc9291eb",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "multiplicity": {
+        "lower": "0",
+        "upper": "*"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_694404_3226",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_694404_3226",
+      "name": "ExclusionSet",
+      "kind": "uml-class",
+      "xmi_id": "_15_5_2c17055e_1218847223559_694404_3226",
+      "xmi_uuid": "f5ce6184-349c-4b94-b04d-77faf84691c3",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_839975_2923",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_839975_2923",
+      "name": "excludedName",
+      "kind": "uml-property",
+      "xmi_id": "_15_5_2c17055e_1218847223559_839975_2923",
+      "xmi_uuid": "5f02be69-9b94-46d7-9b19-ee4a2b6b578e",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "multiplicity": {
+        "lower": "0",
+        "upper": "*"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_127475_3207",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_127475_3207",
+      "name": "LvalueForBiconditional",
+      "kind": "uml-association",
+      "xmi_id": "_15_5_2c17055e_1218847223559_127475_3207",
+      "xmi_uuid": "bd385194-3cbd-4cda-8f77-0ad4e64ed2c1",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_693818_3468",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_693818_3468",
+      "name": "biconditional",
+      "kind": "uml-property",
+      "xmi_id": "_15_5_2c17055e_1218847223579_693818_3468",
+      "xmi_uuid": "f6e4f149-33c8-48e4-951b-605f946bf0ce",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "multiplicity": {
+        "lower": "0",
+        "upper": null
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_32574_2856",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_32574_2856",
+      "name": "Text",
+      "kind": "uml-class",
+      "xmi_id": "_15_5_2c17055e_1218847223559_32574_2856",
+      "xmi_uuid": "894d330a-a83e-4677-b3ad-4ca22d2ad718",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_811838_3248",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_811838_3248",
+      "name": "phrase",
+      "kind": "uml-property",
+      "xmi_id": "_15_5_2c17055e_1218847223559_811838_3248",
+      "xmi_uuid": "885da286-482c-4d3f-b6c2-8038db2c367d",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "multiplicity": {
+        "lower": "0",
+        "upper": "*"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_885539_2918",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_885539_2918",
+      "name": "commentForText",
+      "kind": "uml-property",
+      "xmi_id": "_15_5_2c17055e_1218847223559_885539_2918",
+      "xmi_uuid": "f3dad757-8892-489c-a26a-6c6aeb56ef77",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "multiplicity": {
+        "lower": "0",
+        "upper": "*"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_758989_3336",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_758989_3336",
+      "name": "identifierForText",
+      "kind": "uml-property",
+      "xmi_id": "_15_5_2c17055e_1218847223579_758989_3336",
+      "xmi_uuid": "f6ef7df3-bf03-48c8-99c8-a88c2503c87e",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "multiplicity": {
+        "lower": "0",
+        "upper": null
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_181224_3445",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_181224_3445",
+      "name": "FunctionalTerm",
+      "kind": "uml-class",
+      "xmi_id": "_15_5_2c17055e_1218847223579_181224_3445",
+      "xmi_uuid": "e4d8e2e3-f5b4-4cce-8d32-88d92a928fa8",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_556589_2969",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_556589_2969",
+      "name": "argument",
+      "kind": "uml-property",
+      "xmi_id": "_15_5_2c17055e_1218847223559_556589_2969",
+      "xmi_uuid": "32c83bc7-525f-44f4-a62a-5fb3ee385796",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "multiplicity": {
+        "lower": "0",
+        "upper": "*"
+      },
+      "ordered": true
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_868566_3454",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_868566_3454",
+      "name": "operator",
+      "kind": "uml-property",
+      "xmi_id": "_15_5_2c17055e_1218847223579_868566_3454",
+      "xmi_uuid": "59bbac10-1cb6-4812-b014-80aec69faa89",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "multiplicity": {
+        "lower": null,
+        "upper": null
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_886195_3562",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_886195_3562",
+      "name": "IrregularSentence",
+      "kind": "uml-class",
+      "xmi_id": "_15_5_2c17055e_1218847223579_886195_3562",
+      "xmi_uuid": "2e1dc244-ede9-4131-9bc6-848802b99763",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_756106_3409",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_756106_3409",
+      "name": "Atom",
+      "kind": "uml-class",
+      "xmi_id": "_15_5_2c17055e_1218847223579_756106_3409",
+      "xmi_uuid": "acbb1acf-b042-4530-b611-be3d26853ebe",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "abstract": true
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_555713_3346",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_555713_3346",
+      "name": "AtomicSentence",
+      "kind": "uml-class",
+      "xmi_id": "_15_5_2c17055e_1218847223579_555713_3346",
+      "xmi_uuid": "5a1f2b7e-844e-4731-8f38-c9c43ea1d702",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223569_745806_3272",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223569_745806_3272",
+      "name": "argument",
+      "kind": "uml-property",
+      "xmi_id": "_15_5_2c17055e_1218847223569_745806_3272",
+      "xmi_uuid": "baf8ac92-e442-4cc5-99ec-096796b3d0c5",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "multiplicity": {
+        "lower": "0",
+        "upper": "*"
+      },
+      "ordered": true
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_298915_3515",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_298915_3515",
+      "name": "predicate",
+      "kind": "uml-property",
+      "xmi_id": "_15_5_2c17055e_1218847223579_298915_3515",
+      "xmi_uuid": "b08a190a-2b2a-4ffa-a330-e72122c60c40",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "multiplicity": {
+        "lower": null,
+        "upper": null
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_380067_3129",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_380067_3129",
+      "name": "Term",
+      "kind": "uml-class",
+      "xmi_id": "_15_5_2c17055e_1218847223559_380067_3129",
+      "xmi_uuid": "c5e39dcf-c37a-45da-990a-0f169e9e2a58",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "abstract": true
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_587444_3490",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_587444_3490",
+      "name": "Name",
+      "kind": "uml-class",
+      "xmi_id": "_15_5_2c17055e_1218847223579_587444_3490",
+      "xmi_uuid": "264f7157-7c2d-47c7-ab1f-9dab76264a78",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_101464_3340",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_101464_3340",
+      "name": "name",
+      "kind": "uml-property",
+      "xmi_id": "_15_5_2c17055e_1218847223579_101464_3340",
+      "xmi_uuid": "230d5052-5c60-4ade-8fe4-f55b95dded06",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "multiplicity": {
+        "lower": null,
+        "upper": null
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_409266_3203",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_409266_3203",
+      "name": "AntecedentForImplication",
+      "kind": "uml-association",
+      "xmi_id": "_15_5_2c17055e_1218847223559_409266_3203",
+      "xmi_uuid": "e7b37f1a-9891-4f81-a913-0d2805f024b4",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_852225_3127",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_852225_3127",
+      "name": "implication",
+      "kind": "uml-property",
+      "xmi_id": "_15_5_2c17055e_1218847223559_852225_3127",
+      "xmi_uuid": "40853d95-c6f3-48d9-9363-62c1d727c444",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "multiplicity": {
+        "lower": "0",
+        "upper": null
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_735790_3567",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_735790_3567",
+      "name": "NegatedSentence",
+      "kind": "uml-association",
+      "xmi_id": "_15_5_2c17055e_1218847223579_735790_3567",
+      "xmi_uuid": "9cf46502-ab91-4bdf-8988-9d39807c02f9",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_259425_3172",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_259425_3172",
+      "name": "negation",
+      "kind": "uml-property",
+      "xmi_id": "_15_5_2c17055e_1218847223559_259425_3172",
+      "xmi_uuid": "2b9eb7fd-8e1c-4669-8a3b-a20d254346a1",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "multiplicity": {
+        "lower": "0",
+        "upper": null
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_320738_2965",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_320738_2965",
+      "name": "RvalueForEquation",
+      "kind": "uml-association",
+      "xmi_id": "_15_5_2c17055e_1218847223559_320738_2965",
+      "xmi_uuid": "4a3facff-9e93-44d1-9512-52492610fe02",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_384091_3029",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_384091_3029",
+      "name": "equation",
+      "kind": "uml-property",
+      "xmi_id": "_15_5_2c17055e_1218847223559_384091_3029",
+      "xmi_uuid": "bdda1708-16ab-47fc-9263-6dfaae4386a1",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "multiplicity": {
+        "lower": "0",
+        "upper": "*"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_981703_2913",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_981703_2913",
+      "name": "ExcludedName",
+      "kind": "uml-association",
+      "xmi_id": "_15_5_2c17055e_1218847223559_981703_2913",
+      "xmi_uuid": "e53dd989-7740-4c97-877a-d94e0ec922b7",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_688816_2921",
+      "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_688816_2921",
+      "name": "exclusionSet",
+      "kind": "uml-property",
+      "xmi_id": "_15_5_2c17055e_1218847223559_688816_2921",
+      "xmi_uuid": "ac5a9ef4-1fb1-46e0-b60e-91b2f4560679",
+      "source": {
+        "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+        "package": "CL"
+      },
+      "multiplicity": {
+        "lower": "0",
+        "upper": "*"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_934831_3084",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_534574_3478",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_534574_3478",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_380067_3129",
+      "kind": "generalizes-to",
+      "xmi_id": "_15_5_2c17055e_1218847223579_23743_3501"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_534574_3478",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_155034_3431",
+      "kind": "owns-property"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_534574_3478",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_253093_3396",
+      "kind": "owns-property"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_253093_3396",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_380067_3129",
+      "kind": "typed-as"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_934831_3084",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_123975_3135",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_123975_3135",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_889639_2947",
+      "kind": "owns-property"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_889639_2947",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_88603_3128",
+      "kind": "typed-as"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_123975_3135",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_808148_2943",
+      "kind": "member-end"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_123975_3135",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_889639_2947",
+      "kind": "member-end"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_934831_3084",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_681355_3570",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_681355_3570",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_453558_3170",
+      "kind": "generalizes-to",
+      "xmi_id": "_15_5_2c17055e_1218847223569_438700_3282"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_681355_3570",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_538_3559",
+      "kind": "owns-property"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_538_3559",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_97112_3116",
+      "kind": "typed-as"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_934831_3084",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_375692_3385",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_375692_3385",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_627902_3446",
+      "kind": "generalizes-to",
+      "xmi_id": "_15_5_2c17055e_1218847223559_298751_3106"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_375692_3385",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_378537_3163",
+      "kind": "owns-property"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_378537_3163",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_324924_3386",
+      "kind": "typed-as"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_934831_3084",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_453558_3170",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_453558_3170",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_97112_3116",
+      "kind": "generalizes-to",
+      "xmi_id": "_15_5_2c17055e_1218847223559_951182_2894"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_934831_3084",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_360040_3157",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_360040_3157",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_453558_3170",
+      "kind": "generalizes-to",
+      "xmi_id": "_15_5_2c17055e_1218847223579_632116_3466"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_360040_3157",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_150610_3461",
+      "kind": "owns-property"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_150610_3461",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_97112_3116",
+      "kind": "typed-as"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_360040_3157",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_194941_3504",
+      "kind": "owns-property"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_194941_3504",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_97112_3116",
+      "kind": "typed-as"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_934831_3084",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_602995_3008",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_602995_3008",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223569_492964_3271",
+      "kind": "owns-property"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223569_492964_3271",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_555713_3346",
+      "kind": "typed-as"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_602995_3008",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223569_745806_3272",
+      "kind": "member-end"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_602995_3008",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223569_492964_3271",
+      "kind": "member-end"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_934831_3084",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_849547_3510",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_934831_3084",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_895172_3500",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_895172_3500",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_715569_3162",
+      "kind": "owns-property"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_715569_3162",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_375692_3385",
+      "kind": "typed-as"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_895172_3500",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_378537_3163",
+      "kind": "member-end"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_895172_3500",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_715569_3162",
+      "kind": "member-end"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_934831_3084",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_762758_3474",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_762758_3474",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223569_394981_3283",
+      "kind": "owns-property"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223569_394981_3283",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_587444_3490",
+      "kind": "typed-as"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_762758_3474",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_424018_3353",
+      "kind": "owns-property"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_424018_3353",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_903900_2917",
+      "kind": "typed-as"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_934831_3084",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_769788_3367",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_769788_3367",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_593168_3357",
+      "kind": "owns-property"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_593168_3357",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_762758_3474",
+      "kind": "typed-as"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_769788_3367",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_424018_3353",
+      "kind": "member-end"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_769788_3367",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_593168_3357",
+      "kind": "member-end"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_934831_3084",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_827313_3014",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_827313_3014",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_97112_3116",
+      "kind": "generalizes-to",
+      "xmi_id": "_15_5_2c17055e_1218847223579_775092_3391"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_827313_3014",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_437692_3213",
+      "kind": "owns-property"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_437692_3213",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_97112_3116",
+      "kind": "typed-as"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_827313_3014",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223569_627861_3285",
+      "kind": "owns-property"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223569_627861_3285",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_762758_3474",
+      "kind": "typed-as"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_934831_3084",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_627902_3446",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_934831_3084",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_613811_3148",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_613811_3148",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_293709_3180",
+      "kind": "owns-property"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_293709_3180",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_431186_2887",
+      "kind": "typed-as"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_613811_3148",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_893202_3179",
+      "kind": "member-end"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_613811_3148",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_293709_3180",
+      "kind": "member-end"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_934831_3084",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_801839_2978",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_801839_2978",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_97112_3116",
+      "kind": "generalizes-to",
+      "xmi_id": "_15_5_2c17055e_1218847223559_480406_3060"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_801839_2978",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_386580_2957",
+      "kind": "owns-property"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_801839_2978",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_886023_3196",
+      "kind": "owns-property"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_886023_3196",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_97112_3116",
+      "kind": "typed-as"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_934831_3084",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_8002_2956",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_8002_2956",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223569_791419_3289",
+      "kind": "owns-property"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223569_791419_3289",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_827313_3014",
+      "kind": "typed-as"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_8002_2956",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223569_627861_3285",
+      "kind": "member-end"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_8002_2956",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223569_791419_3289",
+      "kind": "member-end"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_934831_3084",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_446296_3119",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_446296_3119",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_935779_3560",
+      "kind": "owns-property"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_935779_3560",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_681355_3570",
+      "kind": "typed-as"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_446296_3119",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_538_3559",
+      "kind": "member-end"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_446296_3119",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_935779_3560",
+      "kind": "member-end"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_934831_3084",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_460381_2971",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_460381_2971",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_827313_3014",
+      "kind": "generalizes-to",
+      "xmi_id": "_15_5_2c17055e_1218847223559_299693_3152"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_934831_3084",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_129530_3042",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_129530_3042",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_327496_3571",
+      "kind": "owns-property"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_327496_3571",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_701702_3338",
+      "kind": "typed-as"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_129530_3042",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_918413_3534",
+      "kind": "member-end"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_129530_3042",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_327496_3571",
+      "kind": "member-end"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_934831_3084",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_775375_3485",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_775375_3485",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_979672_2808",
+      "kind": "owns-property"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_979672_2808",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_431186_2887",
+      "kind": "typed-as"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_775375_3485",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223549_201982_2807",
+      "kind": "member-end"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_775375_3485",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_979672_2808",
+      "kind": "member-end"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_934831_3084",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_501286_3480",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_501286_3480",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_453558_3170",
+      "kind": "generalizes-to",
+      "xmi_id": "_15_5_2c17055e_1218847223559_502582_3035"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_501286_3480",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_196334_3171",
+      "kind": "owns-property"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_196334_3171",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_97112_3116",
+      "kind": "typed-as"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_934831_3084",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_575394_3261",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_575394_3261",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223569_679654_3284",
+      "kind": "owns-property"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223569_679654_3284",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_762758_3474",
+      "kind": "typed-as"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_575394_3261",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223569_394981_3283",
+      "kind": "member-end"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_575394_3261",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223569_679654_3284",
+      "kind": "member-end"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_934831_3084",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_961714_3553",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_961714_3553",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_633559_2968",
+      "kind": "owns-property"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_633559_2968",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_181224_3445",
+      "kind": "typed-as"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_961714_3553",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_556589_2969",
+      "kind": "member-end"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_961714_3553",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_633559_2968",
+      "kind": "member-end"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_934831_3084",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_701702_3338",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_701702_3338",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_453558_3170",
+      "kind": "generalizes-to",
+      "xmi_id": "_15_5_2c17055e_1218847223569_447964_3312"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_701702_3338",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_918413_3534",
+      "kind": "owns-property"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_918413_3534",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_97112_3116",
+      "kind": "typed-as"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_934831_3084",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_903900_2917",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_903900_2917",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_849547_3510",
+      "kind": "generalizes-to",
+      "xmi_id": "_15_5_2c17055e_1218847223559_440240_2818"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_934831_3084",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_532770_2977",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_532770_2977",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_894308_3247",
+      "kind": "owns-property"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_894308_3247",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_32574_2856",
+      "kind": "typed-as"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_532770_2977",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_811838_3248",
+      "kind": "member-end"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_532770_2977",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_894308_3247",
+      "kind": "member-end"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_934831_3084",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_497700_3420",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_497700_3420",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_416284_3215",
+      "kind": "owns-property"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_416284_3215",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_827313_3014",
+      "kind": "typed-as"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_497700_3420",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_437692_3213",
+      "kind": "member-end"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_497700_3420",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_416284_3215",
+      "kind": "member-end"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_934831_3084",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_97112_3116",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_97112_3116",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_627902_3446",
+      "kind": "generalizes-to",
+      "xmi_id": "_15_5_2c17055e_1218847223559_636926_3090"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_934831_3084",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_431186_2887",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_431186_2887",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_627902_3446",
+      "kind": "generalizes-to",
+      "xmi_id": "_15_5_2c17055e_1218847223579_784228_3491"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_431186_2887",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223549_201982_2807",
+      "kind": "owns-property"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223549_201982_2807",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_32574_2856",
+      "kind": "typed-as"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_431186_2887",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_416820_3378",
+      "kind": "owns-property"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_416820_3378",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_324924_3386",
+      "kind": "typed-as"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_431186_2887",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_893202_3179",
+      "kind": "owns-property"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_893202_3179",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_694404_3226",
+      "kind": "typed-as"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_934831_3084",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_289848_3045",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_289848_3045",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_790883_3339",
+      "kind": "owns-property"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_790883_3339",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_32574_2856",
+      "kind": "typed-as"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_289848_3045",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_758989_3336",
+      "kind": "member-end"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_289848_3045",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_790883_3339",
+      "kind": "member-end"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_934831_3084",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_344660_2934",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_344660_2934",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_236361_2920",
+      "kind": "owns-property"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_236361_2920",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_32574_2856",
+      "kind": "typed-as"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_344660_2934",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_885539_2918",
+      "kind": "member-end"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_344660_2934",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_236361_2920",
+      "kind": "member-end"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_934831_3084",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_792682_3421",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_792682_3421",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_627902_3446",
+      "kind": "generalizes-to",
+      "xmi_id": "_15_5_2c17055e_1218847223559_31950_2967"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_792682_3421",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_704589_2985",
+      "kind": "owns-property"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_934831_3084",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_263131_3269",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_263131_3269",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_515651_3198",
+      "kind": "owns-property"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_515651_3198",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_801839_2978",
+      "kind": "typed-as"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_263131_3269",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_886023_3196",
+      "kind": "member-end"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_263131_3269",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_515651_3198",
+      "kind": "member-end"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_934831_3084",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_101496_2930",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_101496_2930",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_756106_3409",
+      "kind": "generalizes-to",
+      "xmi_id": "_15_5_2c17055e_1218847223559_102141_3237"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_101496_2930",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_634181_3026",
+      "kind": "owns-property"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_634181_3026",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_380067_3129",
+      "kind": "typed-as"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_101496_2930",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_579834_3511",
+      "kind": "owns-property"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_579834_3511",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_380067_3129",
+      "kind": "typed-as"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_934831_3084",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_419932_2999",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_419932_2999",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_273965_3505",
+      "kind": "owns-property"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_273965_3505",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_360040_3157",
+      "kind": "typed-as"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_419932_2999",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_194941_3504",
+      "kind": "member-end"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_419932_2999",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_273965_3505",
+      "kind": "member-end"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_934831_3084",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_88603_3128",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_88603_3128",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_453558_3170",
+      "kind": "generalizes-to",
+      "xmi_id": "_15_5_2c17055e_1218847223579_890423_3407"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_88603_3128",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_808148_2943",
+      "kind": "owns-property"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_808148_2943",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_97112_3116",
+      "kind": "typed-as"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_88603_3128",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_536037_3154",
+      "kind": "owns-property"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_536037_3154",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_97112_3116",
+      "kind": "typed-as"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_934831_3084",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_452998_3210",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_452998_3210",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_234062_3381",
+      "kind": "owns-property"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_234062_3381",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_431186_2887",
+      "kind": "typed-as"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_452998_3210",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_416820_3378",
+      "kind": "member-end"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_452998_3210",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_234062_3381",
+      "kind": "member-end"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_934831_3084",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_881274_3228",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_881274_3228",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_272062_3514",
+      "kind": "owns-property"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_272062_3514",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_555713_3346",
+      "kind": "typed-as"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_881274_3228",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_298915_3515",
+      "kind": "member-end"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_881274_3228",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_272062_3514",
+      "kind": "member-end"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_934831_3084",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_109099_3372",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_109099_3372",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_827313_3014",
+      "kind": "generalizes-to",
+      "xmi_id": "_15_5_2c17055e_1218847223559_898423_3144"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_934831_3084",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_698293_3224",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_698293_3224",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_910126_3392",
+      "kind": "owns-property"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_910126_3392",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_534574_3478",
+      "kind": "typed-as"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_698293_3224",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_253093_3396",
+      "kind": "member-end"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_698293_3224",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_910126_3392",
+      "kind": "member-end"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_934831_3084",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_985680_3201",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_985680_3201",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_750328_3512",
+      "kind": "owns-property"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_750328_3512",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_101496_2930",
+      "kind": "typed-as"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_985680_3201",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_579834_3511",
+      "kind": "member-end"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_985680_3201",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_750328_3512",
+      "kind": "member-end"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_934831_3084",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_324924_3386",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_324924_3386",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_587444_3490",
+      "kind": "generalizes-to",
+      "xmi_id": "_15_5_2c17055e_1218847223579_367624_3403"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_934831_3084",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_892015_3422",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_892015_3422",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_845198_3444",
+      "kind": "owns-property"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_845198_3444",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_181224_3445",
+      "kind": "typed-as"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_892015_3422",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_868566_3454",
+      "kind": "member-end"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_892015_3422",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_845198_3444",
+      "kind": "member-end"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_934831_3084",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_694404_3226",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_694404_3226",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_839975_2923",
+      "kind": "owns-property"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_839975_2923",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_587444_3490",
+      "kind": "typed-as"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_934831_3084",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_127475_3207",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_127475_3207",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_693818_3468",
+      "kind": "owns-property"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_693818_3468",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_360040_3157",
+      "kind": "typed-as"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_127475_3207",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_150610_3461",
+      "kind": "member-end"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_127475_3207",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_693818_3468",
+      "kind": "member-end"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_934831_3084",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_32574_2856",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_32574_2856",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_811838_3248",
+      "kind": "owns-property"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_811838_3248",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_627902_3446",
+      "kind": "typed-as"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_32574_2856",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_885539_2918",
+      "kind": "owns-property"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_885539_2918",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_792682_3421",
+      "kind": "typed-as"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_32574_2856",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_758989_3336",
+      "kind": "owns-property"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_758989_3336",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_324924_3386",
+      "kind": "typed-as"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_934831_3084",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_181224_3445",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_181224_3445",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_380067_3129",
+      "kind": "generalizes-to",
+      "xmi_id": "_15_5_2c17055e_1218847223559_117278_3176"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_181224_3445",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_556589_2969",
+      "kind": "owns-property"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_556589_2969",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_849547_3510",
+      "kind": "typed-as"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_181224_3445",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_868566_3454",
+      "kind": "owns-property"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_868566_3454",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_380067_3129",
+      "kind": "typed-as"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_934831_3084",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_886195_3562",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_886195_3562",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_97112_3116",
+      "kind": "generalizes-to",
+      "xmi_id": "_15_5_2c17055e_1218847223579_156963_3452"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_934831_3084",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_756106_3409",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_756106_3409",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_97112_3116",
+      "kind": "generalizes-to",
+      "xmi_id": "_15_5_2c17055e_1218847223569_12478_3293"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_934831_3084",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_555713_3346",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_555713_3346",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_756106_3409",
+      "kind": "generalizes-to",
+      "xmi_id": "_15_5_2c17055e_1218847223559_667898_3158"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_555713_3346",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223569_745806_3272",
+      "kind": "owns-property"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223569_745806_3272",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_849547_3510",
+      "kind": "typed-as"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_555713_3346",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_298915_3515",
+      "kind": "owns-property"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_298915_3515",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_380067_3129",
+      "kind": "typed-as"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_934831_3084",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_380067_3129",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_380067_3129",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_849547_3510",
+      "kind": "generalizes-to",
+      "xmi_id": "_15_5_2c17055e_1218847223559_370707_2990"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_934831_3084",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_587444_3490",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_587444_3490",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_380067_3129",
+      "kind": "generalizes-to",
+      "xmi_id": "_15_5_2c17055e_1218847223559_138716_2933"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_587444_3490",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_101464_3340",
+      "kind": "owns-property"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_934831_3084",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_409266_3203",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_409266_3203",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_852225_3127",
+      "kind": "owns-property"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_852225_3127",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_88603_3128",
+      "kind": "typed-as"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_409266_3203",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_536037_3154",
+      "kind": "member-end"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_409266_3203",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_852225_3127",
+      "kind": "member-end"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_934831_3084",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_735790_3567",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_735790_3567",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_259425_3172",
+      "kind": "owns-property"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_259425_3172",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_501286_3480",
+      "kind": "typed-as"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_735790_3567",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_196334_3171",
+      "kind": "member-end"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223579_735790_3567",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_259425_3172",
+      "kind": "member-end"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_934831_3084",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_320738_2965",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_320738_2965",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_384091_3029",
+      "kind": "owns-property"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_384091_3029",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_101496_2930",
+      "kind": "typed-as"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_320738_2965",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_634181_3026",
+      "kind": "member-end"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_320738_2965",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_384091_3029",
+      "kind": "member-end"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_934831_3084",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_981703_2913",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_981703_2913",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_688816_2921",
+      "kind": "owns-property"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_688816_2921",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_694404_3226",
+      "kind": "typed-as"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_981703_2913",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_839975_2923",
+      "kind": "member-end"
+    },
+    {
+      "source": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_981703_2913",
+      "target": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi#_15_5_2c17055e_1218847223559_688816_2921",
+      "kind": "member-end"
+    }
+  ]
+}
