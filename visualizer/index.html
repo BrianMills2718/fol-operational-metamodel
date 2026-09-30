@@ -7,10 +7,10 @@
   <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
 </head>
 <body>
-  <header><div><p class="eyebrow">CANONICAL MODEL · <span id="version">loading</span></p><h1>First-order logic</h1><p id="description">Loading model…</p></div>
+  <header><div><p class="eyebrow">UPSTREAM SOURCE HASH · <span id="version">loading</span></p><h1>MMT theory graph</h1><p id="description">Loading imported declarations…</p></div>
     <label>Show <select id="category"><option value="all">all concepts</option></select></label></header>
   <main><svg id="graph" role="img" aria-label="Interactive graph of first-order logic concepts"></svg>
-    <aside id="detail"><p class="eyebrow">SELECT A NODE</p><h2>Explore the model</h2><p>Drag nodes to rearrange them. Lines show references declared in the canonical JSON specification.</p></aside></main>
-  <footer>Generated from <code>spec/fol.json</code> at load time · drag to rearrange · scroll to zoom</footer>
+    <aside id="detail"><p class="eyebrow">SELECT A NODE</p><h2>Explore imported declarations</h2><p>Drag nodes to rearrange them. Lines show declaration, include, and meta-theory links extracted from MMT source.</p></aside></main>
+  <footer>Generated from <code>generated/mmt-ir.json</code> · drag to rearrange · scroll to zoom</footer>
   <script src="app.js"></script>
 </body></html>
