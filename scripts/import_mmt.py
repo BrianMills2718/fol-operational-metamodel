@@ -7,6 +7,7 @@ The source extractor remains a deliberately conservative fallback.
 import argparse
 import hashlib
 import json
+import lzma
 import re
 import sys
 import urllib.parse
@@ -565,23 +566,42 @@ def merge_irs(irs, source_uri="merged://mmt-graph"):
 
 
 def extract_omdoc_directory(directory, source_uri):
-    """Recursively import every compiled .omdoc file below an MMT content directory."""
+    """Recursively import compiled .omdoc and historical .omdoc.xz files."""
     root = Path(directory)
     if not root.is_dir():
         raise ValueError(f"OMDoc directory does not exist: {root}")
-    files = sorted(path for path in root.rglob("*.omdoc") if path.is_file())
+    files = sorted(
+        path for path in root.rglob("*")
+        if path.is_file() and (
+            path.name.endswith(".omdoc") or path.name.endswith(".omdoc.xz")
+        )
+    )
     if not files:
-        raise ValueError(f"no .omdoc files found below {root}")
+        raise ValueError(f"no .omdoc or .omdoc.xz files found below {root}")
 
     irs = []
     manifest = []
     for path in files:
         rel = path.relative_to(root).as_posix()
-        text = path.read_text(encoding="utf-8")
+        stored = path.read_bytes()
+        compression = "xz" if path.name.endswith(".omdoc.xz") else None
+        try:
+            data = lzma.decompress(stored) if compression == "xz" else stored
+            text = data.decode("utf-8")
+        except (lzma.LZMAError, UnicodeDecodeError) as exc:
+            raise ValueError(f"could not read compiled OMDoc {path}: {exc}") from exc
         digest = source_sha256(text)
         file_uri = source_uri.rstrip("/") + "/" + urllib.parse.quote(rel, safe="/$.-_")
         irs.append(extract_omdoc(text, file_uri, rel, digest))
-        manifest.append({"path": rel, "uri": file_uri, "sha256": digest})
+        entry = {
+            "path": rel,
+            "uri": file_uri,
+            "sha256": digest,
+            "stored_sha256": bytes_sha256(stored),
+        }
+        if compression:
+            entry["compression"] = compression
+        manifest.append(entry)
 
     merged = merge_irs(irs, source_uri=source_uri)
     manifest_digest = hashlib.sha256(
