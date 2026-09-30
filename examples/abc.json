@@ -1,0 +1,19 @@
+{
+  "signature": {
+    "sorts": ["Person"],
+    "constants": {"A":"Person", "B":"Person", "C":"Person"},
+    "predicates": {"Sibling":{"arguments":["Person","Person"]}, "Parent":{"arguments":["Person","Person"]}}
+  },
+  "structure": {
+    "domains": {"Person":["Alice","Bob","Carol"]},
+    "constants": {"A":"Alice", "B":"Bob", "C":"Carol"},
+    "predicates": {"Sibling":[["Alice","Bob"],["Bob","Alice"]], "Parent":[["Alice","Carol"]]}
+  },
+  "assignments": {"g":{"x":"Alice", "y":"Bob"}},
+  "cases": [
+    {"name":"A and B are siblings","formula":{"pred":"Sibling","args":[{"const":"A"},{"const":"B"}]},"expected":true},
+    {"name":"C is sibling of A","formula":{"pred":"Sibling","args":[{"const":"C"},{"const":"A"}]},"expected":false},
+    {"name":"Some person is parent of C","formula":{"exists":"z","sort":"Person","body":{"pred":"Parent","args":[{"var":"z"},{"const":"C"}]}},"expected":true},
+    {"name":"Every person is sibling of someone","formula":{"forall":"x","sort":"Person","body":{"exists":"y","sort":"Person","body":{"pred":"Sibling","args":[{"var":"x"},{"var":"y"}]}}},"expected":false}
+  ]
+}
