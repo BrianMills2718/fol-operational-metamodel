@@ -1,0 +1,56 @@
+define
+  signature sub entity,
+    owns signature-name;
+  sort sub entity,
+    owns sort-name;
+  variable sub entity,
+    owns variable-name,
+    plays assignment:assigned-variable;
+  term sub entity,
+    owns term-kind;
+  formula sub entity,
+    owns formula-kind;
+  structure sub entity,
+    owns structure-name;
+  assignment sub entity,
+    plays assignment:assignment-context;
+  theory sub entity,
+    owns theory-name;
+  function-symbol sub entity,
+    owns function-name;
+  predicate-symbol sub entity,
+    owns predicate-name;
+  sentence sub entity,
+    owns sentence-name;
+
+  signature-name sub attribute, value string;
+  sort-name sub attribute, value string;
+  variable-name sub attribute, value string;
+  term-kind sub attribute, value string;
+  formula-kind sub attribute, value string;
+  structure-name sub attribute, value string;
+  theory-name sub attribute, value string;
+  function-name sub attribute, value string;
+  predicate-name sub attribute, value string;
+  sentence-name sub attribute, value string;
+
+  declaration sub relation,
+    relates signature,
+    relates declared-symbol;
+  has-domain sub relation,
+    relates structure,
+    relates sort;
+  interprets sub relation,
+    relates structure,
+    relates symbol,
+    relates interpretation;
+  variable-assignment sub relation,
+    relates assignment-context,
+    relates assigned-variable,
+    relates assigned-value;
+  contains sub relation,
+    relates theory,
+    relates sentence;
+  satisfies sub relation,
+    relates structure,
+    relates satisfied-sentence;
