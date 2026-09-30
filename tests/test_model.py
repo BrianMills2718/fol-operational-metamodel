@@ -5,7 +5,9 @@ from pathlib import Path
 
 from scripts.import_mmt import (
     extract,
+    extract_archivegraph,
     extract_omdoc,
+    merge_irs,
     source_download_url,
     source_sha256,
 )
@@ -225,6 +227,57 @@ class ModelTests(unittest.TestCase):
             by_id["mmt-latin2"]["revision"],
             "39dc7046f457ff02f695387a8ebd80366789a465",
         )
+
+
+    def test_archivegraph_fixture_preserves_mmt_graph_styles(self):
+        path = ROOT / "tests/fixtures/archivegraph.json"
+        source = path.read_text(encoding="utf-8")
+        ir = extract_archivegraph(
+            source,
+            "http://localhost:8080/:jgraph/json?key=archivegraph&uri=MMT/LATIN2",
+            path.relative_to(ROOT).as_posix(),
+            source_sha256(source),
+        )
+        by_name = {item["name"]: item for item in ir["nodes"]}
+        self.assertEqual(ir["source"]["input_kind"], "archivegraph")
+        self.assertEqual(by_name["FOL"]["kind"], "theory")
+        self.assertEqual(by_name["FOLEQ"]["archivegraph_style"], "theory")
+        self.assertTrue(
+            any(
+                edge["kind"] == "include"
+                and edge["source"].endswith("?FOL")
+                and edge["target"].endswith("?FOLEQ")
+                for edge in ir["edges"]
+            )
+        )
+        self.assertTrue(any(edge["kind"] == "view" and edge["label"] == "fol-to-foleq" for edge in ir["edges"]))
+
+    def test_merge_prefers_omdoc_detail_for_shared_theory_uri(self):
+        omdoc_path = ROOT / "tests/fixtures/fol-compiled.omdoc"
+        omdoc_text = omdoc_path.read_text(encoding="utf-8")
+        omdoc_ir = extract_omdoc(
+            omdoc_text,
+            "https://example.org/fol-compiled.omdoc",
+            omdoc_path.relative_to(ROOT).as_posix(),
+            source_sha256(omdoc_text),
+        )
+        archive_path = ROOT / "tests/fixtures/archivegraph.json"
+        archive_text = archive_path.read_text(encoding="utf-8")
+        archive_ir = extract_archivegraph(
+            archive_text,
+            "http://localhost:8080/:jgraph/json?key=archivegraph&uri=MMT/LATIN2",
+            archive_path.relative_to(ROOT).as_posix(),
+            source_sha256(archive_text),
+        )
+        merged = merge_irs([archive_ir, omdoc_ir])
+        ids = [item["id"] for item in merged["nodes"]]
+        self.assertEqual(len(ids), len(set(ids)))
+        fol = next(item for item in merged["nodes"] if item["id"] == "http://mydomain.org/testarchive/mmt-example?FOL")
+        self.assertEqual(fol["kind"], "theory")
+        self.assertEqual(fol["source"]["source_ref"], "http://mydomain.org/testarchive/fol.mmt#57.2.0:746.27.1")
+        self.assertIn("provenance", fol)
+        self.assertTrue(any(edge["kind"] == "declares" and edge["source"] == fol["id"] for edge in merged["edges"]))
+        self.assertTrue(any(edge["kind"] == "view" for edge in merged["edges"]))
 
 
 if __name__ == "__main__":
