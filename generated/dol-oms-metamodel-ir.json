@@ -1,0 +1,727 @@
+{
+  "format": "standards-ir/v1",
+  "source": {
+    "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi",
+    "sha256": "316c56d9f67c57f723094f19e3b903ea0c7a64a081aaec08d47f4d078a978c76",
+    "input_kind": "omg-uml-xmi",
+    "package": "oms"
+  },
+  "scope": "UML/XMI structure imported verbatim; no logical-semantic classifications inferred",
+  "nodes": [
+    {
+      "id": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#oms",
+      "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#oms",
+      "name": "oms",
+      "kind": "uml-package",
+      "xmi_id": "oms",
+      "xmi_uuid": null,
+      "source": {
+        "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#OMS",
+      "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#OMS",
+      "name": "OMS",
+      "kind": "uml-class",
+      "xmi_id": "OMS",
+      "xmi_uuid": "ebcf3a0d-2edb-4c62-9cff-c461f05b8234",
+      "source": {
+        "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi",
+        "package": "oms"
+      },
+      "abstract": true
+    },
+    {
+      "id": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#ClosureOMS",
+      "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#ClosureOMS",
+      "name": "ClosureOMS",
+      "kind": "uml-class",
+      "xmi_id": "ClosureOMS",
+      "xmi_uuid": "b2152928-a15c-41bb-8568-07a0f83bf49a",
+      "source": {
+        "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi",
+        "package": "oms"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoClosureOMSOMS_OMS11",
+      "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoClosureOMSOMS_OMS11",
+      "name": "A-closureOMS-oms",
+      "kind": "uml-association",
+      "xmi_id": "AssoClosureOMSOMS_OMS11",
+      "xmi_uuid": "74650090-e3ed-4da2-aaad-1ced16f059b2",
+      "source": {
+        "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi",
+        "package": "oms"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoClosureOMSClosure_Closure11",
+      "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoClosureOMSClosure_Closure11",
+      "name": "A-closureOMS-closure",
+      "kind": "uml-association",
+      "xmi_id": "AssoClosureOMSClosure_Closure11",
+      "xmi_uuid": "277e149d-fa97-42fa-8dc1-f50a61e85512",
+      "source": {
+        "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi",
+        "package": "oms"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#TranslationOMS",
+      "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#TranslationOMS",
+      "name": "TranslationOMS",
+      "kind": "uml-class",
+      "xmi_id": "TranslationOMS",
+      "xmi_uuid": "6bef6fc0-27c2-459e-af2d-324e9d2b997a",
+      "source": {
+        "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi",
+        "package": "oms"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoTranslationOMSOMS_OMS11",
+      "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoTranslationOMSOMS_OMS11",
+      "name": "A-translationOMS-oms",
+      "kind": "uml-association",
+      "xmi_id": "AssoTranslationOMSOMS_OMS11",
+      "xmi_uuid": "bc695f4e-8789-4da1-a31e-d5921c07d15a",
+      "source": {
+        "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi",
+        "package": "oms"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoTranslationOMSTranslation_Translation11",
+      "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoTranslationOMSTranslation_Translation11",
+      "name": "A-translationOMS-translation",
+      "kind": "uml-association",
+      "xmi_id": "AssoTranslationOMSTranslation_Translation11",
+      "xmi_uuid": "d3fc3dde-a232-43b9-891f-6e617ba41158",
+      "source": {
+        "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi",
+        "package": "oms"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#ReductionOMS",
+      "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#ReductionOMS",
+      "name": "ReductionOMS",
+      "kind": "uml-class",
+      "xmi_id": "ReductionOMS",
+      "xmi_uuid": "5518fa8a-479b-483a-bebd-0181ff74f6d5",
+      "source": {
+        "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi",
+        "package": "oms"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoReductionOMSOMS_OMS11",
+      "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoReductionOMSOMS_OMS11",
+      "name": "A-reductionOMS-oms",
+      "kind": "uml-association",
+      "xmi_id": "AssoReductionOMSOMS_OMS11",
+      "xmi_uuid": "59d3d60a-5032-4d1b-af44-07b0d79d47af",
+      "source": {
+        "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi",
+        "package": "oms"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoReductionOMSReduction_Reduction11",
+      "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoReductionOMSReduction_Reduction11",
+      "name": "A-reductionOMS-reduction",
+      "kind": "uml-association",
+      "xmi_id": "AssoReductionOMSReduction_Reduction11",
+      "xmi_uuid": "041c5641-f6c4-49c9-b98a-078a4092607a",
+      "source": {
+        "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi",
+        "package": "oms"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#ExtractionOMS",
+      "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#ExtractionOMS",
+      "name": "ExtractionOMS",
+      "kind": "uml-class",
+      "xmi_id": "ExtractionOMS",
+      "xmi_uuid": "5bdd9bf5-4211-43c9-be06-e9b38dccc2ab",
+      "source": {
+        "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi",
+        "package": "oms"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoExtractionOMSOMS_OMS11",
+      "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoExtractionOMSOMS_OMS11",
+      "name": "A-extractionOMS-oms",
+      "kind": "uml-association",
+      "xmi_id": "AssoExtractionOMSOMS_OMS11",
+      "xmi_uuid": "b5419b27-cb0c-4620-86ef-79da5ede9a99",
+      "source": {
+        "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi",
+        "package": "oms"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoExtractionOMSExtraction_Extraction11",
+      "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoExtractionOMSExtraction_Extraction11",
+      "name": "A-extractionOMS-extraction",
+      "kind": "uml-association",
+      "xmi_id": "AssoExtractionOMSExtraction_Extraction11",
+      "xmi_uuid": "324c1140-39e8-4f5e-92b1-d5770f453619",
+      "source": {
+        "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi",
+        "package": "oms"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#ApproximationOMS",
+      "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#ApproximationOMS",
+      "name": "ApproximationOMS",
+      "kind": "uml-class",
+      "xmi_id": "ApproximationOMS",
+      "xmi_uuid": "3ea1b810-0b15-45b2-b049-da961b1f0b90",
+      "source": {
+        "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi",
+        "package": "oms"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoApproximationOMSOMS_OMS11",
+      "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoApproximationOMSOMS_OMS11",
+      "name": "A-approximationOMS-oms",
+      "kind": "uml-association",
+      "xmi_id": "AssoApproximationOMSOMS_OMS11",
+      "xmi_uuid": "93899fe8-2da0-447d-9c2f-d87e53a9b6d5",
+      "source": {
+        "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi",
+        "package": "oms"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoApproximationOMSApproximation_Approximation11",
+      "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoApproximationOMSApproximation_Approximation11",
+      "name": "A-approximationOMS-approximation",
+      "kind": "uml-association",
+      "xmi_id": "AssoApproximationOMSApproximation_Approximation11",
+      "xmi_uuid": "1f37920d-6006-400f-8ddd-5e47f081215e",
+      "source": {
+        "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi",
+        "package": "oms"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#FilteringOMS",
+      "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#FilteringOMS",
+      "name": "FilteringOMS",
+      "kind": "uml-class",
+      "xmi_id": "FilteringOMS",
+      "xmi_uuid": "7e73e91f-50c0-4a12-8ad7-d2bae0ffd83f",
+      "source": {
+        "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi",
+        "package": "oms"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoFilteringOMSOMS_OMS11",
+      "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoFilteringOMSOMS_OMS11",
+      "name": "A-filteringOMS-oms",
+      "kind": "uml-association",
+      "xmi_id": "AssoFilteringOMSOMS_OMS11",
+      "xmi_uuid": "7373697c-4aa7-48b6-98c3-63abbe1842d4",
+      "source": {
+        "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi",
+        "package": "oms"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoFilteringOMSFiltering_Filtering11",
+      "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoFilteringOMSFiltering_Filtering11",
+      "name": "A-filteringOMS-filtering",
+      "kind": "uml-association",
+      "xmi_id": "AssoFilteringOMSFiltering_Filtering11",
+      "xmi_uuid": "ba1b59b5-6abb-4742-a611-18c754399323",
+      "source": {
+        "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi",
+        "package": "oms"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#UnionOMS",
+      "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#UnionOMS",
+      "name": "UnionOMS",
+      "kind": "uml-class",
+      "xmi_id": "UnionOMS",
+      "xmi_uuid": "83425bbc-1565-46f6-a827-716d5d605bed",
+      "source": {
+        "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi",
+        "package": "oms"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoUnionOMSOMS_OMS11",
+      "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoUnionOMSOMS_OMS11",
+      "name": "A-unionOMS-oms1",
+      "kind": "uml-association",
+      "xmi_id": "AssoUnionOMSOMS_OMS11",
+      "xmi_uuid": "9e7e6359-cba3-44f7-ae37-d9e1de29d8bd",
+      "source": {
+        "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi",
+        "package": "oms"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoUnionOMSOMS2_OMS11",
+      "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoUnionOMSOMS2_OMS11",
+      "name": "A-unionOMS-oms2",
+      "kind": "uml-association",
+      "xmi_id": "AssoUnionOMSOMS2_OMS11",
+      "xmi_uuid": "2fd2ae40-5c5a-4025-8f5e-ddce950888f9",
+      "source": {
+        "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi",
+        "package": "oms"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#ExtensionOMS",
+      "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#ExtensionOMS",
+      "name": "ExtensionOMS",
+      "kind": "uml-class",
+      "xmi_id": "ExtensionOMS",
+      "xmi_uuid": "9b6b6222-7a96-44b2-bf37-10a7b0349590",
+      "source": {
+        "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi",
+        "package": "oms"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoExtensionOMSOMS_OMS11",
+      "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoExtensionOMSOMS_OMS11",
+      "name": "A-extensionOMS-oms",
+      "kind": "uml-association",
+      "xmi_id": "AssoExtensionOMSOMS_OMS11",
+      "xmi_uuid": "11af91b4-cbbd-4f01-823e-411f3400e77b",
+      "source": {
+        "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi",
+        "package": "oms"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoExtensionOMSExtension_Extension11",
+      "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoExtensionOMSExtension_Extension11",
+      "name": "A-extensionOMS-extension",
+      "kind": "uml-association",
+      "xmi_id": "AssoExtensionOMSExtension_Extension11",
+      "xmi_uuid": "41ef2766-908e-4e85-ad70-fba0d639a5de",
+      "source": {
+        "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi",
+        "package": "oms"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#QualifiedOMS",
+      "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#QualifiedOMS",
+      "name": "QualifiedOMS",
+      "kind": "uml-class",
+      "xmi_id": "QualifiedOMS",
+      "xmi_uuid": "1b9248ae-0ba2-4748-a792-e25cb14275f1",
+      "source": {
+        "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi",
+        "package": "oms"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoQualifiedOMSQualification_QualificationStar0",
+      "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoQualifiedOMSQualification_QualificationStar0",
+      "name": "A-qualifiedOMS-qualification",
+      "kind": "uml-association",
+      "xmi_id": "AssoQualifiedOMSQualification_QualificationStar0",
+      "xmi_uuid": "596a45e1-cbcc-4776-aef6-dea17d3cdc7e",
+      "source": {
+        "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi",
+        "package": "oms"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoQualifiedOMSOMS_OMS11",
+      "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoQualifiedOMSOMS_OMS11",
+      "name": "A-qualifiedOMS-oms",
+      "kind": "uml-association",
+      "xmi_id": "AssoQualifiedOMSOMS_OMS11",
+      "xmi_uuid": "8cd4bf3f-13c9-44a8-b210-c4a0df65c540",
+      "source": {
+        "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi",
+        "package": "oms"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#CombinationOMS",
+      "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#CombinationOMS",
+      "name": "CombinationOMS",
+      "kind": "uml-class",
+      "xmi_id": "CombinationOMS",
+      "xmi_uuid": "faa930f7-435a-4b9a-bbb7-5d78f9ab9b16",
+      "source": {
+        "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi",
+        "package": "oms"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoCombinationOMSNetwork_Network11",
+      "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoCombinationOMSNetwork_Network11",
+      "name": "A-combinationOMS-network",
+      "kind": "uml-association",
+      "xmi_id": "AssoCombinationOMSNetwork_Network11",
+      "xmi_uuid": "0a871e4a-75b3-4bf1-b135-cf7dc5a50cac",
+      "source": {
+        "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi",
+        "package": "oms"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#ApplicationOMS",
+      "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#ApplicationOMS",
+      "name": "ApplicationOMS",
+      "kind": "uml-class",
+      "xmi_id": "ApplicationOMS",
+      "xmi_uuid": "3fb29e19-1cf6-4f95-af5a-69b2d7578fcf",
+      "source": {
+        "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi",
+        "package": "oms"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoApplicationOMSOMS_OMS11",
+      "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoApplicationOMSOMS_OMS11",
+      "name": "A-applicationOMS-oms",
+      "kind": "uml-association",
+      "xmi_id": "AssoApplicationOMSOMS_OMS11",
+      "xmi_uuid": "a654f222-a16b-45d7-a7fc-685d7a97436e",
+      "source": {
+        "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi",
+        "package": "oms"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoApplicationOMSSubstName_IRI11",
+      "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoApplicationOMSSubstName_IRI11",
+      "name": "A-applicationOMS-substName",
+      "kind": "uml-association",
+      "xmi_id": "AssoApplicationOMSSubstName_IRI11",
+      "xmi_uuid": "d0b50b35-a617-4afd-86a3-9ee5d62324a4",
+      "source": {
+        "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi",
+        "package": "oms"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#OMSDefinition",
+      "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#OMSDefinition",
+      "name": "OMSDefinition",
+      "kind": "uml-class",
+      "xmi_id": "OMSDefinition",
+      "xmi_uuid": "b5c9fe15-0822-4757-80e2-24cbb4fb6201",
+      "source": {
+        "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi",
+        "package": "oms"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoOMSDefinitionOMSName_IRI11",
+      "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoOMSDefinitionOMSName_IRI11",
+      "name": "A-omsDefinition-omsName",
+      "kind": "uml-association",
+      "xmi_id": "AssoOMSDefinitionOMSName_IRI11",
+      "xmi_uuid": "614d21a2-8add-4723-b53a-5612e27111be",
+      "source": {
+        "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi",
+        "package": "oms"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoOMSDefinitionOMS_OMS11",
+      "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoOMSDefinitionOMS_OMS11",
+      "name": "A-omsDefinition-oms",
+      "kind": "uml-association",
+      "xmi_id": "AssoOMSDefinitionOMS_OMS11",
+      "xmi_uuid": "9f43b149-598b-4476-9991-1c85dcc7a676",
+      "source": {
+        "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi",
+        "package": "oms"
+      }
+    },
+    {
+      "id": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#IRI",
+      "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#IRI",
+      "name": "IRI",
+      "kind": "uml-class",
+      "xmi_id": "IRI",
+      "xmi_uuid": "83f5b00c-6a72-43c5-8e0b-69c8a268b08e",
+      "source": {
+        "uri": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi",
+        "package": "oms"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#oms",
+      "target": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#OMS",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#oms",
+      "target": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#ClosureOMS",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#ClosureOMS",
+      "target": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#OMS",
+      "kind": "generalizes-to",
+      "xmi_id": "ClosureOMS_is_OMS"
+    },
+    {
+      "source": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#oms",
+      "target": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoClosureOMSOMS_OMS11",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#oms",
+      "target": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoClosureOMSClosure_Closure11",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#oms",
+      "target": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#TranslationOMS",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#TranslationOMS",
+      "target": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#OMS",
+      "kind": "generalizes-to",
+      "xmi_id": "TranslationOMS_is_OMS"
+    },
+    {
+      "source": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#oms",
+      "target": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoTranslationOMSOMS_OMS11",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#oms",
+      "target": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoTranslationOMSTranslation_Translation11",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#oms",
+      "target": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#ReductionOMS",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#ReductionOMS",
+      "target": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#OMS",
+      "kind": "generalizes-to",
+      "xmi_id": "ReductionOMS_is_OMS"
+    },
+    {
+      "source": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#oms",
+      "target": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoReductionOMSOMS_OMS11",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#oms",
+      "target": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoReductionOMSReduction_Reduction11",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#oms",
+      "target": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#ExtractionOMS",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#ExtractionOMS",
+      "target": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#OMS",
+      "kind": "generalizes-to",
+      "xmi_id": "ExtractionOMS_is_OMS"
+    },
+    {
+      "source": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#oms",
+      "target": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoExtractionOMSOMS_OMS11",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#oms",
+      "target": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoExtractionOMSExtraction_Extraction11",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#oms",
+      "target": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#ApproximationOMS",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#ApproximationOMS",
+      "target": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#OMS",
+      "kind": "generalizes-to",
+      "xmi_id": "ApproximationOMS_is_OMS"
+    },
+    {
+      "source": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#oms",
+      "target": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoApproximationOMSOMS_OMS11",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#oms",
+      "target": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoApproximationOMSApproximation_Approximation11",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#oms",
+      "target": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#FilteringOMS",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#FilteringOMS",
+      "target": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#OMS",
+      "kind": "generalizes-to",
+      "xmi_id": "FilteringOMS_is_OMS"
+    },
+    {
+      "source": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#oms",
+      "target": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoFilteringOMSOMS_OMS11",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#oms",
+      "target": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoFilteringOMSFiltering_Filtering11",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#oms",
+      "target": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#UnionOMS",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#UnionOMS",
+      "target": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#OMS",
+      "kind": "generalizes-to",
+      "xmi_id": "UnionOMS_is_OMS"
+    },
+    {
+      "source": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#oms",
+      "target": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoUnionOMSOMS_OMS11",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#oms",
+      "target": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoUnionOMSOMS2_OMS11",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#oms",
+      "target": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#ExtensionOMS",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#ExtensionOMS",
+      "target": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#OMS",
+      "kind": "generalizes-to",
+      "xmi_id": "ExtensionOMS_is_OMS"
+    },
+    {
+      "source": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#oms",
+      "target": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoExtensionOMSOMS_OMS11",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#oms",
+      "target": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoExtensionOMSExtension_Extension11",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#oms",
+      "target": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#QualifiedOMS",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#QualifiedOMS",
+      "target": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#OMS",
+      "kind": "generalizes-to",
+      "xmi_id": "QualifiedOMS_is_OMS"
+    },
+    {
+      "source": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#oms",
+      "target": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoQualifiedOMSQualification_QualificationStar0",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#oms",
+      "target": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoQualifiedOMSOMS_OMS11",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#oms",
+      "target": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#CombinationOMS",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#CombinationOMS",
+      "target": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#OMS",
+      "kind": "generalizes-to",
+      "xmi_id": "CombinationOMS_is_OMS"
+    },
+    {
+      "source": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#oms",
+      "target": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoCombinationOMSNetwork_Network11",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#oms",
+      "target": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#ApplicationOMS",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#ApplicationOMS",
+      "target": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#OMS",
+      "kind": "generalizes-to",
+      "xmi_id": "ApplicationOMS_is_OMS"
+    },
+    {
+      "source": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#oms",
+      "target": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoApplicationOMSOMS_OMS11",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#oms",
+      "target": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoApplicationOMSSubstName_IRI11",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#oms",
+      "target": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#OMSDefinition",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#OMSDefinition",
+      "target": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#Definition",
+      "kind": "generalizes-to",
+      "xmi_id": "OMSDefinition_is_Definition"
+    },
+    {
+      "source": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#oms",
+      "target": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoOMSDefinitionOMSName_IRI11",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#oms",
+      "target": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#AssoOMSDefinitionOMS_OMS11",
+      "kind": "contains"
+    },
+    {
+      "source": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#oms",
+      "target": "https://www.omg.org/spec/DOL/20151109/DOL-metamodel.xmi#IRI",
+      "kind": "contains"
+    }
+  ]
+}

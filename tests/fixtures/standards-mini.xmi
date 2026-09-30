@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.omg.org/spec/UML/20110701">
+  <uml:Package xmi:type="uml:Package" xmi:id="pkg" name="Demo">
+    <packagedElement xmi:type="uml:Class" xmi:id="base" name="Expression"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="child" name="Term">
+      <generalization xmi:type="uml:Generalization" xmi:id="g1" general="base"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="p1" name="part" type="base"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="a1" name="Parts">
+      <memberEnd xmi:idref="p1"/>
+      <ownedEnd xmi:type="uml:Property" xmi:id="p2" name="owner" type="child" association="a1"/>
+    </packagedElement>
+  </uml:Package>
+</xmi:XMI>
