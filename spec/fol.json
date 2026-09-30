@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.0.0",
+  "title": "Classical First-Order Logic Operational Metamodel",
+  "description": "A typed vocabulary and executable rule map for classical first-order logic and finite-model evaluation.",
+  "schema": {
+    "declaration_fields": {"required": ["id", "name", "description", "references"], "id_pattern": "^[a-z][a-z0-9-]*$"},
+    "collections": ["entity_types", "relations", "constructors", "judgments", "semantic_rules", "satisfaction", "theory", "semantic_consequence"],
+    "reference_target": "declaration id in any model collection"
+  },
+  "model": {
+    "entity_types": [
+      {"id":"signature","name":"Signature","description":"A vocabulary of sorts, function symbols, and predicate symbols with arities.","references":["sort","function-symbol","predicate-symbol"]},
+      {"id":"sort","name":"Sort","description":"A domain kind used to type variables and function and predicate arguments.","references":["structure"]},
+      {"id":"variable","name":"Variable","description":"A typed symbol that receives a value from a variable assignment.","references":["assignment","variable-term"]},
+      {"id":"term","name":"Term","description":"A variable or a function symbol applied to well-formed terms of matching sorts.","references":["variable-term","function-term","formation"]},
+      {"id":"formula","name":"Formula","description":"An inductively formed expression that is true or false relative to a structure and assignment.","references":["atomic-formula","negation","conjunction","disjunction","implication","universal-quantifier","existential-quantifier"]},
+      {"id":"structure","name":"Structure","description":"A nonempty domain for each sort, with interpretations for signature symbols.","references":["signature","satisfaction-judgment"]},
+      {"id":"assignment","name":"Variable Assignment","description":"A sort-respecting mapping from variables to domain elements.","references":["variable","satisfaction-judgment"]},
+      {"id":"theory","name":"Theory","description":"A set of sentences in a signature, considered together as assumptions.","references":["sentence","semantic-consequence"]}
+    ],
+    "relations": [
+      {"id":"function-symbol","name":"Function Symbol","description":"Signature declaration interpreted as a total function from argument domains to a result domain.","references":["signature","function-term","structure"]},
+      {"id":"predicate-symbol","name":"Predicate Symbol","description":"Signature declaration interpreted as a relation on argument domains.","references":["signature","atomic-formula","structure"]},
+      {"id":"sentence","name":"Sentence","description":"A formula with no free variables.","references":["formula","theory","satisfaction-judgment"]}
+    ],
+    "constructors": [
+      {"id":"variable-term","name":"Variable Term","description":"A variable is a term of its declared sort.","references":["variable","term","formation"]},
+      {"id":"function-term","name":"Function Application","description":"If f has input sorts s1…sn and result sort r, and ti has sort si, then f(t1,…,tn) has sort r.","references":["function-symbol","term","formation"]},
+      {"id":"atomic-formula","name":"Atomic Formula","description":"P(t1,…,tn) is a formula when P has arity n and each argument term has its declared sort.","references":["predicate-symbol","term","formula","formation"]},
+      {"id":"negation","name":"Negation","description":"If φ is a formula, ¬φ is a formula.","references":["formula","semantic-evaluation"]},
+      {"id":"conjunction","name":"Conjunction","description":"If φ and ψ are formulas, (φ ∧ ψ) is a formula.","references":["formula","semantic-evaluation"]},
+      {"id":"disjunction","name":"Disjunction","description":"If φ and ψ are formulas, (φ ∨ ψ) is a formula.","references":["formula","semantic-evaluation"]},
+      {"id":"implication","name":"Implication","description":"If φ and ψ are formulas, (φ → ψ) is a formula.","references":["formula","semantic-evaluation"]},
+      {"id":"universal-quantifier","name":"Universal Quantification","description":"If φ is a formula and x has sort s, ∀x:s φ is a formula.","references":["variable","formula","semantic-evaluation"]},
+      {"id":"existential-quantifier","name":"Existential Quantification","description":"If φ is a formula and x has sort s, ∃x:s φ is a formula.","references":["variable","formula","semantic-evaluation"]}
+    ],
+    "judgments": [
+      {"id":"formation","name":"Formation Judgment","description":"Γ ⊢ t : s and Γ ⊢ φ : formula assert well-typed terms and well-formed formulas under signature context Γ.","references":["signature","term","formula"]},
+      {"id":"satisfaction-judgment","name":"Satisfaction Judgment","description":"M, g ⊨ φ says formula φ is true in structure M under assignment g.","references":["structure","assignment","formula","semantic-evaluation"]},
+      {"id":"semantic-consequence-judgment","name":"Semantic Consequence Judgment","description":"T ⊨ φ means every structure satisfying all sentences of T also satisfies φ.","references":["theory","sentence","satisfaction-judgment"]}
+    ],
+    "semantic_rules": [
+      {"id":"semantic-evaluation","name":"Recursive Truth Conditions","description":"Variables read from assignments; functions and predicates read from structure interpretations; connectives use classical truth functions; quantifiers range over their sort domains.","references":["term","formula","structure","assignment","satisfaction-judgment"]}
+    ],
+    "satisfaction": [
+      {"id":"satisfaction-clause","name":"Truth in a Model","description":"Defined recursively: M,g ⊨ P(t̄) iff the interpreted tuple belongs to P^M; connectives follow classical clauses; M,g ⊨ ∀x:s φ iff every a in D_s satisfies φ under g[x↦a], and ∃ iff some a does.","references":["structure","assignment","formula","semantic-evaluation"]}
+    ],
+    "theory": [
+      {"id":"theory-definition","name":"Theory","description":"A set T of sentences; M ⊨ T exactly when M satisfies every sentence in T.","references":["sentence","satisfaction-judgment","semantic-consequence"]}
+    ],
+    "semantic_consequence": [
+      {"id":"semantic-consequence","name":"Semantic Consequence","description":"T ⊨ φ iff for every structure M, M ⊨ T implies M ⊨ φ. This is model-theoretic consequence, distinct from syntactic derivability.","references":["theory-definition","sentence","satisfaction-judgment"]}
+    ]
+  }
+}
