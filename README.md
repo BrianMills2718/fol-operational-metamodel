@@ -37,12 +37,12 @@ python3 scripts/import_mmt.py fetch mmt-compiled-fol-omdoc \
 
 python3 scripts/import_mmt.py omdoc upstream/cache/FOL.omdoc \
   --uri "https://github.com/UniFormal/MMT/blob/fca5d7e12db5b4e9d6329590f9d25380017981d8/src/test/testarchive/content/http..mydomain.org/testarchive/mmt-example/%24F%24O%24L.omdoc" \
-  --output generated/mmt-ir.json
+  --output generated/pinned-fol-ir.json
 ```
 
 Reload the visualizer after regeneration. The graph will contain the imported FOL theory, its constants, explicit OpenMath symbol dependencies, its LF meta-theory, and any structures/imports present in the OMDoc.
 
-The checked-in `generated/mmt-ir.json` is deliberately generated from a small fixture so tests and the initial UI stay compact. It is not the formal authority.
+The visualizer defaults to the checked-in `generated/pinned-fol-ir.json`, which is generated from that exact pinned upstream artifact. It currently contains 16 imported nodes and 58 edges. Other generated datasets can be opened with the `data` query parameter, for example `/visualizer/?data=../generated/mmt-ir.json`.
 
 ## Add the LATIN2 archive/theory layer
 
@@ -154,7 +154,8 @@ That mode only recognizes a small source-level subset and does not replace MMT p
 - `upstream/README.md` — provenance, evidence, and unresolved source boundaries.
 - `upstream/latin2-fol-inventory.json` — partial evidence-backed orientation to confirmed FOL files/theories at the pinned LATIN2 revision.
 - `scripts/import_mmt.py` — verified fetcher plus archivegraph, relational-ABox, OMDoc, whole-archive, merge, and fallback-source importers.
-- `generated/mmt-ir.json` — derived graph IR consumed by the visualizer.
+- `generated/pinned-fol-ir.json` — reproducible snapshot generated from the pinned real MMT FOL OMDoc; default visualizer dataset.
+- `generated/mmt-ir.json` — workspace output for assembled or experimental graph IR.
 - `tests/fixtures/fol-compiled.omdoc` — compact representative compiled-OMDoc fixture.
 - `tests/fixtures/sfol-mini.mmt` — reduced fallback-source fixture.
 - `spec/fol.json` — legacy comparison fixture only; not formal authority.
