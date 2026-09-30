@@ -410,5 +410,35 @@ class ModelTests(unittest.TestCase):
         )
 
 
+    def test_pinned_real_fol_snapshot_matches_upstream_artifact(self):
+        snapshot = json.loads((ROOT / "generated/pinned-fol-ir.json").read_text())
+        self.assertEqual(
+            snapshot["source"]["sha256"],
+            "1f73bbfc9421db44c45a3f46936fcdb81661d0031446f634366bbf608b5eba3f",
+        )
+        self.assertEqual(snapshot["source"]["input_kind"], "omdoc")
+        self.assertEqual(len(snapshot["nodes"]), 16)
+        self.assertEqual(len(snapshot["edges"]), 58)
+        constants = {
+            node["name"]
+            for node in snapshot["nodes"]
+            if node.get("kind") == "constant"
+        }
+        self.assertEqual(
+            constants,
+            {
+                "prop", "true", "false", "and", "or", "impl", "not", "equiv",
+                "sort", "term", "equal", "forall", "exists", "proof",
+            },
+        )
+        by_name = {
+            node["name"]: node
+            for node in snapshot["nodes"]
+            if node.get("kind") == "constant"
+        }
+        self.assertEqual(by_name["equal"]["role"], "Eq")
+        self.assertEqual(by_name["proof"]["role"], "Judgment")
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

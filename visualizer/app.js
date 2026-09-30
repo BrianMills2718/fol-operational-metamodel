@@ -25,7 +25,9 @@ function shortName(uri) {
   return pieces[pieces.length - 1] || uri;
 }
 
-fetch("../generated/mmt-ir.json")
+const dataFile = new URLSearchParams(window.location.search).get("data") || "../generated/pinned-fol-ir.json";
+
+fetch(dataFile)
   .then(response => {
     if (!response.ok) throw new Error(`Could not load generated MMT IR: ${response.status}`);
     return response.json();
