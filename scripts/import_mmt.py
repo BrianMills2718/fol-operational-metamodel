@@ -202,6 +202,146 @@ def extract_omdoc(xml_text, source_uri, source_path, source_hash):
     }
 
 
+
+def extract_archivegraph(json_text, source_uri, source_path, source_hash):
+    """Convert MMT :jgraph/json output into normalized graph IR.
+
+    MMT's archivegraph endpoint already provides theory nodes and typed graph
+    edges (e.g. meta/include/structure/view). We preserve those explicit styles
+    without inferring additional semantics.
+    """
+    try:
+        graph = json.loads(json_text)
+    except json.JSONDecodeError as exc:
+        raise ValueError(f"invalid archivegraph JSON: {exc}") from exc
+    if not isinstance(graph, dict) or not isinstance(graph.get("nodes"), list) or not isinstance(graph.get("edges"), list):
+        raise ValueError("archivegraph JSON must contain nodes and edges arrays")
+
+    nodes, edges = [], []
+    for item in graph["nodes"]:
+        if not isinstance(item, dict) or not item.get("id"):
+            continue
+        style = item.get("style") or "archive-node"
+        kind = style if style in {"theory", "document"} else f"archive-node:{style}"
+        node = {
+            "id": item["id"],
+            "uri": item.get("uri") or item["id"],
+            "name": item.get("label") or item["id"].rsplit("?", 1)[-1],
+            "kind": kind,
+            "description": "MMT archive/theory graph node.",
+            "references": [],
+            "source": {"uri": source_uri, "path": source_path},
+            "archivegraph_style": style,
+        }
+        if item.get("url"):
+            node["mmt_url"] = item["url"]
+        for key, value in item.items():
+            if key not in {"id", "uri", "label", "style", "url"}:
+                node.setdefault("archivegraph_data", {})[key] = value
+        nodes.append(node)
+
+    for item in graph["edges"]:
+        if not isinstance(item, dict) or not item.get("from") or not item.get("to"):
+            continue
+        edge = {
+            "source": item["from"],
+            "target": item["to"],
+            "kind": item.get("style") or "archive-edge",
+        }
+        if item.get("id"):
+            edge["id"] = item["id"]
+        if item.get("label"):
+            edge["label"] = item["label"]
+        if item.get("url"):
+            edge["mmt_url"] = item["url"]
+        extra = {k: v for k, v in item.items() if k not in {"from", "to", "style", "id", "label", "url"}}
+        if extra:
+            edge["archivegraph_data"] = extra
+        edges.append(edge)
+
+    return {
+        "format": "mmt-ir/v2",
+        "source": {
+            "uri": source_uri,
+            "path": source_path,
+            "sha256": source_hash,
+            "input_kind": "archivegraph",
+            "extractor": "mmt-jgraph-structural",
+        },
+        "scope": "MMT-generated archive/theory graph only; declaration detail requires OMDoc",
+        "nodes": nodes,
+        "edges": edges,
+    }
+
+
+def merge_irs(irs, source_uri="merged://mmt-graph"):
+    """Merge archive-level and declaration-level IR by stable MMT URI.
+
+    Later IRs win scalar field conflicts, so callers should pass archivegraph
+    first and OMDoc second when declaration-level detail should take priority.
+    Provenance from all inputs is retained.
+    """
+    node_map = {}
+    edge_map = {}
+    input_sources = []
+
+    for ir in irs:
+        input_sources.append(ir.get("source", {}))
+        for node in ir.get("nodes", []):
+            node_id = node.get("id")
+            if not node_id:
+                continue
+            if node_id not in node_map:
+                node_map[node_id] = dict(node)
+            else:
+                previous = node_map[node_id]
+                merged = dict(previous)
+                merged.update({k: v for k, v in node.items() if v not in (None, "", [], {})})
+                refs = list(dict.fromkeys((previous.get("references") or []) + (node.get("references") or [])))
+                merged["references"] = refs
+                provenance = []
+                for src in previous.get("provenance", []):
+                    if src not in provenance:
+                        provenance.append(src)
+                if previous.get("source") and previous["source"] not in provenance:
+                    provenance.append(previous["source"])
+                for src in node.get("provenance", []):
+                    if src not in provenance:
+                        provenance.append(src)
+                if node.get("source") and node["source"] not in provenance:
+                    provenance.append(node["source"])
+                if provenance:
+                    merged["provenance"] = provenance
+                node_map[node_id] = merged
+
+        for edge in ir.get("edges", []):
+            if not edge.get("source") or not edge.get("target"):
+                continue
+            key = (
+                edge.get("source"),
+                edge.get("target"),
+                edge.get("kind"),
+                edge.get("id"),
+                edge.get("label"),
+            )
+            edge_map.setdefault(key, dict(edge))
+
+    digest_material = json.dumps(input_sources, sort_keys=True, ensure_ascii=False).encode("utf-8")
+    return {
+        "format": "mmt-ir/v2",
+        "source": {
+            "uri": source_uri,
+            "path": "merged",
+            "sha256": hashlib.sha256(digest_material).hexdigest(),
+            "input_kind": "merged",
+            "extractor": "uri-merge",
+            "inputs": input_sources,
+        },
+        "scope": "merged MMT archivegraph and declaration-level IR; no new semantic inference",
+        "nodes": list(node_map.values()),
+        "edges": list(edge_map.values()),
+    }
+
 def extract(text, source_uri, source_path, source_hash):
     """Fallback extractor for a conservative line-oriented subset of MMT source."""
     lines = text.splitlines()
@@ -339,18 +479,35 @@ def main():
     p_omdoc.add_argument("--source-path")
     p_omdoc.add_argument("--output", default=str(IR_PATH))
 
+    p_archive = commands.add_parser("archivegraph", help="import MMT :jgraph/json archivegraph output")
+    p_archive.add_argument("source")
+    p_archive.add_argument("--uri", required=True)
+    p_archive.add_argument("--source-path")
+    p_archive.add_argument("--output", default=str(IR_PATH))
+
+    p_merge = commands.add_parser("merge", help="merge multiple normalized IR files by stable URI")
+    p_merge.add_argument("sources", nargs="+")
+    p_merge.add_argument("--uri", default="merged://mmt-graph")
+    p_merge.add_argument("--output", default=str(IR_PATH))
+
     args = parser.parse_args()
     try:
         if args.command == "fetch":
             fetch(args.source_id, args.output)
+        elif args.command == "merge":
+            irs = [json.loads(Path(source).read_text(encoding="utf-8")) for source in args.sources]
+            write_ir(merge_irs(irs, args.uri), args.output)
         else:
             path = Path(args.source)
             text = path.read_text(encoding="utf-8")
             source_path = args.source_path or path.as_posix()
             digest = source_sha256(text)
-            ir = (extract_omdoc(text, args.uri, source_path, digest)
-                  if args.command == "omdoc"
-                  else extract(text, args.uri, source_path, digest))
+            if args.command == "omdoc":
+                ir = extract_omdoc(text, args.uri, source_path, digest)
+            elif args.command == "archivegraph":
+                ir = extract_archivegraph(text, args.uri, source_path, digest)
+            else:
+                ir = extract(text, args.uri, source_path, digest)
             write_ir(ir, args.output)
     except (OSError, ValueError, urllib.error.URLError) as exc:
         print(f"import failed: {exc}", file=sys.stderr)

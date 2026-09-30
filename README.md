@@ -44,6 +44,35 @@ Reload the visualizer after regeneration. The graph will contain the imported FO
 
 The checked-in `generated/mmt-ir.json` is deliberately generated from a small fixture so tests and the initial UI stay compact. It is not the formal authority.
 
+## Add the LATIN2 archive/theory layer
+
+MMT's `:jgraph/json` endpoint emits the archive/theory graph as JSON with `nodes` and `edges`. The importer preserves MMT's explicit edge styles such as `meta`, `include`, `structure`, and `view`.
+
+After building/loading LATIN2 in MMT and starting its server:
+
+```sh
+curl 'http://localhost:8080/:jgraph/json?key=archivegraph&uri=MMT/LATIN2' \
+  -o upstream/cache/latin2-archivegraph.json
+
+python3 scripts/import_mmt.py archivegraph upstream/cache/latin2-archivegraph.json \
+  --uri 'http://localhost:8080/:jgraph/json?key=archivegraph&uri=MMT/LATIN2' \
+  --output generated/latin2-archive-ir.json
+```
+
+Then import one or more compiled OMDoc files and merge by stable MMT URI:
+
+```sh
+python3 scripts/import_mmt.py omdoc upstream/cache/FOL.omdoc \
+  --uri 'mmt://compiled/FOL.omdoc' \
+  --output generated/fol-omdoc-ir.json
+
+python3 scripts/import_mmt.py merge \
+  generated/latin2-archive-ir.json generated/fol-omdoc-ir.json \
+  --output generated/mmt-ir.json
+```
+
+The archive graph supplies the large-scale theory/morphism topology; OMDoc supplies declaration-level detail. The merge does not invent additional semantic relations.
+
 ## Fallback source extraction
 
 When compiled OMDoc is unavailable:

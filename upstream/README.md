@@ -64,7 +64,7 @@ MMT also documents an archive graph JSON endpoint after an archive is built and 
 http://localhost:8081/:jgraph/json?key=archivegraph&uri=MMT/LATIN2
 ```
 
-That graph is useful for archive/theory-level structure. It is complementary to the declaration-level OMDoc projection here. A future adapter can ingest this endpoint and merge theory-level and declaration-level views by URI.
+That graph is useful for archive/theory-level structure. It is complementary to the declaration-level OMDoc projection here. The repository now ingests this endpoint with `scripts/import_mmt.py archivegraph` and merges it with OMDoc IR using `scripts/import_mmt.py merge`. MMT's own graph styles (`meta`, `include`, `structure`, `view`) are preserved verbatim rather than reclassified.
 
 MMT's relational indexes are another promising input because they already classify declaration and dependency relations. They should be preferred over name-based heuristics when we add richer classifications.
 
