@@ -1,0 +1,65 @@
+{
+  "format": "flams-substrate-audit/v1",
+  "audited_on": "2026-10-01",
+  "current_stack": {
+    "mmt": {
+      "version": "v27.0.0",
+      "revision": "fca5d7e12db5b4e9d6329590f9d25380017981d8",
+      "jar_sha256": "e481c037e5785f3e6da4fa3110b683a98aced3ea9a0a7499f374a7d194565c3d"
+    },
+    "urtheories": {
+      "revision": "05f2c91b00373c611eb66e26ede27510f97f65b2"
+    },
+    "lfx": {
+      "revision": "c3266bc438b1a127dd37cfd86941b1eb37445c08"
+    },
+    "latin2": {
+      "revision": "48d8ce4d6d1bccbee8d746a3a519f07625ea2c5e"
+    },
+    "flams": {
+      "revision": "b4f5a758ba66b716b7ac22ed5a23a94db3a1f4c5"
+    }
+  },
+  "findings": {
+    "mmt_relational_format": "RDF4J Binary RDF (.brf)",
+    "mmt_ontology": "http://mathhub.info/ulo",
+    "flams_relational_input": "out/**/index.ttl parsed as Turtle into Oxigraph",
+    "flams_ontology": "http://mathhub.info/ulo",
+    "semantic_mapping": "Current MMT TBox/ULO code explicitly maps MMT relational predicates to ULO; no project-authored semantic mapping is needed.",
+    "remaining_bridge": "RDF serialization/archive layout: .brf -> Turtle index.ttl (or equivalent FLAMS loader support)."
+  },
+  "current_latin2_partial_build": {
+    "relational_brf_files": 127,
+    "compiled_content_files": 834,
+    "fol_family_brf_files": 13,
+    "fol_brf": {
+      "triples": 423,
+      "sha256": "dacf51c7888504b759a399fd0f2f9b0e3c5e1d5022a71f9ea5dddeb5ab7bd491"
+    },
+    "sfol_brf": {
+      "sha256": "db191b0924bffdeff532192b6e2d92e337263a39e708a375214e1cfcc90aba0f"
+    },
+    "note": "Build was intentionally stopped after FOL/SFOL, model-theory, HOL, and additional downstream material had completed; full archive completion was not required for the substrate test."
+  },
+  "compatibility_sample": {
+    "source": "relational/logic/fol_like/fol.brf",
+    "observed_predicates": [
+      "rdf:type",
+      "ulo:include",
+      "ulo:has-meta-theory",
+      "ulo:specifies",
+      "ulo:uses",
+      "ulo:contains"
+    ],
+    "observed_classes": [
+      "ulo:theory",
+      "ulo:constant",
+      "ulo:function"
+    ],
+    "observed_examples": [
+      "latin:/?UniversalQuantification rdf:type ulo:theory",
+      "latin:/?UniversalQuantification?uforall rdf:type ulo:function",
+      "latin:/?FOL ulo:has-meta-theory http://cds.omdoc.org/urtheories?LF"
+    ]
+  }
+}
