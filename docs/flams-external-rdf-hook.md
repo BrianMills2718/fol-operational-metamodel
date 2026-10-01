@@ -77,8 +77,27 @@ No existing FLAMS implementation or issue was found for:
 
 Current FLAMS does already have a generic RDF source/build target for Turtle files, but that still uses the local archive/output machinery and does not solve external archive graph identity.
 
+## Real MMT graph validation
+
+The hook was also tested with the actual current LATIN2 FOL relational graph.
+
+MMT's `fol.brf` contains **423 statements** and already carries one authoritative RDF context on every statement:
+
+`latin:/source/logic/fol_like/fol.mmt`
+
+That BRF graph was losslessly serialized to N-Quads with the context intact, parsed by Oxigraph, supplied through a test `ExternalArchive`, and loaded by `RDFStore::load_archives`.
+
+Result:
+
+- source statements: **423**;
+- loaded statements: **423**;
+- graph URI preserved: **yes**;
+- targeted RDF-enabled FLAMS test: **1 passed, 0 failed**.
+
+Therefore an MMT integration does not need to infer graph identity from filenames or FLAMS output paths. The identity is already present in MMT's RDF.
+
 ## Recommended next step
 
-Validate the small FLAMS hook in a Rust-capable environment. If it compiles cleanly, propose it upstream independently of MMT: it is a general capability for any external archive that can supply semantic RDF.
+Propose the validated generic hook upstream independently of MMT. After that, implement an MMT-specific `ArchiveKind` that reads MMT's already-ULO relational graphs and returns their embedded graph contexts.
 
-Only after that should an MMT-specific `ArchiveKind` be implemented.
+The connected GitHub integration cannot create issues in the FLAMS repository (HTTP 403), so the tested patch and issue rationale are retained here for manual/upstream submission.
