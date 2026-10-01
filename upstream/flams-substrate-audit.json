@@ -26,7 +26,9 @@
     "flams_relational_input": "out/**/index.ttl parsed as Turtle into Oxigraph",
     "flams_ontology": "http://mathhub.info/ulo",
     "semantic_mapping": "Current MMT TBox/ULO code explicitly maps MMT relational predicates to ULO; no project-authored semantic mapping is needed.",
-    "remaining_bridge": "RDF serialization/archive layout: .brf -> Turtle index.ttl (or equivalent FLAMS loader support)."
+    "remaining_bridge": "Implement/submit the validated FLAMS ExternalArchive RDF hook and an MMT-specific ArchiveKind; semantic mapping and graph-URI reconstruction are not required.",
+    "mmt_graph_context": "MMT BRF statements retain authoritative named-graph context; no filename-to-URI reconstruction is required.",
+    "flams_external_archive_hook": "Validated prototype: ExternalArchive can supply authoritative named graphs directly to RDFStore."
   },
   "current_latin2_partial_build": {
     "relational_brf_files": 127,
@@ -34,7 +36,10 @@
     "fol_family_brf_files": 13,
     "fol_brf": {
       "triples": 423,
-      "sha256": "dacf51c7888504b759a399fd0f2f9b0e3c5e1d5022a71f9ea5dddeb5ab7bd491"
+      "sha256": "dacf51c7888504b759a399fd0f2f9b0e3c5e1d5022a71f9ea5dddeb5ab7bd491",
+      "named_graph": "latin:/source/logic/fol_like/fol.mmt",
+      "nquads_sha256": "9c78be6887804a022acbf2e63522e812feb10eb9976298f6c25fe7ef02049bcb",
+      "context_preserved_in_flams_test": true
     },
     "sfol_brf": {
       "sha256": "db191b0924bffdeff532192b6e2d92e337263a39e708a375214e1cfcc90aba0f"
@@ -60,6 +65,12 @@
       "latin:/?UniversalQuantification rdf:type ulo:theory",
       "latin:/?UniversalQuantification?uforall rdf:type ulo:function",
       "latin:/?FOL ulo:has-meta-theory http://cds.omdoc.org/urtheories?LF"
-    ]
+    ],
+    "real_flams_test": {
+      "source_statements": 423,
+      "loaded_statements": 423,
+      "graph": "latin:/source/logic/fol_like/fol.mmt",
+      "result": "passed"
+    }
   }
 }
