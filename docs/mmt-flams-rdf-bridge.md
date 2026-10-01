@@ -1,32 +1,55 @@
 # MMT → FLAMS RDF bridge
 
-Current MMT and FLAMS already use the same Upper Library Ontology (ULO). The remaining incompatibility is serialization and archive layout:
+Current MMT and FLAMS already use the same Upper Library Ontology (ULO). The remaining compatibility boundary is RDF serialization plus the FLAMS external-archive ingestion hook:
 
-- MMT v26+ writes one RDF4J Binary RDF (`.brf`) graph per built document under `relational/`.
-- FLAMS loads standard RDF from per-document `index.ttl` files under its output tree.
+- MMT v26+ writes RDF4J Binary RDF (`.brf`) under `relational/`.
+- FLAMS stores/query RDF in Oxigraph and natively loads Turtle from local FLAMS archives.
+- A validated FLAMS prototype lets an `ExternalArchive` contribute authoritative named RDF graphs directly.
 
-`scripts/mmt_brf_to_flams_rdf.py` is deliberately **not an ontology converter**. It uses the official MMT jar's RDF4J parser to read each BRF graph and serializes the exact RDF statements as N-Triples syntax, which is valid Turtle.
+`scripts/mmt_brf_to_flams_rdf.py` is deliberately **not an ontology converter**. It uses the official MMT jar's RDF4J parser to read each BRF file and serializes the exact RDF statements as **N-Quads**.
 
-The staging layout is:
+## MMT already stores graph identity
+
+A key current-stack finding is that MMT's BRF files already carry the authoritative RDF context. For current LATIN2:
 
 ```
-<output>/<MMT relational document path without .brf>/index.ttl
+fol.brf
+  statements: 423
+  named graph: latin:/source/logic/fol_like/fol.mmt
 ```
 
-This preserves graph boundaries and makes the output easy to inspect or feed to a standard RDF loader. It does **not** claim that the staging paths are native FLAMS `ArchiveUri/DocumentUri` paths; FLAMS derives named-graph identity from its own archive/output path conventions. That final path/identity mapping must come from a concrete FLAMS archive integration rather than a guessed filename transformation.
+All 423 statements in that file carry that same graph URI. Therefore no filename-to-`DocumentUri` reconstruction is needed for an external-archive integration.
+
+The bridge preserves that context:
+
+```
+<subject> <predicate> <object> <latin:/source/logic/fol_like/fol.mmt> .
+```
+
+The staging layout is simply:
+
+```
+<output>/<MMT relational path>.nq
+```
+
+It does not impersonate FLAMS' native `out/**/index.ttl` layout.
 
 ## Verified current-stack sample
 
-With MMT v27 and current LATIN2, the 13 `logic/fol_like` BRF graphs contain 2,877 triples total. The bridge emitted 13 `index.ttl` files with exactly 2,877 statement lines. `fol.brf` contains 423 triples and the output retains, among others:
+With MMT v27 and current LATIN2, the 13 `logic/fol_like` BRF graphs contain 2,877 statements total. Earlier triple-only serialization verified the statement count; the context-preserving bridge now emits N-Quads.
+
+For `fol.brf`, the graph contains 423 statements including:
 
 - `UniversalQuantification rdf:type ulo:theory`
 - `UniversalQuantification?uforall rdf:type ulo:function`
 - `FOL ulo:has-meta-theory LF`
 - ULO include/specifies/uses relations.
 
+The real 423-statement FOL graph was then loaded through the validated FLAMS `ExternalArchive::relational_graphs` prototype. The RDF-enabled FLAMS test passed and preserved the graph URI `latin:/source/logic/fol_like/fol.mmt`.
+
 ## Requirements
 
-The script needs:
+The bridge needs:
 
 - Python 3;
 - a JDK (`java` and `javac`);
