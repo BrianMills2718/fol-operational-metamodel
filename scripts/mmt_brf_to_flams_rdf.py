@@ -52,12 +52,12 @@ def sha256(path: pathlib.Path) -> str:
     return h.hexdigest()
 
 
-def compile_helper(java: str, mmt_jar: pathlib.Path, work: pathlib.Path) -> None:
+def compile_helper(java: str, javac: str, mmt_jar: pathlib.Path, work: pathlib.Path) -> None:
     src = work / "BrfToTurtle.java"
     src.write_text(JAVA_SOURCE, encoding="utf-8")
     subprocess.run([java, "-version"], check=True, stdout=subprocess.DEVNULL)
     subprocess.run(
-        ["javac", "-cp", str(mmt_jar), str(src)],
+        [javac, "-cp", str(mmt_jar), str(src)],
         check=True,
         cwd=work,
     )
@@ -80,7 +80,7 @@ def main() -> None:
     ap.add_argument("--relational", type=pathlib.Path, required=True,
                     help="MMT archive relational/ directory")
     ap.add_argument("--output", type=pathlib.Path, required=True)
-    ap.add_argument("--java", default="java")
+    ap.add_argument("--java", default="java")\n    ap.add_argument("--javac", default="javac")
     ap.add_argument("--manifest", type=pathlib.Path)
     args = ap.parse_args()
 
@@ -91,7 +91,7 @@ def main() -> None:
     rows = []
     with tempfile.TemporaryDirectory(prefix="mmt-flams-rdf-") as td:
         work = pathlib.Path(td)
-        compile_helper(args.java, args.mmt_jar, work)
+        compile_helper(args.java, args.javac, args.mmt_jar, work)
         for source in brfs:
             rel = source.relative_to(args.relational).with_suffix("")
             target = args.output / rel / "index.ttl"
