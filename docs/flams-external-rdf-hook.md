@@ -56,7 +56,16 @@ A two-file local prototype was prepared against the audited FLAMS commit:
 - add a default-empty `ExternalArchive::relational_graphs` hook;
 - consume it in `RDFStore::load_archives` before the existing local-archive loader.
 
-It has **not been claimed as validated** because Brian's Windows host does not have a Rust toolchain and the guarded WSL coding-agent invocation failed before compilation. The prototype was not pushed upstream.
+The prototype has now been **validated in a containerized Rust environment without installing Rust on Brian's machine**:
+
+- `cargo check -p flams-math-archives` passes;
+- with the `rdf` feature enabled, a targeted unit test creates a fake `ExternalArchive` supplying one authoritative named RDF graph;
+- `RDFStore::load_archives` loads the triple and preserves the supplied graph name;
+- result: **1 test passed, 0 failed**.
+
+The exact tested patch is checked in at `upstream/patches/flams-external-rdf.patch`.
+
+An attempt to create an upstream FLAMS GitHub issue through the connected GitHub integration was rejected with HTTP 403 (`Resource not accessible by integration`), so no upstream issue or PR is claimed to have been created.
 
 ## Prior-art check
 
