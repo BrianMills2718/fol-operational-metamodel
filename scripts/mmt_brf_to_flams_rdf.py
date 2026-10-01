@@ -80,7 +80,8 @@ def main() -> None:
     ap.add_argument("--relational", type=pathlib.Path, required=True,
                     help="MMT archive relational/ directory")
     ap.add_argument("--output", type=pathlib.Path, required=True)
-    ap.add_argument("--java", default="java")\n    ap.add_argument("--javac", default="javac")
+    ap.add_argument("--java", default="java")
+    ap.add_argument("--javac", default="javac")
     ap.add_argument("--manifest", type=pathlib.Path)
     args = ap.parse_args()
 
