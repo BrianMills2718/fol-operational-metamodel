@@ -1,0 +1,50 @@
+name: validate FLAMS MMT RDF prototype
+
+on:
+  push:
+    paths:
+      - "upstream/prototypes/flams_mmt_rdf.rs"
+      - "upstream/patches/flams-external-rdf.patch"
+      - "tests/fixtures/flams-mmt-rdf/**"
+      - ".github/workflows/validate-flams-mmt-rdf.yml"
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Clone pinned FLAMS
+        run: |
+          git clone https://github.com/FlexiFormal/FLAMS.git /tmp/flams
+          git -C /tmp/flams checkout b4f5a758ba66b716b7ac22ed5a23a94db3a1f4c5
+
+      - name: Apply external RDF hook
+        run: |
+          git -C /tmp/flams apply "$GITHUB_WORKSPACE/upstream/patches/flams-external-rdf.patch"
+
+      - name: Install MMT RDF archive-kind prototype
+        run: |
+          cp "$GITHUB_WORKSPACE/upstream/prototypes/flams_mmt_rdf.rs" /tmp/flams/math-archives/src/mmt_rdf.rs
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path("/tmp/flams/math-archives/src/lib.rs")
+          s = p.read_text()
+          needle = '#[cfg(feature = "rdf")]\npub mod triple_store;'
+          replacement = needle + '\n#[cfg(feature = "rdf")]\npub mod mmt_rdf;'
+          if needle not in s:
+              raise SystemExit("FLAMS module insertion point not found")
+          p.write_text(s.replace(needle, replacement, 1))
+          PY
+
+      - name: Check FLAMS RDF crate
+        working-directory: /tmp/flams
+        run: cargo check -p flams-math-archives --features rdf
+
+      - name: Test MMT RDF ArchiveKind through SPARQL
+        working-directory: /tmp/flams
+        env:
+          MMT_FOL_NQUADS_DIR: ${{ github.workspace }}/tests/fixtures/flams-mmt-rdf
+        run: |
+          cargo test -p flams-math-archives --features rdf             mmt_rdf_archive_kind_loads_real_fol_graph_into_sparql_store -- --nocapture
