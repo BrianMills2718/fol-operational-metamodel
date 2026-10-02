@@ -9,21 +9,41 @@
 <body>
   <header>
     <div>
-      <p class="eyebrow">GENERATED IR · <span id="version">loading</span></p>
-      <h1>MMT / OMDoc graph</h1>
-      <p id="description">Loading imported declarations…</p>
+      <p class="eyebrow">SEMANTIC VIEW · <span id="version">loading</span></p>
+      <h1>FOL representation explorer</h1>
+      <p id="description">Loading formal relations…</p>
     </div>
-    <label>Show <select id="category"><option value="all">all concepts</option></select></label>
+    <div class="controls">
+      <label>Focus
+        <input id="focus" placeholder="latin:/?UniversalQuantification#">
+      </label>
+      <label>FLAMS endpoint
+        <input id="endpoint" value="/api/backend/query">
+      </label>
+      <button id="load-focus" type="button">Load focus</button>
+      <label>Layout
+        <select id="layout">
+          <option value="layered">focus layers</option>
+          <option value="force">force</option>
+        </select>
+      </label>
+      <label>Show
+        <select id="category"><option value="all">all concepts</option></select>
+      </label>
+    </div>
   </header>
   <main>
-    <svg id="graph" role="img" aria-label="Interactive graph of imported MMT and OMDoc declarations"></svg>
+    <svg id="graph" role="img" aria-label="Interactive graph of formal logic relations"></svg>
     <aside id="detail">
       <p class="eyebrow">SELECT A NODE</p>
-      <h2>Explore imported declarations</h2>
-      <p>Edges are generated from explicit OMDoc structure: containment, meta-theory, imports, declaration membership, and OpenMath symbol references.</p>
+      <h2>Query-defined views</h2>
+      <p>Enter a formal URI to query its one-hop incoming and outgoing ULO relations from FLAMS. Leave Focus blank to use the generated IR fallback.</p>
     </aside>
   </main>
-  <footer>Default: <code>generated/pinned-fol-ir.json</code> · override with <code>?data=…</code> · drag to rearrange · scroll to zoom</footer>
+  <footer>
+    Live mode: <code>?focus=latin:/?UniversalQuantification%23&amp;endpoint=http://localhost:3000/api/backend/query</code>
+    · fallback IR: <code>?data=…</code> · drag to rearrange · scroll to zoom
+  </footer>
   <script src="app.js"></script>
 </body>
 </html>
