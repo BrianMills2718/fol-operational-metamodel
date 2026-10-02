@@ -29,13 +29,14 @@ index 6e538a1..399ca94 100644
          &self,
          path: Option<&UriPath>,
 diff --git a/math-archives/src/triple_store/mod.rs b/math-archives/src/triple_store/mod.rs
-index d83689c..00e5ffc 100644
+index d83689c..9ec8276 100644
 --- a/math-archives/src/triple_store/mod.rs
 +++ b/math-archives/src/triple_store/mod.rs
-@@ -181,6 +181,17 @@ impl RDFStore {
+@@ -181,6 +181,18 @@ impl RDFStore {
          use rayon::prelude::*;
          tracing::info_span!(target:"relational","loading relational","Loading relational for {} archives...",archives.len()).in_scope(move || {
              let old = self.store.len().unwrap_or_default();
++
 +            // External archives may supply relational graphs directly. Unlike
 +            // local archives, their graph identity must not be reconstructed
 +            // from a FLAMS output path.
@@ -50,113 +51,3 @@ index d83689c..00e5ffc 100644
              let all_files = archives
                  .par_iter()
                  .filter_map(|a| match a {
-@@ -504,3 +515,117 @@ fn normalize(query: &mut spargebra::Query) {
-         }
-     }
- }
-+
-+#[cfg(test)]
-+mod external_archive_rdf_tests {
-+    use super::*;
-+    use crate::{
-+        Archive, ArchiveKind, ExternalArchive, MathArchive,
-+        manifest::RepositoryData,
-+        utils::{AsyncEngine, errors::BackendError},
-+    };
-+    use ftml_ontology::{domain::modules::Module, narrative::documents::Document};
-+    use ftml_uris::{ArchiveUri, Language, UriName, UriPath};
-+    use std::path::Path;
-+
-+    #[derive(Debug)]
-+    struct FakeExternalArchive;
-+
-+    impl MathArchive for FakeExternalArchive {
-+        fn uri(&self) -> &ArchiveUri {
-+            unreachable!("not needed by external relational loading")
-+        }
-+        fn path(&self) -> &Path {
-+            unreachable!("not needed by external relational loading")
-+        }
-+        fn is_meta(&self) -> bool {
-+            false
-+        }
-+        fn load_module(
-+            &self,
-+            _path: Option<&UriPath>,
-+            _name: &UriName,
-+        ) -> Result<Module, BackendError> {
-+            unreachable!("not needed by external relational loading")
-+        }
-+        fn load_module_async<A: AsyncEngine>(
-+            &self,
-+            _path: Option<&UriPath>,
-+            _name: &UriName,
-+        ) -> impl Future<Output = Result<Module, BackendError>> + 'static + use<A> {
-+            async { unreachable!("not needed by external relational loading") }
-+        }
-+    }
-+
-+    impl ExternalArchive for FakeExternalArchive {
-+        fn load_document(
-+            &self,
-+            _path: Option<&UriPath>,
-+            _name: &str,
-+            _language: Language,
-+        ) -> Option<Document> {
-+            None
-+        }
-+        fn relational_graphs(
-+            &self,
-+        ) -> Box<
-+            dyn Iterator<
-+                    Item = (
-+                        ulo::rdf_types::NamedNode,
-+                        Box<dyn Iterator<Item = ulo::rdf_types::Triple>>,
-+                    ),
-+                > + '_,
-+        > {
-+            let graph = ulo::rdf_types::NamedNode::new_unchecked("urn:test:graph");
-+            let subject = ulo::rdf_types::NamedNode::new_unchecked("urn:test:subject");
-+            let object = ulo::rdf_types::NamedNode::new_unchecked("urn:test:object");
-+            let predicate =
-+                ulo::rdf_types::NamedNode::new_unchecked("http://mathhub.info/ulo#uses");
-+            let triple = ulo::rdf_types::Triple {
-+                subject: subject.into(),
-+                predicate,
-+                object: object.into(),
-+            };
-+            Box::new(std::iter::once((
-+                graph,
-+                Box::new(std::iter::once(triple)) as Box<dyn Iterator<Item = _>>,
-+            )))
-+        }
-+    }
-+
-+    fn no_construct(
-+        _data: RepositoryData,
-+        _path: &Path,
-+    ) -> std::result::Result<Box<dyn ExternalArchive>, String> {
-+        unreachable!("test ArchiveKind is never constructed from a manifest")
-+    }
-+
-+    static TEST_KIND: ArchiveKind = ArchiveKind {
-+        name: "test-external-rdf",
-+        make_new: no_construct,
-+    };
-+
-+    #[test]
-+    fn external_archive_relational_graphs_are_loaded_with_supplied_graph_name() {
-+        let store = RDFStore::default();
-+        let before = store.num_relations();
-+        let archive = Archive::Ext(&TEST_KIND, Box::new(FakeExternalArchive));
-+        store.load_archives(&[archive]);
-+        assert_eq!(store.num_relations(), before + 1);
-+        let graphs = store
-+            .store
-+            .named_graphs()
-+            .filter_map(Result::ok)
-+            .map(|g| g.to_string())
-+            .collect::<Vec<_>>();
-+        assert!(graphs.iter().any(|g| g.contains("urn:test:graph")));
-+    }
-+}
