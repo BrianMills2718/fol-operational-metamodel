@@ -36,6 +36,17 @@ The same visualizer can now query a FLAMS SPARQL endpoint directly instead of lo
 
 The browser constructs a one-hop ULO SPARQL projection around the focus, keeps the authoritative RDF named-graph provenance, and lets the same semantic view switch between a force layout and a focus-layered layout. Leave the focus blank to use the generated-IR fallback.
 
+Semantic projections are data-driven from `visualizer/views.json`. Current presets are:
+
+- **All relations** — every explicit one-hop RDF/ULO relation touching the focus.
+- **Structure** — `ulo:include`, `ulo:has-meta-theory`, and `ulo:specifies`.
+- **Declarations** — `ulo:specifies` only.
+- **Dependencies** — `ulo:uses`.
+- **Morphisms** — `ulo:domain` and `ulo:codomain`.
+- **Provenance** — authoritative RDF named graphs in which the focus participates.
+
+In live mode, clicking a neighboring node refocuses the query while preserving the selected semantic view. Back/forward buttons and breadcrumbs retain the exploration path.
+
 
 ## Import standards metamodels
 

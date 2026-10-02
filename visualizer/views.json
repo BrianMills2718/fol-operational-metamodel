@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "views": [
+    {
+      "id": "all",
+      "label": "All relations",
+      "description": "All explicit one-hop ULO/RDF relations touching the focus.",
+      "mode": "neighborhood",
+      "predicates": []
+    },
+    {
+      "id": "structure",
+      "label": "Structure",
+      "description": "Theory/module construction: includes, meta-theory, and specification/declaration membership.",
+      "mode": "neighborhood",
+      "predicates": [
+        "http://mathhub.info/ulo#include",
+        "http://mathhub.info/ulo#has-meta-theory",
+        "http://mathhub.info/ulo#specifies"
+      ]
+    },
+    {
+      "id": "declarations",
+      "label": "Declarations",
+      "description": "Declarations specified by the focus and formal containers that specify the focus.",
+      "mode": "neighborhood",
+      "predicates": [
+        "http://mathhub.info/ulo#specifies"
+      ]
+    },
+    {
+      "id": "dependencies",
+      "label": "Dependencies",
+      "description": "Explicit ULO uses/dependency relations touching the focus.",
+      "mode": "neighborhood",
+      "predicates": [
+        "http://mathhub.info/ulo#uses"
+      ]
+    },
+    {
+      "id": "morphisms",
+      "label": "Morphisms",
+      "description": "Domain/codomain relations used for views, structures, and theory morphisms.",
+      "mode": "neighborhood",
+      "predicates": [
+        "http://mathhub.info/ulo#domain",
+        "http://mathhub.info/ulo#codomain"
+      ]
+    },
+    {
+      "id": "provenance",
+      "label": "Provenance",
+      "description": "Authoritative RDF named graphs in which statements about the focus occur.",
+      "mode": "provenance",
+      "predicates": []
+    }
+  ]
+}

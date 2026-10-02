@@ -12,10 +12,18 @@
       <p class="eyebrow">SEMANTIC VIEW · <span id="version">loading</span></p>
       <h1>FOL representation explorer</h1>
       <p id="description">Loading formal relations…</p>
+      <nav class="history" aria-label="Focus history">
+        <button id="back" type="button" title="Previous focus">←</button>
+        <div id="breadcrumbs" class="breadcrumbs"></div>
+        <button id="forward" type="button" title="Next focus">→</button>
+      </nav>
     </div>
     <div class="controls">
       <label>Focus
         <input id="focus" placeholder="latin:/?UniversalQuantification#">
+      </label>
+      <label>Semantic view
+        <select id="semantic-view"></select>
       </label>
       <label>FLAMS endpoint
         <input id="endpoint" value="/api/backend/query">
@@ -35,14 +43,14 @@
   <main>
     <svg id="graph" role="img" aria-label="Interactive graph of formal logic relations"></svg>
     <aside id="detail">
-      <p class="eyebrow">SELECT A NODE</p>
+      <p class="eyebrow">SELECT OR REFOCUS</p>
       <h2>Query-defined views</h2>
-      <p>Enter a formal URI to query its one-hop incoming and outgoing ULO relations from FLAMS. Leave Focus blank to use the generated IR fallback.</p>
+      <p>Choose a semantic projection, then click any neighboring node to make it the new focus without changing the selected view. Breadcrumbs preserve the exploration path.</p>
     </aside>
   </main>
   <footer>
-    Live mode: <code>?focus=latin:/?UniversalQuantification%23&amp;endpoint=http://localhost:3000/api/backend/query</code>
-    · fallback IR: <code>?data=…</code> · drag to rearrange · scroll to zoom
+    Live mode: <code>?focus=latin:/?UniversalQuantification%23&amp;view=structure&amp;endpoint=http://localhost:3000/api/backend/query</code>
+    · fallback IR: <code>?data=…</code> · click a node to refocus · drag to rearrange · scroll to zoom
   </footer>
   <script src="app.js"></script>
 </body>

@@ -6,6 +6,7 @@ const palette = {
   constant: "#d99454",
   include: "#c27ce1",
   structure: "#ef7185",
+  graph: "#7b8ca8",
   external: "#718096",
   other: "#ef7185"
 };
@@ -18,12 +19,21 @@ const labels = {
   constant: "Constant",
   include: "Include",
   structure: "Structure",
+  graph: "Source graph",
   external: "External reference",
   other: "Other"
 };
 
 const ULO = "http://mathhub.info/ulo#";
 const RDF_TYPE = "http://www.w3.org/1999/02/22-rdf-syntax-ns#type";
+
+let viewSpecs = [];
+let selectedView = null;
+let currentIr = null;
+let currentSimulation = null;
+let liveMode = false;
+let focusHistory = [];
+let historyIndex = -1;
 
 function shortName(uri) {
   if (!uri) return "external";
@@ -65,14 +75,19 @@ function assertFocusIri(value) {
   return focus;
 }
 
-function focusQuery(focus) {
+function predicateValues(predicates = []) {
+  if (!predicates.length) return "";
+  return "  VALUES ?predicate { " + predicates.map(p => `<${p}>`).join(" ") + " }\n";
+}
+
+function neighborhoodQuery(focus, spec) {
   return `PREFIX rdf: <${RDF_TYPE}>
 PREFIX ulo: <${ULO}>
 
 SELECT DISTINCT ?direction ?predicate ?other ?otherType ?graph
 WHERE {
   VALUES ?focus { <${focus}> }
-
+${predicateValues(spec.predicates)}
   GRAPH ?graph {
     {
       ?focus ?predicate ?other .
@@ -90,11 +105,37 @@ WHERE {
 ORDER BY ?direction ?predicate ?other ?otherType`;
 }
 
-async function loadFlams(endpoint, focus) {
-  const body = new URLSearchParams({
-    query: focusQuery(focus),
-    decode_uris: "false"
-  });
+function provenanceQuery(focus) {
+  return `SELECT DISTINCT ?graph
+WHERE {
+  GRAPH ?graph {
+    { <${focus}> ?p ?o . }
+    UNION
+    { ?s ?p <${focus}> . }
+  }
+}
+ORDER BY ?graph`;
+}
+
+function queryForView(focus, spec) {
+  return spec.mode === "provenance" ? provenanceQuery(focus) : neighborhoodQuery(focus, spec);
+}
+
+async function loadViewSpecs() {
+  const response = await fetch("views.json");
+  if (!response.ok) throw new Error(`Could not load semantic view definitions: ${response.status}`);
+  const payload = await response.json();
+  viewSpecs = payload.views || [];
+  if (!viewSpecs.length) throw new Error("No semantic views are defined.");
+  return viewSpecs;
+}
+
+function getView(id) {
+  return viewSpecs.find(v => v.id === id) || viewSpecs[0];
+}
+
+async function queryFlams(endpoint, query) {
+  const body = new URLSearchParams({query, decode_uris: "false"});
   const response = await fetch(endpoint, {
     method: "POST",
     headers: {"Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"},
@@ -103,18 +144,81 @@ async function loadFlams(endpoint, focus) {
   if (!response.ok) {
     throw new Error(`FLAMS query failed: ${response.status} ${response.statusText}`);
   }
-  const payload = await response.json();
-  const rows = resultBindings(payload);
-  return normalizeFocusRows(rows, focus);
+  return response.json();
 }
 
-function normalizeFocusRows(rows, focus) {
+async function loadFlams(endpoint, focus, spec) {
+  const payload = await queryFlams(endpoint, queryForView(focus, spec));
+  const rows = resultBindings(payload);
+  return spec.mode === "provenance"
+    ? normalizeProvenanceRows(rows, focus, spec)
+    : normalizeFocusRows(rows, focus, spec);
+}
+
+function baseFocusNode(focus) {
+  return {
+    id: focus,
+    uri: focus,
+    name: shortName(focus),
+    types: [],
+    provenance: [],
+    category: "other",
+    kind: "other",
+    color: "#ffffff",
+    focus: true
+  };
+}
+
+function normalizeProvenanceRows(rows, focus, spec) {
+  const focusNode = baseFocusNode(focus);
+  const nodes = [focusNode];
+  const edges = [];
+  const seen = new Set();
+
+  for (const row of rows) {
+    const graph = termValue(row.graph);
+    if (!graph || seen.has(graph)) continue;
+    seen.add(graph);
+    nodes.push({
+      id: graph,
+      uri: graph,
+      name: shortName(graph),
+      types: [],
+      provenance: [graph],
+      category: "graph",
+      kind: "graph",
+      color: palette.graph
+    });
+    edges.push({
+      source: focus,
+      target: graph,
+      kind: "asserted-in",
+      predicate: "derived:view/asserted-in",
+      graphs: [graph],
+      derived: true
+    });
+  }
+
+  return {
+    source: {sha256: "live-flams", input_kind: "FLAMS SPARQL / ULO"},
+    scope: `${spec.label} view of ${focus}`,
+    view: spec.id,
+    nodes,
+    edges,
+    focus
+  };
+}
+
+function normalizeFocusRows(rows, focus, spec) {
   const nodeMap = new Map();
   const edgeMap = new Map();
 
   const ensure = id => {
     if (!nodeMap.has(id)) {
-      nodeMap.set(id, {id, uri: id, name: shortName(id), types: new Set(), provenance: new Set()});
+      nodeMap.set(id, {
+        id, uri: id, name: shortName(id),
+        types: new Set(), provenance: new Set()
+      });
     }
     return nodeMap.get(id);
   };
@@ -176,7 +280,8 @@ function normalizeFocusRows(rows, focus) {
 
   return {
     source: {sha256: "live-flams", input_kind: "FLAMS SPARQL / ULO"},
-    scope: `one-hop semantic neighborhood of ${focus}`,
+    scope: `${spec.label} view of ${focus}`,
+    view: spec.id,
     nodes,
     edges,
     focus
@@ -195,7 +300,7 @@ async function loadIr(dataFile) {
   return {...ir, nodes};
 }
 
-function renderGraph(ir, layoutMode = "force") {
+function renderGraph(ir, layoutMode = "force", onRefocus = null) {
   const svg = d3.select("#graph");
   svg.selectAll("*").remove();
 
@@ -222,7 +327,8 @@ function renderGraph(ir, layoutMode = "force") {
   const root = svg.append("g");
   svg.call(d3.zoom().scaleExtent([0.25, 4]).on("zoom", event => root.attr("transform", event.transform)));
 
-  const link = root.append("g").selectAll("line").data(links).join("line").attr("class", "link");
+  const link = root.append("g").selectAll("line").data(links).join("line")
+    .attr("class", d => "link" + (d.derived ? " derived" : ""));
   const edgeLabel = root.append("g").selectAll("text").data(links).join("text")
     .attr("class", "edge-label").text(d => d.kind);
 
@@ -239,12 +345,17 @@ function renderGraph(ir, layoutMode = "force") {
         d.fx = null; d.fy = null;
       }));
 
-  node.append("circle").attr("r", d => d.focus ? 11 : d.external ? 6 : 8).attr("fill", d => d.color);
+  node.append("circle")
+    .attr("r", d => d.focus ? 11 : d.external ? 6 : 8)
+    .attr("fill", d => d.color);
   node.append("text").attr("dx", 12).attr("dy", 4).text(d => d.name);
 
   node.on("click", (event, d) => {
     node.classed("selected", n => n.id === d.id);
     showDetail(d, links, byId);
+    if (onRefocus && d.uri && d.uri !== ir.focus) {
+      onRefocus(d.uri);
+    }
   });
 
   const simulation = d3.forceSimulation(nodes)
@@ -258,8 +369,8 @@ function renderGraph(ir, layoutMode = "force") {
     simulation
       .force("x", d3.forceX(d => {
         if (d.id === focusId) return width / 2;
-        const incoming = links.some(e => e.target === focusId && e.source === d.id);
-        const outgoing = links.some(e => e.source === focusId && e.target === d.id);
+        const incoming = links.some(e => (e.target.id || e.target) === focusId && (e.source.id || e.source) === d.id);
+        const outgoing = links.some(e => (e.source.id || e.source) === focusId && (e.target.id || e.target) === d.id);
         if (incoming && !outgoing) return width * 0.22;
         if (outgoing && !incoming) return width * 0.78;
         return width / 2;
@@ -285,23 +396,28 @@ function showDetail(d, links, byId) {
     '<p class="eyebrow"></p><h2></h2><p class="description"></p>' +
     '<p class="types"></p><p class="refs"></p><p class="location"></p>' +
     '<pre class="type"></pre><pre class="definition"></pre>';
-  aside.querySelector(".eyebrow").textContent = d.focus ? "FOCUS · " + (labels[d.category] || d.kind) : (labels[d.category] || d.kind);
+  aside.querySelector(".eyebrow").textContent =
+    d.focus ? "FOCUS · " + (labels[d.category] || d.kind) : (labels[d.category] || d.kind);
   aside.querySelector("h2").textContent = d.name;
   aside.querySelector(".description").textContent = d.description || d.uri || "";
-  aside.querySelector(".types").textContent = d.types?.length ? "Types: " + d.types.map(shortName).join(", ") : "";
+  aside.querySelector(".types").textContent =
+    d.types?.length ? "Types: " + d.types.map(shortName).join(", ") : "";
   aside.querySelector(".refs").textContent =
-    "Links: " + (links.filter(e => (e.source.id || e.source) === d.id || (e.target.id || e.target) === d.id)
+    "Links: " + (links.filter(e =>
+      (e.source.id || e.source) === d.id || (e.target.id || e.target) === d.id)
       .map(e => {
         const outbound = (e.source.id || e.source) === d.id;
         const otherId = outbound ? (e.target.id || e.target) : (e.source.id || e.source);
-        return `${outbound ? "→" : "←"} ${e.kind} ${byId.get(otherId)?.name || shortName(otherId)}`;
+        const prefix = e.derived ? "derived " : "";
+        return `${outbound ? "→" : "←"} ${prefix}${e.kind} ${byId.get(otherId)?.name || shortName(otherId)}`;
       }).join(", ") || "none");
   aside.querySelector(".location").textContent =
     d.provenance?.length ? "Graph: " + d.provenance.join(", ") :
       d.source?.source_ref || d.source?.path || d.uri || "";
   const type = d.type_surface || d.type_xml;
   if (type) aside.querySelector(".type").textContent = "type\n" + type;
-  if (d.definition_xml) aside.querySelector(".definition").textContent = "definition\n" + d.definition_xml;
+  if (d.definition_xml) aside.querySelector(".definition").textContent =
+    "definition\n" + d.definition_xml;
 }
 
 function populateCategoryFilter(nodes, links, node, link, edgeLabel) {
@@ -324,57 +440,156 @@ function populateCategoryFilter(nodes, links, node, link, edgeLabel) {
   };
 }
 
-let currentIr = null;
-let currentSimulation = null;
+function updateHistory(focus, replace = false) {
+  if (!focus) return;
+  if (replace && historyIndex >= 0) {
+    focusHistory[historyIndex] = focus;
+  } else if (focusHistory[historyIndex] !== focus) {
+    focusHistory = focusHistory.slice(0, historyIndex + 1);
+    focusHistory.push(focus);
+    historyIndex = focusHistory.length - 1;
+  }
+  renderBreadcrumbs();
+}
+
+function renderBreadcrumbs() {
+  const bar = document.querySelector("#breadcrumbs");
+  bar.innerHTML = "";
+  focusHistory.forEach((focus, index) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "crumb" + (index === historyIndex ? " active" : "");
+    button.textContent = shortName(focus);
+    button.title = focus;
+    button.addEventListener("click", () => {
+      historyIndex = index;
+      document.querySelector("#focus").value = focus;
+      renderBreadcrumbs();
+      loadLive({pushHistory: false});
+    });
+    bar.append(button);
+  });
+
+  document.querySelector("#back").disabled = historyIndex <= 0;
+  document.querySelector("#forward").disabled =
+    historyIndex < 0 || historyIndex >= focusHistory.length - 1;
+}
+
+function updateUrl(focus, endpoint, viewId) {
+  const url = new URL(window.location.href);
+  url.searchParams.set("focus", focus);
+  url.searchParams.set("endpoint", endpoint);
+  url.searchParams.set("view", viewId);
+  history.replaceState(null, "", url);
+}
 
 async function boot() {
+  await loadViewSpecs();
+
   const params = new URLSearchParams(window.location.search);
   const focusInput = document.querySelector("#focus");
   const endpointInput = document.querySelector("#endpoint");
   const layoutSelect = document.querySelector("#layout");
+  const viewSelect = document.querySelector("#semantic-view");
+
   const focusFromUrl = params.get("focus") || "";
   const endpointFromUrl = params.get("endpoint") || "/api/backend/query";
+  const viewFromUrl = params.get("view") || "all";
+
   focusInput.value = focusFromUrl;
   endpointInput.value = endpointFromUrl;
 
-  async function load() {
+  for (const spec of viewSpecs) {
+    const option = document.createElement("option");
+    option.value = spec.id;
+    option.textContent = spec.label;
+    viewSelect.append(option);
+  }
+  viewSelect.value = getView(viewFromUrl).id;
+  selectedView = getView(viewSelect.value);
+
+  const loadLive = async ({pushHistory = true} = {}) => {
     try {
       document.querySelector("#description").textContent = "Loading…";
-      const focusValue = focusInput.value.trim();
-      if (focusValue) {
-        const focus = assertFocusIri(focusValue);
-        currentIr = await loadFlams(endpointInput.value.trim() || "/api/backend/query", focus);
-        document.querySelector("#version").textContent = "LIVE";
-        document.querySelector("#description").textContent =
-          `${currentIr.nodes.length} nodes · ${currentIr.edges.length} explicit ULO relations · ${currentIr.scope}`;
-        const url = new URL(window.location.href);
-        url.searchParams.set("focus", focus);
-        url.searchParams.set("endpoint", endpointInput.value.trim() || "/api/backend/query");
-        history.replaceState(null, "", url);
-      } else {
-        const dataFile = params.get("data") || "../generated/pinned-fol-ir.json";
-        currentIr = await loadIr(dataFile);
-        document.querySelector("#version").textContent = currentIr.source.sha256?.slice(0, 12) || "IR";
-        document.querySelector("#description").textContent =
-          `${currentIr.nodes.length} imported nodes from ${currentIr.source.input_kind || "unknown input"} · ${currentIr.scope}.`;
-      }
+      const focus = assertFocusIri(focusInput.value);
+      const endpoint = endpointInput.value.trim() || "/api/backend/query";
+      selectedView = getView(viewSelect.value);
+      currentIr = await loadFlams(endpoint, focus, selectedView);
+      liveMode = true;
+      document.querySelector("#version").textContent = "LIVE";
+      document.querySelector("#description").textContent =
+        `${selectedView.label}: ${currentIr.nodes.length} nodes · ${currentIr.edges.length} relations · ${selectedView.description}`;
+      if (pushHistory) updateHistory(focus);
+      updateUrl(focus, endpoint, selectedView.id);
       currentSimulation?.stop();
-      currentSimulation = renderGraph(currentIr, layoutSelect.value);
+      currentSimulation = renderGraph(currentIr, layoutSelect.value, uri => {
+        focusInput.value = uri;
+        loadLive({pushHistory: true});
+      });
     } catch (error) {
       document.querySelector("#description").textContent = error.message;
       console.error(error);
     }
+  };
+
+  window.loadLive = loadLive;
+
+  async function loadInitial() {
+    if (focusInput.value.trim()) {
+      updateHistory(focusInput.value.trim());
+      await loadLive({pushHistory: false});
+      return;
+    }
+    const dataFile = params.get("data") || "../generated/pinned-fol-ir.json";
+    currentIr = await loadIr(dataFile);
+    liveMode = false;
+    document.querySelector("#version").textContent =
+      currentIr.source.sha256?.slice(0, 12) || "IR";
+    document.querySelector("#description").textContent =
+      `${currentIr.nodes.length} imported nodes from ${currentIr.source.input_kind || "unknown input"} · ${currentIr.scope}.`;
+    currentSimulation?.stop();
+    currentSimulation = renderGraph(currentIr, layoutSelect.value);
   }
 
-  document.querySelector("#load-focus").addEventListener("click", load);
-  focusInput.addEventListener("keydown", event => { if (event.key === "Enter") load(); });
+  document.querySelector("#load-focus").addEventListener("click", () => loadLive());
+  focusInput.addEventListener("keydown", event => {
+    if (event.key === "Enter") loadLive();
+  });
+  viewSelect.addEventListener("change", () => {
+    selectedView = getView(viewSelect.value);
+    if (focusInput.value.trim()) loadLive({pushHistory: false});
+  });
   layoutSelect.addEventListener("change", () => {
     if (!currentIr) return;
     currentSimulation?.stop();
-    currentSimulation = renderGraph(currentIr, layoutSelect.value);
+    currentSimulation = renderGraph(
+      currentIr,
+      layoutSelect.value,
+      liveMode ? uri => {
+        focusInput.value = uri;
+        loadLive({pushHistory: true});
+      } : null
+    );
   });
 
-  await load();
+  document.querySelector("#back").addEventListener("click", () => {
+    if (historyIndex <= 0) return;
+    historyIndex -= 1;
+    focusInput.value = focusHistory[historyIndex];
+    renderBreadcrumbs();
+    loadLive({pushHistory: false});
+  });
+
+  document.querySelector("#forward").addEventListener("click", () => {
+    if (historyIndex >= focusHistory.length - 1) return;
+    historyIndex += 1;
+    focusInput.value = focusHistory[historyIndex];
+    renderBreadcrumbs();
+    loadLive({pushHistory: false});
+  });
+
+  renderBreadcrumbs();
+  await loadInitial();
 }
 
 boot();
