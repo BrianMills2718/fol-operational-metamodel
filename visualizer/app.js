@@ -508,7 +508,7 @@ async function boot() {
   viewSelect.value = getView(viewFromUrl).id;
   selectedView = getView(viewSelect.value);
 
-  window.loadLive = async ({pushHistory = true} = {}) => {
+  const loadLive = async ({pushHistory = true} = {}) => {
     try {
       document.querySelector("#description").textContent = "Loading…";
       const focus = assertFocusIri(focusInput.value);
@@ -531,6 +531,8 @@ async function boot() {
       console.error(error);
     }
   };
+
+  window.loadLive = loadLive;
 
   async function loadInitial() {
     if (focusInput.value.trim()) {
