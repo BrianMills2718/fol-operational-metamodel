@@ -28,6 +28,15 @@ python3 -m http.server 8000
 
 Then open <http://localhost:8000/visualizer/>.
 
+### Live FLAMS focus mode
+
+The same visualizer can now query a FLAMS SPARQL endpoint directly instead of loading the generated IR. Supply a formal focus URI and endpoint:
+
+`visualizer/?focus=latin:/?UniversalQuantification%23&endpoint=http://localhost:3000/api/backend/query`
+
+The browser constructs a one-hop ULO SPARQL projection around the focus, keeps the authoritative RDF named-graph provenance, and lets the same semantic view switch between a force layout and a focus-layered layout. Leave the focus blank to use the generated-IR fallback.
+
+
 ## Import standards metamodels
 
 ```sh
