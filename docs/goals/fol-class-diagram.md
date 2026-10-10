@@ -1,5 +1,7 @@
 # Goal: a clickable class diagram of first-order logic
 
+**Status: done 2026-10-10** (Phase 0 `d576e67`, Phase 1 `40ff286` on main; 39 unit tests OK; browser check RESULT passed=5 failed=0). Next: Phase 2, the truth side, needs its own goal. Shared-viewer tooltip gap filed as brianmills-spec/representation-router#113.
+
 Profile: `continuous-light` (one writer, one repository, reversible).
 Plan: `fol-class-diagram` (company-planning quick-adopt in this repository).
 Picture of where things stand and the phases: [`docs/where-we-are.html`](../where-we-are.html).
