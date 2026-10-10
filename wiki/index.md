@@ -6,6 +6,7 @@ files and draws them in a browser viewer. See the [README](../README.md).
 
 ## Start here
 
+- [Class diagram of first-order logic](../visualizer/class-diagram.html) (serve the repo root first; see README "Run").
 - [Where we are, in pictures](../docs/where-we-are.html): status and phases (2026-10-10).
 - [Standards-derived metamodel layers](../docs/standards-metamodel.md): which source is authoritative for what.
 - [Design and contribution guide](../DESIGN.md)
@@ -23,5 +24,6 @@ files and draws them in a browser viewer. See the [README](../README.md).
 
 ## Provenance
 
+- [Vendored shared graph viewer](../visualizer/vendor/README.md)
 - [Upstream sources](../upstream/README.md)
 - [Concept references](../references/README.md)

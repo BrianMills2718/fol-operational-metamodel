@@ -26,7 +26,19 @@ python3 -m unittest discover -s tests -v
 python3 -m http.server 8000
 ```
 
-Then open <http://localhost:8000/visualizer/>.
+Then open <http://localhost:8000/visualizer/class-diagram.html> for the class diagram of first-order logic, or <http://localhost:8000/visualizer/> for the older graph explorer.
+
+### Class diagram
+
+`visualizer/class-diagram.html` draws the 29 classes of the OMG ODM Common Logic metamodel top-down, one line per UML generalization, with each class's properties and associations on click. It is generated, not drawn:
+
+```text
+OMG ODM XMI -> scripts/import_standards.py -> generated/odm-cl-metamodel-ir.json
+            -> scripts/cl_class_diagram.py -> generated/cl-class-diagram.json (typed-graph/v1)
+            -> shared graph viewer (visualizer/vendor/graph-viewer.js, React Flow + ELK)
+```
+
+After changing the import, run `python3 scripts/cl_class_diagram.py`; `tests/test_class_diagram.py` fails if the checked-in diagram is stale or any generalization is missing or extra. Browser check (needs `npm install` once): serve the repo, then `npm run e2e -- http://127.0.0.1:8000`; it prints one line per check and `RESULT passed=N failed=M`.
 
 ### Live FLAMS focus mode (parked)
 
@@ -203,7 +215,10 @@ That mode only recognizes a small source-level subset and does not replace MMT p
 - `spec/fol.json` — legacy comparison fixture only; not formal authority.
 - `schema/fol.tql` — legacy TypeDB-like comparison projection.
 - `examples/abc.json` — legacy finite-structure teaching example.
+- `visualizer/class-diagram.html` — Common Logic class diagram; `visualizer/vendor/` holds the pinned shared graph viewer.
 - `visualizer/` — graph explorer generated from IR.
+- `scripts/cl_class_diagram.py` — Common Logic IR to class-diagram converter.
+- `ui/registry.yaml` — this repository's UI surfaces for the ecosystem UI index.
 - `tests/` — importer and regression tests.
 
 ## Scope

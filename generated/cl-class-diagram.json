@@ -1,0 +1,1085 @@
+{
+  "format": "cl-class-diagram/v1",
+  "source": {
+    "uri": "https://www.omg.org/spec/ODM/20131101/ODM-metamodels.xmi",
+    "sha256": "3ea06c4d0fed8f796072b55cb4899ae7ed995c5de2d624b48ee625b198f5a56a",
+    "input_kind": "omg-uml-xmi",
+    "package": "CL"
+  },
+  "generated_by": "scripts/cl_class_diagram.py",
+  "note": "Every class, generalization and property comes from the OMG ODM Common Logic XMI import; tooltips summarise those facts and add no others.",
+  "graph": {
+    "schema": "typed-graph/v1",
+    "kinds": {
+      "abstract": {
+        "label": "abstract class",
+        "color": "#7fb0ff",
+        "explain": "A UML abstract class: only its subclasses have direct instances."
+      },
+      "class": {
+        "label": "class",
+        "color": "#f0a25a",
+        "explain": "A UML class with direct instances."
+      }
+    },
+    "nodes": [
+      {
+        "id": "Argument",
+        "label": "Argument",
+        "kind": "class",
+        "explain": "Class; top of a hierarchy; 0 properties. Click for details."
+      },
+      {
+        "id": "Atom",
+        "label": "Atom",
+        "kind": "abstract",
+        "explain": "Abstract class; kind of Sentence; 0 properties. Click for details."
+      },
+      {
+        "id": "AtomicSentence",
+        "label": "AtomicSentence",
+        "kind": "class",
+        "explain": "Class; kind of Atom; 2 properties: argument, predicate. Click for details."
+      },
+      {
+        "id": "Biconditional",
+        "label": "Biconditional",
+        "kind": "class",
+        "explain": "Class; kind of BooleanSentence; 2 properties: lvalue, rvalue. Click for details."
+      },
+      {
+        "id": "Binding",
+        "label": "Binding",
+        "kind": "class",
+        "explain": "Class; top of a hierarchy; 2 properties: boundName, boundSequenceMarker. Click for details."
+      },
+      {
+        "id": "BooleanSentence",
+        "label": "BooleanSentence",
+        "kind": "abstract",
+        "explain": "Abstract class; kind of Sentence; 0 properties. Click for details."
+      },
+      {
+        "id": "Comment",
+        "label": "Comment",
+        "kind": "class",
+        "explain": "Class; kind of Phrase; 1 property: comment. Click for details."
+      },
+      {
+        "id": "CommentedSentence",
+        "label": "CommentedSentence",
+        "kind": "class",
+        "explain": "Class; kind of Sentence; 2 properties: comment, sentence. Click for details."
+      },
+      {
+        "id": "CommentedTerm",
+        "label": "CommentedTerm",
+        "kind": "class",
+        "explain": "Class; kind of Term; 2 properties: comment, term. Click for details."
+      },
+      {
+        "id": "Conjunction",
+        "label": "Conjunction",
+        "kind": "class",
+        "explain": "Class; kind of BooleanSentence; 1 property: conjunct. Click for details."
+      },
+      {
+        "id": "Disjunction",
+        "label": "Disjunction",
+        "kind": "class",
+        "explain": "Class; kind of BooleanSentence; 1 property: disjunct. Click for details."
+      },
+      {
+        "id": "Equation",
+        "label": "Equation",
+        "kind": "class",
+        "explain": "Class; kind of Atom; 2 properties: lvalue, rvalue. Click for details."
+      },
+      {
+        "id": "ExclusionSet",
+        "label": "ExclusionSet",
+        "kind": "class",
+        "explain": "Class; top of a hierarchy; 1 property: excludedName. Click for details."
+      },
+      {
+        "id": "ExistentialQuantification",
+        "label": "ExistentialQuantification",
+        "kind": "class",
+        "explain": "Class; kind of QuantifiedSentence; 0 properties. Click for details."
+      },
+      {
+        "id": "FunctionalTerm",
+        "label": "FunctionalTerm",
+        "kind": "class",
+        "explain": "Class; kind of Term; 2 properties: argument, operator. Click for details."
+      },
+      {
+        "id": "Identifier",
+        "label": "Identifier",
+        "kind": "class",
+        "explain": "Class; kind of Name; 0 properties. Click for details."
+      },
+      {
+        "id": "Implication",
+        "label": "Implication",
+        "kind": "class",
+        "explain": "Class; kind of BooleanSentence; 2 properties: antecedent, consequent. Click for details."
+      },
+      {
+        "id": "Importation",
+        "label": "Importation",
+        "kind": "class",
+        "explain": "Class; kind of Phrase; 1 property: assertedContent. Click for details."
+      },
+      {
+        "id": "IrregularSentence",
+        "label": "IrregularSentence",
+        "kind": "class",
+        "explain": "Class; kind of Sentence; 0 properties. Click for details."
+      },
+      {
+        "id": "Module",
+        "label": "Module",
+        "kind": "class",
+        "explain": "Class; kind of Phrase; 3 properties: body, exclusionSet, localDomain. Click for details."
+      },
+      {
+        "id": "Name",
+        "label": "Name",
+        "kind": "class",
+        "explain": "Class; kind of Term; 1 property: name. Click for details."
+      },
+      {
+        "id": "Negation",
+        "label": "Negation",
+        "kind": "class",
+        "explain": "Class; kind of BooleanSentence; 1 property: sentence. Click for details."
+      },
+      {
+        "id": "Phrase",
+        "label": "Phrase",
+        "kind": "class",
+        "explain": "Class; top of a hierarchy; 0 properties. Click for details."
+      },
+      {
+        "id": "QuantifiedSentence",
+        "label": "QuantifiedSentence",
+        "kind": "abstract",
+        "explain": "Abstract class; kind of Sentence; 2 properties: binding, body. Click for details."
+      },
+      {
+        "id": "Sentence",
+        "label": "Sentence",
+        "kind": "abstract",
+        "explain": "Abstract class; kind of Phrase; 0 properties. Click for details."
+      },
+      {
+        "id": "SequenceMarker",
+        "label": "SequenceMarker",
+        "kind": "class",
+        "explain": "Class; kind of Argument; 0 properties. Click for details."
+      },
+      {
+        "id": "Term",
+        "label": "Term",
+        "kind": "abstract",
+        "explain": "Abstract class; kind of Argument; 0 properties. Click for details."
+      },
+      {
+        "id": "Text",
+        "label": "Text",
+        "kind": "class",
+        "explain": "Class; top of a hierarchy; 3 properties: commentForText, identifierForText, phrase. Click for details."
+      },
+      {
+        "id": "UniversalQuantification",
+        "label": "UniversalQuantification",
+        "kind": "class",
+        "explain": "Class; kind of QuantifiedSentence; 0 properties. Click for details."
+      }
+    ],
+    "edges": [
+      {
+        "id": "gen:SequenceMarker->Argument",
+        "source": "Argument",
+        "target": "SequenceMarker"
+      },
+      {
+        "id": "gen:Term->Argument",
+        "source": "Argument",
+        "target": "Term"
+      },
+      {
+        "id": "gen:AtomicSentence->Atom",
+        "source": "Atom",
+        "target": "AtomicSentence"
+      },
+      {
+        "id": "gen:Equation->Atom",
+        "source": "Atom",
+        "target": "Equation"
+      },
+      {
+        "id": "gen:Biconditional->BooleanSentence",
+        "source": "BooleanSentence",
+        "target": "Biconditional"
+      },
+      {
+        "id": "gen:Conjunction->BooleanSentence",
+        "source": "BooleanSentence",
+        "target": "Conjunction"
+      },
+      {
+        "id": "gen:Disjunction->BooleanSentence",
+        "source": "BooleanSentence",
+        "target": "Disjunction"
+      },
+      {
+        "id": "gen:Implication->BooleanSentence",
+        "source": "BooleanSentence",
+        "target": "Implication"
+      },
+      {
+        "id": "gen:Negation->BooleanSentence",
+        "source": "BooleanSentence",
+        "target": "Negation"
+      },
+      {
+        "id": "gen:Identifier->Name",
+        "source": "Name",
+        "target": "Identifier"
+      },
+      {
+        "id": "gen:Comment->Phrase",
+        "source": "Phrase",
+        "target": "Comment"
+      },
+      {
+        "id": "gen:Importation->Phrase",
+        "source": "Phrase",
+        "target": "Importation"
+      },
+      {
+        "id": "gen:Module->Phrase",
+        "source": "Phrase",
+        "target": "Module"
+      },
+      {
+        "id": "gen:Sentence->Phrase",
+        "source": "Phrase",
+        "target": "Sentence"
+      },
+      {
+        "id": "gen:ExistentialQuantification->QuantifiedSentence",
+        "source": "QuantifiedSentence",
+        "target": "ExistentialQuantification"
+      },
+      {
+        "id": "gen:UniversalQuantification->QuantifiedSentence",
+        "source": "QuantifiedSentence",
+        "target": "UniversalQuantification"
+      },
+      {
+        "id": "gen:Atom->Sentence",
+        "source": "Sentence",
+        "target": "Atom"
+      },
+      {
+        "id": "gen:BooleanSentence->Sentence",
+        "source": "Sentence",
+        "target": "BooleanSentence"
+      },
+      {
+        "id": "gen:CommentedSentence->Sentence",
+        "source": "Sentence",
+        "target": "CommentedSentence"
+      },
+      {
+        "id": "gen:IrregularSentence->Sentence",
+        "source": "Sentence",
+        "target": "IrregularSentence"
+      },
+      {
+        "id": "gen:QuantifiedSentence->Sentence",
+        "source": "Sentence",
+        "target": "QuantifiedSentence"
+      },
+      {
+        "id": "gen:CommentedTerm->Term",
+        "source": "Term",
+        "target": "CommentedTerm"
+      },
+      {
+        "id": "gen:FunctionalTerm->Term",
+        "source": "Term",
+        "target": "FunctionalTerm"
+      },
+      {
+        "id": "gen:Name->Term",
+        "source": "Term",
+        "target": "Name"
+      }
+    ],
+    "layout": {
+      "direction": "DOWN",
+      "algorithm": "layered"
+    }
+  },
+  "details": {
+    "CommentedTerm": {
+      "abstract": false,
+      "xmi_id": "_15_5_2c17055e_1218847223579_534574_3478",
+      "parents": [
+        "Term"
+      ],
+      "children": [],
+      "properties": [
+        {
+          "name": "comment",
+          "owner": "CommentedTerm",
+          "type": null,
+          "multiplicity": "1 (not stated; UML default)",
+          "ordered": false,
+          "association": null,
+          "xmi_id": "_15_5_2c17055e_1218847223579_155034_3431"
+        },
+        {
+          "name": "term",
+          "owner": "CommentedTerm",
+          "type": "Term",
+          "multiplicity": "1 (not stated; UML default)",
+          "ordered": false,
+          "association": "CommentForTerm",
+          "xmi_id": "_15_5_2c17055e_1218847223579_253093_3396"
+        }
+      ],
+      "used_by": []
+    },
+    "Disjunction": {
+      "abstract": false,
+      "xmi_id": "_15_5_2c17055e_1218847223579_681355_3570",
+      "parents": [
+        "BooleanSentence"
+      ],
+      "children": [],
+      "properties": [
+        {
+          "name": "disjunct",
+          "owner": "Disjunction",
+          "type": "Sentence",
+          "multiplicity": "0..*",
+          "ordered": false,
+          "association": "Disjunction",
+          "xmi_id": "_15_5_2c17055e_1218847223579_538_3559"
+        }
+      ],
+      "used_by": []
+    },
+    "Importation": {
+      "abstract": false,
+      "xmi_id": "_15_5_2c17055e_1218847223579_375692_3385",
+      "parents": [
+        "Phrase"
+      ],
+      "children": [],
+      "properties": [
+        {
+          "name": "assertedContent",
+          "owner": "Importation",
+          "type": "Identifier",
+          "multiplicity": "1 (not stated; UML default)",
+          "ordered": false,
+          "association": "NameForImportation",
+          "xmi_id": "_15_5_2c17055e_1218847223559_378537_3163"
+        }
+      ],
+      "used_by": []
+    },
+    "BooleanSentence": {
+      "abstract": true,
+      "xmi_id": "_15_5_2c17055e_1218847223559_453558_3170",
+      "parents": [
+        "Sentence"
+      ],
+      "children": [
+        "Biconditional",
+        "Conjunction",
+        "Disjunction",
+        "Implication",
+        "Negation"
+      ],
+      "properties": [],
+      "used_by": []
+    },
+    "Biconditional": {
+      "abstract": false,
+      "xmi_id": "_15_5_2c17055e_1218847223559_360040_3157",
+      "parents": [
+        "BooleanSentence"
+      ],
+      "children": [],
+      "properties": [
+        {
+          "name": "lvalue",
+          "owner": "Biconditional",
+          "type": "Sentence",
+          "multiplicity": "1 (not stated; UML default)",
+          "ordered": false,
+          "association": "LvalueForBiconditional",
+          "xmi_id": "_15_5_2c17055e_1218847223579_150610_3461"
+        },
+        {
+          "name": "rvalue",
+          "owner": "Biconditional",
+          "type": "Sentence",
+          "multiplicity": "1 (not stated; UML default)",
+          "ordered": false,
+          "association": "RvalueForBiconditional",
+          "xmi_id": "_15_5_2c17055e_1218847223579_194941_3504"
+        }
+      ],
+      "used_by": []
+    },
+    "Argument": {
+      "abstract": false,
+      "xmi_id": "_15_5_2c17055e_1218847223579_849547_3510",
+      "parents": [],
+      "children": [
+        "SequenceMarker",
+        "Term"
+      ],
+      "properties": [],
+      "used_by": [
+        {
+          "owner": "AtomicSentence",
+          "property": "argument",
+          "association": "ArgumentSequenceForAtomicSentence"
+        },
+        {
+          "owner": "FunctionalTerm",
+          "property": "argument",
+          "association": "ArgumentSequenceForFunctionalTerm"
+        }
+      ]
+    },
+    "Binding": {
+      "abstract": false,
+      "xmi_id": "_15_5_2c17055e_1218847223579_762758_3474",
+      "parents": [],
+      "children": [],
+      "properties": [
+        {
+          "name": "boundName",
+          "owner": "Binding",
+          "type": "Name",
+          "multiplicity": "0..1",
+          "ordered": false,
+          "association": "BoundName",
+          "xmi_id": "_15_5_2c17055e_1218847223569_394981_3283"
+        },
+        {
+          "name": "boundSequenceMarker",
+          "owner": "Binding",
+          "type": "SequenceMarker",
+          "multiplicity": "0..1",
+          "ordered": false,
+          "association": "BoundSequenceMarker",
+          "xmi_id": "_15_5_2c17055e_1218847223579_424018_3353"
+        }
+      ],
+      "used_by": [
+        {
+          "owner": "QuantifiedSentence",
+          "property": "binding",
+          "association": "BindingSequenceForQuantifiedSentence"
+        }
+      ]
+    },
+    "QuantifiedSentence": {
+      "abstract": true,
+      "xmi_id": "_15_5_2c17055e_1218847223559_827313_3014",
+      "parents": [
+        "Sentence"
+      ],
+      "children": [
+        "ExistentialQuantification",
+        "UniversalQuantification"
+      ],
+      "properties": [
+        {
+          "name": "binding",
+          "owner": "QuantifiedSentence",
+          "type": "Binding",
+          "multiplicity": "0..*",
+          "ordered": true,
+          "association": "BindingSequenceForQuantifiedSentence",
+          "xmi_id": "_15_5_2c17055e_1218847223569_627861_3285"
+        },
+        {
+          "name": "body",
+          "owner": "QuantifiedSentence",
+          "type": "Sentence",
+          "multiplicity": "1 (not stated; UML default)",
+          "ordered": false,
+          "association": "QuantificationForSentence",
+          "xmi_id": "_15_5_2c17055e_1218847223559_437692_3213"
+        }
+      ],
+      "used_by": []
+    },
+    "Phrase": {
+      "abstract": false,
+      "xmi_id": "_15_5_2c17055e_1218847223579_627902_3446",
+      "parents": [],
+      "children": [
+        "Comment",
+        "Importation",
+        "Module",
+        "Sentence"
+      ],
+      "properties": [],
+      "used_by": [
+        {
+          "owner": "Text",
+          "property": "phrase",
+          "association": "PhraseForText"
+        }
+      ]
+    },
+    "CommentedSentence": {
+      "abstract": false,
+      "xmi_id": "_15_5_2c17055e_1218847223559_801839_2978",
+      "parents": [
+        "Sentence"
+      ],
+      "children": [],
+      "properties": [
+        {
+          "name": "comment",
+          "owner": "CommentedSentence",
+          "type": null,
+          "multiplicity": "1 (not stated; UML default)",
+          "ordered": false,
+          "association": null,
+          "xmi_id": "_15_5_2c17055e_1218847223559_386580_2957"
+        },
+        {
+          "name": "sentence",
+          "owner": "CommentedSentence",
+          "type": "Sentence",
+          "multiplicity": "1 (not stated; UML default)",
+          "ordered": false,
+          "association": "CommentForSentence",
+          "xmi_id": "_15_5_2c17055e_1218847223559_886023_3196"
+        }
+      ],
+      "used_by": []
+    },
+    "ExistentialQuantification": {
+      "abstract": false,
+      "xmi_id": "_15_5_2c17055e_1218847223559_460381_2971",
+      "parents": [
+        "QuantifiedSentence"
+      ],
+      "children": [],
+      "properties": [],
+      "used_by": []
+    },
+    "Negation": {
+      "abstract": false,
+      "xmi_id": "_15_5_2c17055e_1218847223579_501286_3480",
+      "parents": [
+        "BooleanSentence"
+      ],
+      "children": [],
+      "properties": [
+        {
+          "name": "sentence",
+          "owner": "Negation",
+          "type": "Sentence",
+          "multiplicity": "1 (not stated; UML default)",
+          "ordered": false,
+          "association": "NegatedSentence",
+          "xmi_id": "_15_5_2c17055e_1218847223559_196334_3171"
+        }
+      ],
+      "used_by": []
+    },
+    "Conjunction": {
+      "abstract": false,
+      "xmi_id": "_15_5_2c17055e_1218847223579_701702_3338",
+      "parents": [
+        "BooleanSentence"
+      ],
+      "children": [],
+      "properties": [
+        {
+          "name": "conjunct",
+          "owner": "Conjunction",
+          "type": "Sentence",
+          "multiplicity": "0..*",
+          "ordered": false,
+          "association": "Conjunction",
+          "xmi_id": "_15_5_2c17055e_1218847223579_918413_3534"
+        }
+      ],
+      "used_by": []
+    },
+    "SequenceMarker": {
+      "abstract": false,
+      "xmi_id": "_15_5_2c17055e_1218847223559_903900_2917",
+      "parents": [
+        "Argument"
+      ],
+      "children": [],
+      "properties": [],
+      "used_by": [
+        {
+          "owner": "Binding",
+          "property": "boundSequenceMarker",
+          "association": "BoundSequenceMarker"
+        }
+      ]
+    },
+    "Sentence": {
+      "abstract": true,
+      "xmi_id": "_15_5_2c17055e_1218847223559_97112_3116",
+      "parents": [
+        "Phrase"
+      ],
+      "children": [
+        "Atom",
+        "BooleanSentence",
+        "CommentedSentence",
+        "IrregularSentence",
+        "QuantifiedSentence"
+      ],
+      "properties": [],
+      "used_by": [
+        {
+          "owner": "Biconditional",
+          "property": "lvalue",
+          "association": "LvalueForBiconditional"
+        },
+        {
+          "owner": "Biconditional",
+          "property": "rvalue",
+          "association": "RvalueForBiconditional"
+        },
+        {
+          "owner": "CommentedSentence",
+          "property": "sentence",
+          "association": "CommentForSentence"
+        },
+        {
+          "owner": "Conjunction",
+          "property": "conjunct",
+          "association": "Conjunction"
+        },
+        {
+          "owner": "Disjunction",
+          "property": "disjunct",
+          "association": "Disjunction"
+        },
+        {
+          "owner": "Implication",
+          "property": "antecedent",
+          "association": "AntecedentForImplication"
+        },
+        {
+          "owner": "Implication",
+          "property": "consequent",
+          "association": "ConsequentForImplication"
+        },
+        {
+          "owner": "Negation",
+          "property": "sentence",
+          "association": "NegatedSentence"
+        },
+        {
+          "owner": "QuantifiedSentence",
+          "property": "body",
+          "association": "QuantificationForSentence"
+        }
+      ]
+    },
+    "Module": {
+      "abstract": false,
+      "xmi_id": "_15_5_2c17055e_1218847223559_431186_2887",
+      "parents": [
+        "Phrase"
+      ],
+      "children": [],
+      "properties": [
+        {
+          "name": "body",
+          "owner": "Module",
+          "type": "Text",
+          "multiplicity": "1 (not stated; UML default)",
+          "ordered": false,
+          "association": "ModuleBody",
+          "xmi_id": "_15_5_2c17055e_1218847223549_201982_2807"
+        },
+        {
+          "name": "exclusionSet",
+          "owner": "Module",
+          "type": "ExclusionSet",
+          "multiplicity": "0..1",
+          "ordered": false,
+          "association": "ExcludedSet",
+          "xmi_id": "_15_5_2c17055e_1218847223559_893202_3179"
+        },
+        {
+          "name": "localDomain",
+          "owner": "Module",
+          "type": "Identifier",
+          "multiplicity": "1 (not stated; UML default)",
+          "ordered": false,
+          "association": "ModuleName",
+          "xmi_id": "_15_5_2c17055e_1218847223579_416820_3378"
+        }
+      ],
+      "used_by": []
+    },
+    "Comment": {
+      "abstract": false,
+      "xmi_id": "_15_5_2c17055e_1218847223579_792682_3421",
+      "parents": [
+        "Phrase"
+      ],
+      "children": [],
+      "properties": [
+        {
+          "name": "comment",
+          "owner": "Comment",
+          "type": null,
+          "multiplicity": "1 (not stated; UML default)",
+          "ordered": false,
+          "association": null,
+          "xmi_id": "_15_5_2c17055e_1218847223559_704589_2985"
+        }
+      ],
+      "used_by": [
+        {
+          "owner": "Text",
+          "property": "commentForText",
+          "association": "CommentedText"
+        }
+      ]
+    },
+    "Equation": {
+      "abstract": false,
+      "xmi_id": "_15_5_2c17055e_1218847223559_101496_2930",
+      "parents": [
+        "Atom"
+      ],
+      "children": [],
+      "properties": [
+        {
+          "name": "lvalue",
+          "owner": "Equation",
+          "type": "Term",
+          "multiplicity": "1 (not stated; UML default)",
+          "ordered": false,
+          "association": "LvalueForEquation",
+          "xmi_id": "_15_5_2c17055e_1218847223579_579834_3511"
+        },
+        {
+          "name": "rvalue",
+          "owner": "Equation",
+          "type": "Term",
+          "multiplicity": "1 (not stated; UML default)",
+          "ordered": false,
+          "association": "RvalueForEquation",
+          "xmi_id": "_15_5_2c17055e_1218847223559_634181_3026"
+        }
+      ],
+      "used_by": []
+    },
+    "Implication": {
+      "abstract": false,
+      "xmi_id": "_15_5_2c17055e_1218847223559_88603_3128",
+      "parents": [
+        "BooleanSentence"
+      ],
+      "children": [],
+      "properties": [
+        {
+          "name": "antecedent",
+          "owner": "Implication",
+          "type": "Sentence",
+          "multiplicity": "1 (not stated; UML default)",
+          "ordered": false,
+          "association": "AntecedentForImplication",
+          "xmi_id": "_15_5_2c17055e_1218847223559_536037_3154"
+        },
+        {
+          "name": "consequent",
+          "owner": "Implication",
+          "type": "Sentence",
+          "multiplicity": "1 (not stated; UML default)",
+          "ordered": false,
+          "association": "ConsequentForImplication",
+          "xmi_id": "_15_5_2c17055e_1218847223559_808148_2943"
+        }
+      ],
+      "used_by": []
+    },
+    "UniversalQuantification": {
+      "abstract": false,
+      "xmi_id": "_15_5_2c17055e_1218847223579_109099_3372",
+      "parents": [
+        "QuantifiedSentence"
+      ],
+      "children": [],
+      "properties": [],
+      "used_by": []
+    },
+    "Identifier": {
+      "abstract": false,
+      "xmi_id": "_15_5_2c17055e_1218847223579_324924_3386",
+      "parents": [
+        "Name"
+      ],
+      "children": [],
+      "properties": [],
+      "used_by": [
+        {
+          "owner": "Importation",
+          "property": "assertedContent",
+          "association": "NameForImportation"
+        },
+        {
+          "owner": "Module",
+          "property": "localDomain",
+          "association": "ModuleName"
+        },
+        {
+          "owner": "Text",
+          "property": "identifierForText",
+          "association": "NameForText"
+        }
+      ]
+    },
+    "ExclusionSet": {
+      "abstract": false,
+      "xmi_id": "_15_5_2c17055e_1218847223559_694404_3226",
+      "parents": [],
+      "children": [],
+      "properties": [
+        {
+          "name": "excludedName",
+          "owner": "ExclusionSet",
+          "type": "Name",
+          "multiplicity": "0..*",
+          "ordered": false,
+          "association": "ExcludedName",
+          "xmi_id": "_15_5_2c17055e_1218847223559_839975_2923"
+        }
+      ],
+      "used_by": [
+        {
+          "owner": "Module",
+          "property": "exclusionSet",
+          "association": "ExcludedSet"
+        }
+      ]
+    },
+    "Text": {
+      "abstract": false,
+      "xmi_id": "_15_5_2c17055e_1218847223559_32574_2856",
+      "parents": [],
+      "children": [],
+      "properties": [
+        {
+          "name": "commentForText",
+          "owner": "Text",
+          "type": "Comment",
+          "multiplicity": "0..*",
+          "ordered": false,
+          "association": "CommentedText",
+          "xmi_id": "_15_5_2c17055e_1218847223559_885539_2918"
+        },
+        {
+          "name": "identifierForText",
+          "owner": "Text",
+          "type": "Identifier",
+          "multiplicity": "0..1",
+          "ordered": false,
+          "association": "NameForText",
+          "xmi_id": "_15_5_2c17055e_1218847223579_758989_3336"
+        },
+        {
+          "name": "phrase",
+          "owner": "Text",
+          "type": "Phrase",
+          "multiplicity": "0..*",
+          "ordered": false,
+          "association": "PhraseForText",
+          "xmi_id": "_15_5_2c17055e_1218847223559_811838_3248"
+        }
+      ],
+      "used_by": [
+        {
+          "owner": "Module",
+          "property": "body",
+          "association": "ModuleBody"
+        }
+      ]
+    },
+    "FunctionalTerm": {
+      "abstract": false,
+      "xmi_id": "_15_5_2c17055e_1218847223579_181224_3445",
+      "parents": [
+        "Term"
+      ],
+      "children": [],
+      "properties": [
+        {
+          "name": "argument",
+          "owner": "FunctionalTerm",
+          "type": "Argument",
+          "multiplicity": "0..*",
+          "ordered": true,
+          "association": "ArgumentSequenceForFunctionalTerm",
+          "xmi_id": "_15_5_2c17055e_1218847223559_556589_2969"
+        },
+        {
+          "name": "operator",
+          "owner": "FunctionalTerm",
+          "type": "Term",
+          "multiplicity": "1 (not stated; UML default)",
+          "ordered": false,
+          "association": "OperatorForFunctionalTerm",
+          "xmi_id": "_15_5_2c17055e_1218847223579_868566_3454"
+        }
+      ],
+      "used_by": []
+    },
+    "IrregularSentence": {
+      "abstract": false,
+      "xmi_id": "_15_5_2c17055e_1218847223579_886195_3562",
+      "parents": [
+        "Sentence"
+      ],
+      "children": [],
+      "properties": [],
+      "used_by": []
+    },
+    "Atom": {
+      "abstract": true,
+      "xmi_id": "_15_5_2c17055e_1218847223579_756106_3409",
+      "parents": [
+        "Sentence"
+      ],
+      "children": [
+        "AtomicSentence",
+        "Equation"
+      ],
+      "properties": [],
+      "used_by": []
+    },
+    "AtomicSentence": {
+      "abstract": false,
+      "xmi_id": "_15_5_2c17055e_1218847223579_555713_3346",
+      "parents": [
+        "Atom"
+      ],
+      "children": [],
+      "properties": [
+        {
+          "name": "argument",
+          "owner": "AtomicSentence",
+          "type": "Argument",
+          "multiplicity": "0..*",
+          "ordered": true,
+          "association": "ArgumentSequenceForAtomicSentence",
+          "xmi_id": "_15_5_2c17055e_1218847223569_745806_3272"
+        },
+        {
+          "name": "predicate",
+          "owner": "AtomicSentence",
+          "type": "Term",
+          "multiplicity": "1 (not stated; UML default)",
+          "ordered": false,
+          "association": "PredicateForAtomicSentence",
+          "xmi_id": "_15_5_2c17055e_1218847223579_298915_3515"
+        }
+      ],
+      "used_by": []
+    },
+    "Term": {
+      "abstract": true,
+      "xmi_id": "_15_5_2c17055e_1218847223559_380067_3129",
+      "parents": [
+        "Argument"
+      ],
+      "children": [
+        "CommentedTerm",
+        "FunctionalTerm",
+        "Name"
+      ],
+      "properties": [],
+      "used_by": [
+        {
+          "owner": "AtomicSentence",
+          "property": "predicate",
+          "association": "PredicateForAtomicSentence"
+        },
+        {
+          "owner": "CommentedTerm",
+          "property": "term",
+          "association": "CommentForTerm"
+        },
+        {
+          "owner": "Equation",
+          "property": "lvalue",
+          "association": "LvalueForEquation"
+        },
+        {
+          "owner": "Equation",
+          "property": "rvalue",
+          "association": "RvalueForEquation"
+        },
+        {
+          "owner": "FunctionalTerm",
+          "property": "operator",
+          "association": "OperatorForFunctionalTerm"
+        }
+      ]
+    },
+    "Name": {
+      "abstract": false,
+      "xmi_id": "_15_5_2c17055e_1218847223579_587444_3490",
+      "parents": [
+        "Term"
+      ],
+      "children": [
+        "Identifier"
+      ],
+      "properties": [
+        {
+          "name": "name",
+          "owner": "Name",
+          "type": null,
+          "multiplicity": "1 (not stated; UML default)",
+          "ordered": false,
+          "association": null,
+          "xmi_id": "_15_5_2c17055e_1218847223579_101464_3340"
+        }
+      ],
+      "used_by": [
+        {
+          "owner": "Binding",
+          "property": "boundName",
+          "association": "BoundName"
+        },
+        {
+          "owner": "ExclusionSet",
+          "property": "excludedName",
+          "association": "ExcludedName"
+        }
+      ]
+    }
+  }
+}

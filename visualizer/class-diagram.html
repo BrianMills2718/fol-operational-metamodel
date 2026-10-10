@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Common Logic Class Diagram</title>
+<style>
+:root{
+  --bg:#0b141d; --panel:#111d29; --ink:#e8eef4; --muted:#9db0c0; --line:#22384c; --accent:#7fb0ff; --warm:#f0a25a;
+  --gv-bg:#0b141d; --gv-ink:#e8eef4; --gv-node-bg:#111d29; --gv-line:#2a4157; --gv-edge:#6f8aa3; --gv-focus:#f2c86b; --gv-dots:#16283a;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;display:flex;flex-direction:column}
+header{padding:14px 18px 10px;border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;gap:12px 24px;align-items:end;justify-content:space-between}
+h1{margin:0;font-size:1.35rem}
+.sub{margin:2px 0 0;color:var(--muted);font-size:.9rem;max-width:70ch}
+.controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button,select,a.btn{font:inherit;font-size:.9rem;background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:7px;padding:6px 10px;cursor:pointer;text-decoration:none}
+button:hover,select:hover,a.btn:hover{border-color:var(--accent)}
+:focus-visible{outline:2px solid var(--gv-focus);outline-offset:2px}
+main{flex:1;display:grid;grid-template-columns:minmax(0,1fr) 340px;min-height:0}
+#graph{min-height:420px;height:100%}
+aside{border-left:1px solid var(--line);padding:16px 18px;overflow:auto;background:var(--panel)}
+aside h2{margin:0 0 4px;font-size:1.15rem}
+aside h3{margin:16px 0 6px;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+aside p{margin:0 0 8px;color:var(--muted)}
+.tag{display:inline-block;font-size:.75rem;padding:1px 7px;border-radius:999px;border:1px solid var(--line);color:var(--muted);margin-left:6px;vertical-align:2px}
+ul.props{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+ul.props li{border:1px solid var(--line);border-radius:7px;padding:7px 9px}
+.pname{font-family:ui-monospace,monospace;font-weight:600}
+.pmeta{color:var(--muted);font-size:.85rem}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips button{padding:2px 9px;font-size:.85rem}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:.82rem;color:var(--muted)}
+.sw{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:0}
+#tip{position:fixed;z-index:9999;max-width:280px;background:var(--ink);color:var(--bg);padding:6px 9px;border-radius:6px;font-size:12.5px;line-height:1.35;pointer-events:none;visibility:hidden;opacity:0;transition:opacity .08s}
+#tip.on{visibility:visible;opacity:1}
+#err{color:var(--warm);padding:16px}
+@media (max-width:760px){main{grid-template-columns:1fr;grid-template-rows:60vh auto}aside{border-left:0;border-top:1px solid var(--line)}}
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>Common Logic class diagram</h1>
+    <p class="sub">The parts of first-order logic as the OMG Common Logic metamodel defines them. A line down from A to B means B is a kind of A. Generated from the standard's XMI; nothing hand-drawn.</p>
+  </div>
+  <div class="controls">
+    <label for="find" class="sr" hidden>Find a class</label>
+    <select id="find" data-tip="Jump to a class: selects it and shows its details on the right."><option value="">Find a class…</option></select>
+    <button id="fit" type="button" data-tip="Zoom out to fit the whole diagram in the frame.">Fit all</button>
+    <a class="btn" href="index.html" data-tip="Open the older force-layout explorer of all imported graphs.">Graph explorer</a>
+    <div class="legend">
+      <span data-tip="Abstract: only its subclasses have direct instances." tabindex="0"><span class="sw" style="background:#7fb0ff"></span>abstract class</span>
+      <span data-tip="Concrete: has direct instances." tabindex="0"><span class="sw" style="background:#f0a25a"></span>class</span>
+    </div>
+  </div>
+</header>
+<main>
+  <div id="graph" aria-label="Class diagram"></div>
+  <aside id="details" aria-live="polite">
+    <h2>Pick a class</h2>
+    <p>Click any box to see its properties, its parent and child classes, and which other classes refer to it.</p>
+    <p id="source"></p>
+  </aside>
+</main>
+<div id="tip" role="tooltip"></div>
+<script src="vendor/graph-viewer.js"></script>
+<script>
+(async function () {
+  const details = document.getElementById("details");
+  const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  let data;
+  try {
+    data = await (await fetch("../generated/cl-class-diagram.json")).json();
+  } catch (e) {
+    document.getElementById("graph").innerHTML = `<p id="err">Could not load ../generated/cl-class-diagram.json. Serve the repository root (python3 -m http.server) and open /visualizer/class-diagram.html. (${esc(e.message)})</p>`;
+    return;
+  }
+  document.getElementById("source").innerHTML = `Source: <a href="${esc(data.source.uri)}" data-tip="The OMG ODM 1.1 XMI file this diagram was generated from.">OMG ODM ${esc(data.source.package)} XMI</a>`;
+
+  const classBtn = (name) => `<button type="button" data-class="${esc(name)}" data-tip="Show ${esc(name)}">${esc(name)}</button>`;
+  function show(name) {
+    const d = data.details[name];
+    if (!d) return;
+    const props = d.properties.length ? `<ul class="props">${d.properties.map((p) => `<li><span class="pname">${esc(p.name)}</span> : ${p.type && data.details[p.type] ? classBtn(p.type) : esc(p.type ?? "untyped")}<div class="pmeta">multiplicity ${esc(p.multiplicity)}${p.ordered ? ", ordered" : ""}${p.association ? ` · association ${esc(p.association)}` : ""}</div></li>`).join("")}</ul>` : "<p>No properties of its own.</p>";
+    const used = d.used_by.length ? `<ul class="props">${d.used_by.map((u) => `<li>${classBtn(u.owner)} <span class="pname">.${esc(u.property)}</span>${u.association ? `<div class="pmeta">association ${esc(u.association)}</div>` : ""}</li>`).join("")}</ul>` : "<p>No other class has a property of this type.</p>";
+    details.innerHTML = `<h2 id="sel-name">${esc(name)}<span class="tag">${d.abstract ? "abstract" : "class"}</span></h2>
+      <h3>Is a kind of</h3>${d.parents.length ? `<div class="chips">${d.parents.map(classBtn).join("")}</div>` : "<p>Nothing: top of a hierarchy.</p>"}
+      <h3>Kinds of ${esc(name)}</h3>${d.children.length ? `<div class="chips">${d.children.map(classBtn).join("")}</div>` : "<p>None.</p>"}
+      <h3>Properties</h3>${props}
+      <h3>Referred to by</h3>${used}
+      <p style="margin-top:14px;font-size:.8rem">XMI id ${esc(d.xmi_id)}</p>`;
+    document.getElementById("find").value = name;
+  }
+  details.addEventListener("click", (e) => {
+    const b = e.target.closest("button[data-class]");
+    if (b) { viewer.select(b.dataset.class); show(b.dataset.class); }
+  });
+
+  let viewer;
+  try {
+    viewer = GraphViewer.mount(document.getElementById("graph"), {
+      graph: data.graph,
+      onSelect: (pick) => { if (pick && pick.type === "node") show(pick.id); },
+    });
+  } catch (e) {
+    document.getElementById("graph").innerHTML = `<p id="err">${esc(e.message)}</p>`;
+    return;
+  }
+  const find = document.getElementById("find");
+  for (const name of Object.keys(data.details).sort()) find.add(new Option(name, name));
+  find.addEventListener("change", () => { if (find.value) { viewer.select(find.value); show(find.value); } });
+  document.getElementById("fit").addEventListener("click", () => viewer.fit());
+
+  // Styled tooltips for every control: data-tip, plus the viewer's zoom buttons, whose
+  // native title would otherwise appear late and never on touch.
+  const tip = document.getElementById("tip");
+  const adopt = (root) => {
+    // Lines: the viewer labels each "Edge from A to B"; here that means B is a kind of A.
+    root.querySelectorAll(".react-flow__edge[aria-label]:not([data-tip])").forEach((el) => {
+      const m = /^Edge from (\S+) to (\S+)$/.exec(el.getAttribute("aria-label"));
+      if (m) { el.dataset.tip = `${m[2]} is a kind of ${m[1]}.`; el.setAttribute("aria-label", el.dataset.tip); }
+    });
+    root.querySelectorAll("[title]").forEach((el) => {
+    if (!el.closest(".gv-node")) { el.dataset.tip = el.dataset.tip || el.getAttribute("title"); el.setAttribute("aria-label", el.getAttribute("aria-label") || el.dataset.tip); el.removeAttribute("title"); }
+    });
+  };
+  new MutationObserver(() => adopt(document.body)).observe(document.body, { subtree: true, childList: true, attributes: true, attributeFilter: ["title", "aria-label"] });
+  adopt(document.body);
+  const showTip = (el) => {
+    const r = el.getBoundingClientRect();
+    tip.textContent = el.dataset.tip;
+    tip.classList.add("on");
+    const w = tip.offsetWidth, h = tip.offsetHeight;
+    let x = Math.min(Math.max(8, r.left + r.width / 2 - w / 2), innerWidth - w - 8);
+    let y = r.bottom + 8; if (y + h > innerHeight - 8) y = r.top - h - 8;
+    tip.style.left = x + "px"; tip.style.top = y + "px";
+  };
+  const hideTip = () => tip.classList.remove("on");
+  const target = (e) => e.target.closest && e.target.closest("[data-tip]");
+  document.addEventListener("mouseover", (e) => { const el = target(e); el ? showTip(el) : hideTip(); });
+  document.addEventListener("focusin", (e) => { const el = target(e); el ? showTip(el) : hideTip(); });
+  document.addEventListener("focusout", hideTip);
+  let press;
+  document.addEventListener("touchstart", (e) => { const el = target(e); if (el) press = setTimeout(() => showTip(el), 450); }, { passive: true });
+  document.addEventListener("touchend", () => { clearTimeout(press); setTimeout(hideTip, 1500); });
+})();
+</script>
+</body>
+</html>

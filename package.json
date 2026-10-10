@@ -1,0 +1,11 @@
+{
+  "name": "fol-operational-metamodel-e2e",
+  "private": true,
+  "description": "Browser checks only; the project itself needs no Node packages.",
+  "scripts": {
+    "e2e": "node tests/e2e/class_diagram_e2e.mjs"
+  },
+  "devDependencies": {
+    "playwright": "1.64.0"
+  }
+}

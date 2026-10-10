@@ -1,0 +1,24 @@
+schema_version: ui-registry/v1
+project_id: fol-operational-metamodel
+ui_status: active
+surfaces:
+  - id: cl-class-diagram
+    lifecycle: canonical
+    source_path: visualizer/class-diagram.html
+    purpose: >-
+      Top-down clickable class diagram of the OMG ODM Common Logic metamodel
+      (the parts of first-order logic), generated from the imported XMI and
+      drawn with the shared representation-router graph viewer.
+    entrypoint: python3 -m http.server 8000, then open /visualizer/class-diagram.html
+    critical_journey: >-
+      Open the page, see UniversalQuantification below QuantifiedSentence below
+      Sentence below Phrase, click QuantifiedSentence and read body : Sentence
+      and binding : Binding 0..* in the details panel.
+    verification_command: npm run e2e -- http://127.0.0.1:8000
+  - id: fol-graph-explorer
+    lifecycle: candidate
+    source_path: visualizer/index.html
+    purpose: >-
+      Older force-layout explorer of every imported graph file, plus the parked
+      FLAMS live-focus mode.
+    entrypoint: python3 -m http.server 8000, then open /visualizer/

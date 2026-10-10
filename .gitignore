@@ -2,3 +2,5 @@ __pycache__/
 *.py[cod]
 .DS_Store
 upstream/cache/
+node_modules/
+tests/e2e/out/
