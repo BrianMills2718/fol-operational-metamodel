@@ -11,10 +11,11 @@ files and draws them in a browser viewer. See the [README](../README.md).
 - [Standards-derived metamodel layers](../docs/standards-metamodel.md): which source is authoritative for what.
 - [Design and contribution guide](../DESIGN.md)
 
-## In progress
+## Plans
 
 - [Goal: clickable class diagram](../docs/goals/fol-class-diagram.md)
-- [Plan fol-class-diagram](../docs/plans/fol-class-diagram.md) and its [goal record](../docs/plans/fol-class-diagram.goal.md)
+- [Plan fol-class-diagram](../docs/plans/fol-class-diagram.md) and its [goal record](../docs/plans/fol-class-diagram.goal.md) (done)
+- [Plan fol-meaning-layer](../docs/plans/fol-meaning-layer.md) and its [goal record](../docs/plans/fol-meaning-layer.goal.md): truth rules and core rebuilds (done)
 
 ## Parked: FLAMS live search
 

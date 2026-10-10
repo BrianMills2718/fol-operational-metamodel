@@ -70,7 +70,9 @@ class ClassDiagramTests(unittest.TestCase):
         self.assertEqual(d["children"], ["ExistentialQuantification", "UniversalQuantification"])
 
     def test_checked_in_diagram_matches_a_fresh_generation(self):
-        self.assertEqual(cl_class_diagram.build(self.ir), self.diagram,
+        meaning = json.loads((ROOT / "spec" / "cl-meaning.json").read_text())
+        checks = json.loads((ROOT / "generated" / "cl-meaning-checks.json").read_text())
+        self.assertEqual(cl_class_diagram.build(self.ir, meaning, checks), self.diagram,
                          "generated/cl-class-diagram.json is stale: run python3 scripts/cl_class_diagram.py")
 
 

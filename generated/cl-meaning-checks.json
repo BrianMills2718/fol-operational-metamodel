@@ -1,0 +1,255 @@
+{
+  "format": "cl-meaning-checks/v1",
+  "generated_by": "scripts/cl_meaning.py",
+  "source": {
+    "title": "ISO/IEC FCD 24707 Common Logic (CL): a framework for a family of logic-based languages, final committee draft",
+    "date": "2005-12-10",
+    "document": "ISO/IEC JTC1/SC32 N1377",
+    "url": "https://www.jtc1sc32.org/doc/N1351-1400/32N1377T-FCD24707_doc",
+    "sha256": "b9a641f5a4e6dff854cc76f5d20c5693742426275338dff34f3e6dfd85eb3661",
+    "caveat": "A public draft; the final ISO/IEC 24707:2007 and 2018 texts are licence-gated and were not consulted, so their wording or numbering may differ."
+  },
+  "core": [
+    "Negation",
+    "Conjunction",
+    "UniversalQuantification"
+  ],
+  "classes": {
+    "Equation": {
+      "role": "base",
+      "row": "6.2 Table 1, E6"
+    },
+    "AtomicSentence": {
+      "role": "base",
+      "row": "6.2 Table 1, E7"
+    },
+    "Negation": {
+      "role": "core",
+      "row": "6.2 Table 1, E8",
+      "table": {
+        "columns": [
+          "C1",
+          "Negation"
+        ],
+        "rows": [
+          [
+            "true",
+            "false"
+          ],
+          [
+            "false",
+            "true"
+          ]
+        ]
+      }
+    },
+    "Conjunction": {
+      "role": "core",
+      "row": "6.2 Table 1, E9",
+      "table": {
+        "columns": [
+          "C1",
+          "C2",
+          "Conjunction"
+        ],
+        "rows": [
+          [
+            "true",
+            "true",
+            "true"
+          ],
+          [
+            "true",
+            "false",
+            "false"
+          ],
+          [
+            "false",
+            "true",
+            "false"
+          ],
+          [
+            "false",
+            "false",
+            "false"
+          ]
+        ]
+      }
+    },
+    "Disjunction": {
+      "role": "rebuilt",
+      "row": "6.2 Table 1, E10",
+      "table": {
+        "columns": [
+          "C1",
+          "C2",
+          "Disjunction"
+        ],
+        "rows": [
+          [
+            "true",
+            "true",
+            "true"
+          ],
+          [
+            "true",
+            "false",
+            "true"
+          ],
+          [
+            "false",
+            "true",
+            "true"
+          ],
+          [
+            "false",
+            "false",
+            "false"
+          ]
+        ]
+      },
+      "cases": 15,
+      "scope": "every true/false combination for 0, 1, 2, 3 component(s)",
+      "counterexamples": [],
+      "rebuilt_as": "not (not C1 and … and not Cn)",
+      "agrees": true
+    },
+    "Implication": {
+      "role": "rebuilt",
+      "row": "6.2 Table 1, E11",
+      "table": {
+        "columns": [
+          "C1",
+          "C2",
+          "Implication"
+        ],
+        "rows": [
+          [
+            "true",
+            "true",
+            "true"
+          ],
+          [
+            "true",
+            "false",
+            "false"
+          ],
+          [
+            "false",
+            "true",
+            "true"
+          ],
+          [
+            "false",
+            "false",
+            "true"
+          ]
+        ]
+      },
+      "cases": 4,
+      "scope": "every true/false combination for 2 component(s)",
+      "counterexamples": [],
+      "rebuilt_as": "not (C1 and not C2)",
+      "agrees": true
+    },
+    "Biconditional": {
+      "role": "rebuilt",
+      "row": "6.2 Table 1, E12",
+      "table": {
+        "columns": [
+          "C1",
+          "C2",
+          "Biconditional"
+        ],
+        "rows": [
+          [
+            "true",
+            "true",
+            "true"
+          ],
+          [
+            "true",
+            "false",
+            "false"
+          ],
+          [
+            "false",
+            "true",
+            "false"
+          ],
+          [
+            "false",
+            "false",
+            "true"
+          ]
+        ]
+      },
+      "cases": 4,
+      "scope": "every true/false combination for 2 component(s)",
+      "counterexamples": [],
+      "rebuilt_as": "(not (C1 and not C2)) and (not (C2 and not C1))",
+      "agrees": true
+    },
+    "UniversalQuantification": {
+      "role": "core",
+      "row": "6.2 Table 1, E13",
+      "table": {
+        "columns": [
+          "the body is true of",
+          "UniversalQuantification"
+        ],
+        "rows": [
+          [
+            "0 of 3 things",
+            "false"
+          ],
+          [
+            "1 of 3 things",
+            "false"
+          ],
+          [
+            "2 of 3 things",
+            "false"
+          ],
+          [
+            "3 of 3 things",
+            "true"
+          ]
+        ]
+      }
+    },
+    "ExistentialQuantification": {
+      "role": "rebuilt",
+      "row": "6.2 Table 1, E14",
+      "table": {
+        "columns": [
+          "the body is true of",
+          "ExistentialQuantification"
+        ],
+        "rows": [
+          [
+            "0 of 3 things",
+            "false"
+          ],
+          [
+            "1 of 3 things",
+            "true"
+          ],
+          [
+            "2 of 3 things",
+            "true"
+          ],
+          [
+            "3 of 3 things",
+            "true"
+          ]
+        ]
+      },
+      "cases": 14,
+      "scope": "every world of 1 to 3 things and every choice of which things the body is true of; a check on small worlds, not a proof",
+      "counterexamples": [],
+      "rebuilt_as": "not (for every x, not body)",
+      "agrees": true
+    }
+  }
+}

@@ -35,6 +35,16 @@ ul.props li{border:1px solid var(--line);border-radius:7px;padding:7px 9px}
 .chips button{padding:2px 9px;font-size:.85rem}
 .legend{display:flex;gap:14px;flex-wrap:wrap;font-size:.82rem;color:var(--muted)}
 .sw{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:0}
+.meaning{border:1px solid var(--accent);border-radius:9px;padding:10px 12px;margin:10px 0 4px;background:color-mix(in srgb,var(--accent) 8%,var(--panel))}
+.meaning .when{color:var(--ink);font-size:1.02rem;margin:2px 0 8px}
+.meaning blockquote{margin:6px 0;padding:4px 10px;border-left:3px solid var(--line);font-family:ui-monospace,monospace;font-size:.82rem;color:var(--muted)}
+.note{font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);border:1px dashed var(--accent);border-radius:999px;padding:1px 7px;margin-left:6px;cursor:help}
+table.tt{border-collapse:collapse;font-family:ui-monospace,monospace;font-size:.85rem;margin:6px 0}
+table.tt th,table.tt td{border:1px solid var(--line);padding:2px 8px;text-align:center}
+table.tt td.out{font-weight:700}
+table.tt td.t{color:var(--accent)} table.tt td.f{color:var(--warm)}
+.build{margin:8px 0 0;color:var(--ink)}
+.build .ok{color:var(--accent)} .build .bad{color:var(--warm)}
 #tip{position:fixed;z-index:9999;max-width:280px;background:var(--ink);color:var(--bg);padding:6px 9px;border-radius:6px;font-size:12.5px;line-height:1.35;pointer-events:none;visibility:hidden;opacity:0;transition:opacity .08s}
 #tip.on{visibility:visible;opacity:1}
 #err{color:var(--warm);padding:16px}
@@ -45,7 +55,7 @@ ul.props li{border:1px solid var(--line);border-radius:7px;padding:7px 9px}
 <header>
   <div>
     <h1>Common Logic class diagram</h1>
-    <p class="sub">The parts of first-order logic as the OMG Common Logic metamodel defines them. A line down from A to B means B is a kind of A. Generated from the standard's XMI; nothing hand-drawn.</p>
+    <p class="sub">The parts of first-order logic as the OMG Common Logic metamodel defines them. A line down from A to B means B is a kind of A. The boxes and lines are generated from the standard's XMI; each connective's and quantifier's meaning is our note, quoting the Common Logic draft and checked by a program.</p>
   </div>
   <div class="controls">
     <label for="find" class="sr" hidden>Find a class</label>
@@ -87,7 +97,20 @@ ul.props li{border:1px solid var(--line);border-radius:7px;padding:7px 9px}
     if (!d) return;
     const props = d.properties.length ? `<ul class="props">${d.properties.map((p) => `<li><span class="pname">${esc(p.name)}</span> : ${p.type && data.details[p.type] ? classBtn(p.type) : esc(p.type ?? "untyped")}<div class="pmeta">multiplicity ${esc(p.multiplicity)}${p.ordered ? ", ordered" : ""}${p.association ? ` · association ${esc(p.association)}` : ""}</div></li>`).join("")}</ul>` : "<p>No properties of its own.</p>";
     const used = d.used_by.length ? `<ul class="props">${d.used_by.map((u) => `<li>${classBtn(u.owner)} <span class="pname">.${esc(u.property)}</span>${u.association ? `<div class="pmeta">association ${esc(u.association)}</div>` : ""}</li>`).join("")}</ul>` : "<p>No other class has a property of this type.</p>";
-    details.innerHTML = `<h2 id="sel-name">${esc(name)}<span class="tag">${d.abstract ? "abstract" : "class"}</span></h2>
+    const m = d.meaning;
+    let meaningHtml = "";
+    if (m) {
+      const table = m.table ? `<table class="tt" aria-label="Truth table for ${esc(name)}"><tr>${m.table.columns.map((c) => `<th>${esc(c)}</th>`).join("")}</tr>${m.table.rows.map((r) => `<tr>${r.map((v, i) => `<td class="${v === "true" ? "t" : v === "false" ? "f" : ""}${i === r.length - 1 ? " out" : ""}">${esc(v)}</td>`).join("")}</tr>`).join("")}</table>` : "";
+      const build = m.role === "core" ? `<p class="build">Core piece. The other connectives and "there is" are rebuilt from the three core pieces <b>not</b>, <b>and</b>, <b>for every</b>.</p>`
+        : m.role === "rebuilt" ? `<p class="build">Rebuilt from the core as: <code>${esc(m.rebuilt_as)}</code><br><span class="${m.check && m.check.agrees ? "ok" : "bad"}">${m.check && m.check.agrees ? "Checked: agrees with the rule above on" : "Check FAILED on"} ${m.check ? m.check.cases : 0} cases</span> <span class="pmeta">(${esc(m.check ? m.check.scope : "")})</span></p>`
+        : `<p class="build">Base case: its truth depends on what the names refer to, not on other sentences.</p>`;
+      meaningHtml = `<div class="meaning"><h3 style="margin-top:0">Meaning <span class="note" tabindex="0" data-tip="Our note: not in the standard's diagram file. The rule is quoted from the Common Logic draft; the plain wording, the core pieces and the rebuilds are this project's, and the rebuilds are checked by a program.">our note</span></h3>
+        <p class="when">${esc(m.plain)}</p>${table}
+        <blockquote>${esc(m.quote)}</blockquote>
+        <p class="pmeta" style="margin:0">Common Logic ${esc(m.row)}, <a href="${esc(m.source.url)}" data-tip="${esc(m.source.document)}, dated ${esc(m.source.date)}. ${esc(m.source.caveat)}">draft ${esc(m.source.document)}</a></p>
+        ${build}</div>`;
+    }
+    details.innerHTML = `<h2 id="sel-name">${esc(name)}<span class="tag">${d.abstract ? "abstract" : "class"}</span></h2>${meaningHtml}
       <h3>Is a kind of</h3>${d.parents.length ? `<div class="chips">${d.parents.map(classBtn).join("")}</div>` : "<p>Nothing: top of a hierarchy.</p>"}
       <h3>Kinds of ${esc(name)}</h3>${d.children.length ? `<div class="chips">${d.children.map(classBtn).join("")}</div>` : "<p>None.</p>"}
       <h3>Properties</h3>${props}

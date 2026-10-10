@@ -46,7 +46,24 @@ const missingText = wants.filter((w) => !panel.includes(w));
 log(missingText.length === 0, "click details", missingText.length ? `missing: ${missingText.join(", ")}` : `panel shows ${wants.join(" | ")}`);
 await page.screenshot({ path: `${out}class-diagram-selected.png` });
 
-// 3. Tooltips: hover every visible control and class box.
+// 2b. Meaning: Conjunction and Disjunction must now be told apart.
+const panelFor = async (name) => {
+  await page.locator(".gv-node", { has: page.locator(".gv-label", { hasText: new RegExp(`^${name}$`) }) }).click();
+  await page.waitForTimeout(250);
+  return (await page.locator("#details").innerText()).replace(/\s+/g, " ");
+};
+const conj = await panelFor("Conjunction");
+const disj = await panelFor("Disjunction");
+await page.screenshot({ path: `${out}class-diagram-disjunction.png` });
+const conjOk = conj.includes("every component is true");
+const disjOk = disj.includes("at least one component is true") && disj.includes("not (not C1 and … and not Cn)") && /Checked: agrees with the rule above on 15 cases/.test(disj);
+const tfConj = conj.match(/true false (true|false) false true/), tfDisj = disj.match(/true false (true|false) false true/);
+const differ = tfConj && tfDisj && tfConj[1] === "false" && tfDisj[1] === "true";
+log(conjOk && disjOk && differ, "and vs or", `Conjunction (true,false) -> ${tfConj && tfConj[1]}; Disjunction (true,false) -> ${tfDisj && tfDisj[1]}; rebuild shown and checked: ${disjOk}; citations: ${conj.includes("E9")}/${disj.includes("E10")}`);
+const ex = await panelFor("ExistentialQuantification");
+log(ex.includes("not (for every x, not body)") && ex.includes("not a proof") && ex.includes("E14"), "there is", ex.slice(ex.search(/meaning/i), ex.search(/meaning/i) + 330));
+
+// 3. Tooltips: hover every visible control and class box (with Existential's panel open).
 await page.locator("#fit").click();
 await page.waitForTimeout(400);
 const controls = page.locator("button:visible, select:visible, a:visible, [tabindex='0']:visible");

@@ -1,0 +1,25 @@
+{
+  "schema_version": "method-activation-facts.v1",
+  "record_type": "method_activation_facts",
+  "plan_ref": "docs/plans/fol-meaning-layer.md",
+  "plan_sha256": "c8419354b3ea26f73a6c188e87d76bbe296344fb7e576798aa47e593e1096398",
+  "path_decision_ref": "docs/plans/fol-meaning-layer.path-decision.json",
+  "path_decision_sha256": "a9d840ca2da18991617d3eab872530810c812547c0d198200599a2382abdc3a9",
+  "facts": {
+    "shared_mechanism": true,
+    "empirical_comparison_proposed": false,
+    "llm_central": false,
+    "irreversible_or_spend_action": true,
+    "claims_external_standard": true,
+    "crosses_system_boundary": true
+  },
+  "fact_sources": {
+    "shared_mechanism": "derived_current_boundary",
+    "empirical_comparison_proposed": "derived_current_boundary",
+    "llm_central": "derived_current_boundary",
+    "irreversible_or_spend_action": "derived_current_boundary",
+    "claims_external_standard": "derived_current_boundary",
+    "crosses_system_boundary": "derived_current_boundary"
+  },
+  "recorded_at": "2026-10-10T23:17:28Z"
+}

@@ -6,8 +6,11 @@ Output: generated/cl-class-diagram.json with
   - "graph": a typed-graph/v1 document (representation-router/graph-viewer): one node per
     uml-class, one parent-to-child edge per UML generalization, laid out top-down;
   - "details": per class, its parents, children, owned properties (name, type, multiplicity,
-    association) and the properties of other classes typed as it.
-Everything is read from the IR; nothing about logic is added here.
+    association) and the properties of other classes typed as it; and, where the project's
+    annotation file covers the class, a "meaning" record (annotation: true) with the quoted
+    Common Logic truth rule, its truth table and the checked core rebuild.
+Structure comes from the IR only; meaning comes only from spec/cl-meaning.json and the checks
+scripts/cl_meaning.py computed from it.
 """
 from __future__ import annotations
 
@@ -18,6 +21,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_INPUT = ROOT / "generated" / "odm-cl-metamodel-ir.json"
 DEFAULT_OUTPUT = ROOT / "generated" / "cl-class-diagram.json"
+DEFAULT_MEANING = ROOT / "spec" / "cl-meaning.json"
+DEFAULT_CHECKS = ROOT / "generated" / "cl-meaning-checks.json"
 
 
 def multiplicity_text(prop: dict) -> str:
@@ -30,7 +35,7 @@ def multiplicity_text(prop: dict) -> str:
     return lower if lower == upper else f"{lower}..{upper}"
 
 
-def build(ir: dict) -> dict:
+def build(ir: dict, meaning: dict | None = None, checks: dict | None = None) -> dict:
     nodes = {n["id"]: n for n in ir["nodes"]}
     classes = {i: n for i, n in nodes.items() if n["kind"] == "uml-class"}
     names = {i: n["name"] for i, n in classes.items()}
@@ -78,8 +83,30 @@ def build(ir: dict) -> dict:
     for d in details.values():
         d["used_by"].sort(key=lambda u: (u["owner"], u["property"]))
 
+    if meaning:
+        unknown = set(meaning["classes"]) - set(details)
+        if unknown:
+            raise ValueError(f"annotation names classes not in the IR: {sorted(unknown)}")
+        for name, rec in meaning["classes"].items():
+            chk = (checks or {}).get("classes", {}).get(name, {})
+            details[name]["meaning"] = {
+                "annotation": True,
+                "role": rec["role"],
+                "plain": rec["plain"],
+                "quote": rec["quote"],
+                "row": rec["row"],
+                "source": {k: meaning["source"][k] for k in ("document", "date", "url", "caveat")},
+                "table": chk.get("table"),
+                "rebuilt_as": chk.get("rebuilt_as"),
+                "check": ({"agrees": chk["agrees"], "cases": chk["cases"], "scope": chk["scope"]}
+                          if "agrees" in chk else None),
+            }
+
     def explain(name: str) -> str:
         d = details[name]
+        if "meaning" in d:
+            role = {"core": " Core piece.", "rebuilt": " Rebuilt from the core.", "base": ""}[d["meaning"]["role"]]
+            return f"{d['meaning']['plain']}{role} Click for details."
         parts = ["Abstract class" if d["abstract"] else "Class"]
         parts.append(f"kind of {', '.join(d['parents'])}" if d["parents"] else "top of a hierarchy")
         n = len(d["properties"])
@@ -104,7 +131,7 @@ def build(ir: dict) -> dict:
         "format": "cl-class-diagram/v1",
         "source": ir["source"],
         "generated_by": "scripts/cl_class_diagram.py",
-        "note": "Every class, generalization and property comes from the OMG ODM Common Logic XMI import; tooltips summarise those facts and add no others.",
+        "note": "Every class, generalization and property comes from the OMG ODM Common Logic XMI import. 'meaning' records are this project's annotation (spec/cl-meaning.json), quoting the cited Common Logic draft; tooltips summarise those two sources and add nothing else.",
         "graph": graph,
         "details": details,
     }
@@ -114,11 +141,14 @@ def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--input", type=Path, default=DEFAULT_INPUT)
     ap.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
+    ap.add_argument("--meaning", type=Path, default=DEFAULT_MEANING)
+    ap.add_argument("--checks", type=Path, default=DEFAULT_CHECKS, help="output of scripts/cl_meaning.py")
     args = ap.parse_args()
-    result = build(json.loads(args.input.read_text()))
+    result = build(json.loads(args.input.read_text()), json.loads(args.meaning.read_text()), json.loads(args.checks.read_text()))
     args.output.write_text(json.dumps(result, indent=2) + "\n")
     g = result["graph"]
-    print(f"wrote {args.output}: {len(g['nodes'])} classes, {len(g['edges'])} generalizations")
+    covered = sum("meaning" in d for d in result["details"].values())
+    print(f"wrote {args.output}: {len(g['nodes'])} classes, {len(g['edges'])} generalizations, {covered} with meaning")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,82 @@
+{
+  "format": "cl-meaning/v1",
+  "annotation": true,
+  "note": "Project annotation, not part of the OMG XMI. Each rule is quoted from the cited Common Logic draft; the plain-language lines, the choice of core pieces and the rebuild formulas are this project's. scripts/cl_meaning.py checks every rebuild against the quoted rules.",
+  "source": {
+    "title": "ISO/IEC FCD 24707 Common Logic (CL): a framework for a family of logic-based languages, final committee draft",
+    "date": "2005-12-10",
+    "document": "ISO/IEC JTC1/SC32 N1377",
+    "url": "https://www.jtc1sc32.org/doc/N1351-1400/32N1377T-FCD24707_doc",
+    "sha256": "b9a641f5a4e6dff854cc76f5d20c5693742426275338dff34f3e6dfd85eb3661",
+    "caveat": "A public draft; the final ISO/IEC 24707:2007 and 2018 texts are licence-gated and were not consulted, so their wording or numbering may differ."
+  },
+  "core": ["Negation", "Conjunction", "UniversalQuantification"],
+  "classes": {
+    "Equation": {
+      "row": "6.2 Table 1, E6",
+      "quote": "true if I(T1) = I(T2), otherwise false",
+      "plain": "True when both terms name the same thing.",
+      "role": "base"
+    },
+    "AtomicSentence": {
+      "row": "6.2 Table 1, E7",
+      "quote": "true if I(S) is in relI(I(P)), otherwise false",
+      "plain": "True when the things named by the arguments stand in the relation the predicate names.",
+      "role": "base"
+    },
+    "Negation": {
+      "row": "6.2 Table 1, E8",
+      "quote": "true if I(C) = false, otherwise false",
+      "plain": "True when its one component is false.",
+      "role": "core",
+      "arity": [1]
+    },
+    "Conjunction": {
+      "row": "6.2 Table 1, E9",
+      "quote": "true if I(C1) = … = I(Cn) = true, otherwise false",
+      "plain": "True when every component is true (with no components, true).",
+      "role": "core",
+      "arity": [0, 1, 2, 3]
+    },
+    "Disjunction": {
+      "row": "6.2 Table 1, E10",
+      "quote": "false if I(C1) = … = I(Cn) = false, otherwise true",
+      "plain": "True when at least one component is true (with no components, false).",
+      "role": "rebuilt",
+      "arity": [0, 1, 2, 3],
+      "rebuilt_as": {"op": "not", "arg": {"op": "and_each", "each": {"op": "not", "arg": "$c"}}}
+    },
+    "Implication": {
+      "row": "6.2 Table 1, E11",
+      "quote": "false if I(C1) = true and I(C2) = false, otherwise true",
+      "plain": "False only when the first component is true and the second is false.",
+      "role": "rebuilt",
+      "arity": [2],
+      "rebuilt_as": {"op": "not", "arg": {"op": "and", "args": ["C1", {"op": "not", "arg": "C2"}]}}
+    },
+    "Biconditional": {
+      "row": "6.2 Table 1, E12",
+      "quote": "true if I(C1) = I(C2), otherwise false.",
+      "plain": "True when both components have the same truth value.",
+      "role": "rebuilt",
+      "arity": [2],
+      "rebuilt_as": {"op": "and", "args": [
+        {"op": "not", "arg": {"op": "and", "args": ["C1", {"op": "not", "arg": "C2"}]}},
+        {"op": "not", "arg": {"op": "and", "args": ["C2", {"op": "not", "arg": "C1"}]}}
+      ]}
+    },
+    "UniversalQuantification": {
+      "row": "6.2 Table 1, E13",
+      "quote": "true if for every name map A on N, I[A](B) is true; otherwise false.",
+      "plain": "True when the body is true whichever thing in the universe of discourse the bound name stands for.",
+      "role": "core"
+    },
+    "ExistentialQuantification": {
+      "row": "6.2 Table 1, E14",
+      "quote": "false if for every name map A on N, I[A](B) is false; otherwise true.",
+      "plain": "True when the body is true for at least one thing the bound name could stand for.",
+      "role": "rebuilt",
+      "rebuilt_as": {"op": "not", "arg": {"op": "forall", "body": {"op": "not", "arg": "body"}}}
+    }
+  }
+}

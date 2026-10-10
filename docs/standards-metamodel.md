@@ -16,6 +16,8 @@ Common Logic separately standardizes semantic notions including interpretation, 
 
 Those concepts are not assumed to be encoded by the ODM `CL` XMI package merely because they occur in the Common Logic standard. Until a machine-readable semantic metamodel is imported, semantic concepts must retain their normative-source provenance rather than being presented as ODM-XMI facts.
 
+The first such layer is `spec/cl-meaning.json` (2026-10-10): a project annotation quoting the truth conditions for equations, atomic sentences, the five connectives and both quantifiers from the public final committee draft ISO/IEC FCD 24707 (JTC1/SC32 N1377, 2005-12-10, clause 6.2 Table 1, rows E6-E14), with core pieces (not, and, for every) and rebuilds checked by `scripts/cl_meaning.py`. The final 2007/2018 texts were not consulted because they are licence-gated.
+
 ## 3. DOL / institution-level structure
 
 OMG DOL provides a normative MOF metamodel for heterogeneous ontologies, models, specifications, and mappings. Institution theory supplies the more abstract logic interface: signatures, sentences, models, and satisfaction, with translations/reducts respecting the satisfaction condition.

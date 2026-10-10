@@ -38,7 +38,9 @@ OMG ODM XMI -> scripts/import_standards.py -> generated/odm-cl-metamodel-ir.json
             -> shared graph viewer (visualizer/vendor/graph-viewer.js, React Flow + ELK)
 ```
 
-After changing the import, run `python3 scripts/cl_class_diagram.py`; `tests/test_class_diagram.py` fails if the checked-in diagram is stale or any generalization is missing or extra. Browser check (needs `npm install` once): serve the repo, then `npm run e2e -- http://127.0.0.1:8000`; it prints one line per check and `RESULT passed=N failed=M`.
+Clicking a connective or quantifier also shows its **meaning**: the truth rule quoted from the public Common Logic draft (ISO/IEC FCD 24707, SC32 N1377, clause 6.2 Table 1), a truth table, and whether it is a core piece (not, and, for every) or how it is rebuilt from them. That layer is a marked project annotation in `spec/cl-meaning.json`; `scripts/cl_meaning.py` implements the draft's rules literally and checks every rebuild on every true/false combination (0-3 components) and, for "there is", on every world of 1-3 things (a check on small worlds, not a proof), writing `generated/cl-meaning-checks.json`.
+
+After changing the import or the annotation, run `python3 scripts/cl_meaning.py && python3 scripts/cl_class_diagram.py`; `tests/test_class_diagram.py` fails if the checked-in diagram is stale or any generalization is missing or extra. Browser check (needs `npm install` once): serve the repo, then `npm run e2e -- http://127.0.0.1:8000`; it prints one line per check and `RESULT passed=N failed=M`.
 
 ### Live FLAMS focus mode (parked)
 
@@ -218,6 +220,7 @@ That mode only recognizes a small source-level subset and does not replace MMT p
 - `visualizer/class-diagram.html` — Common Logic class diagram; `visualizer/vendor/` holds the pinned shared graph viewer.
 - `visualizer/` — graph explorer generated from IR.
 - `scripts/cl_class_diagram.py` — Common Logic IR to class-diagram converter.
+- `spec/cl-meaning.json` — marked annotation: Common Logic truth rules (quoted, cited), core pieces and rebuilds; checked by `scripts/cl_meaning.py`.
 - `ui/registry.yaml` — this repository's UI surfaces for the ecosystem UI index.
 - `tests/` — importer and regression tests.
 

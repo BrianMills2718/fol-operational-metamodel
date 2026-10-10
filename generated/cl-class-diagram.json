@@ -7,7 +7,7 @@
     "package": "CL"
   },
   "generated_by": "scripts/cl_class_diagram.py",
-  "note": "Every class, generalization and property comes from the OMG ODM Common Logic XMI import; tooltips summarise those facts and add no others.",
+  "note": "Every class, generalization and property comes from the OMG ODM Common Logic XMI import. 'meaning' records are this project's annotation (spec/cl-meaning.json), quoting the cited Common Logic draft; tooltips summarise those two sources and add nothing else.",
   "graph": {
     "schema": "typed-graph/v1",
     "kinds": {
@@ -39,13 +39,13 @@
         "id": "AtomicSentence",
         "label": "AtomicSentence",
         "kind": "class",
-        "explain": "Class; kind of Atom; 2 properties: argument, predicate. Click for details."
+        "explain": "True when the things named by the arguments stand in the relation the predicate names. Click for details."
       },
       {
         "id": "Biconditional",
         "label": "Biconditional",
         "kind": "class",
-        "explain": "Class; kind of BooleanSentence; 2 properties: lvalue, rvalue. Click for details."
+        "explain": "True when both components have the same truth value. Rebuilt from the core. Click for details."
       },
       {
         "id": "Binding",
@@ -81,19 +81,19 @@
         "id": "Conjunction",
         "label": "Conjunction",
         "kind": "class",
-        "explain": "Class; kind of BooleanSentence; 1 property: conjunct. Click for details."
+        "explain": "True when every component is true (with no components, true). Core piece. Click for details."
       },
       {
         "id": "Disjunction",
         "label": "Disjunction",
         "kind": "class",
-        "explain": "Class; kind of BooleanSentence; 1 property: disjunct. Click for details."
+        "explain": "True when at least one component is true (with no components, false). Rebuilt from the core. Click for details."
       },
       {
         "id": "Equation",
         "label": "Equation",
         "kind": "class",
-        "explain": "Class; kind of Atom; 2 properties: lvalue, rvalue. Click for details."
+        "explain": "True when both terms name the same thing. Click for details."
       },
       {
         "id": "ExclusionSet",
@@ -105,7 +105,7 @@
         "id": "ExistentialQuantification",
         "label": "ExistentialQuantification",
         "kind": "class",
-        "explain": "Class; kind of QuantifiedSentence; 0 properties. Click for details."
+        "explain": "True when the body is true for at least one thing the bound name could stand for. Rebuilt from the core. Click for details."
       },
       {
         "id": "FunctionalTerm",
@@ -123,7 +123,7 @@
         "id": "Implication",
         "label": "Implication",
         "kind": "class",
-        "explain": "Class; kind of BooleanSentence; 2 properties: antecedent, consequent. Click for details."
+        "explain": "False only when the first component is true and the second is false. Rebuilt from the core. Click for details."
       },
       {
         "id": "Importation",
@@ -153,7 +153,7 @@
         "id": "Negation",
         "label": "Negation",
         "kind": "class",
-        "explain": "Class; kind of BooleanSentence; 1 property: sentence. Click for details."
+        "explain": "True when its one component is false. Core piece. Click for details."
       },
       {
         "id": "Phrase",
@@ -195,7 +195,7 @@
         "id": "UniversalQuantification",
         "label": "UniversalQuantification",
         "kind": "class",
-        "explain": "Class; kind of QuantifiedSentence; 0 properties. Click for details."
+        "explain": "True when the body is true whichever thing in the universe of discourse the bound name stands for. Core piece. Click for details."
       }
     ],
     "edges": [
@@ -373,7 +373,55 @@
           "xmi_id": "_15_5_2c17055e_1218847223579_538_3559"
         }
       ],
-      "used_by": []
+      "used_by": [],
+      "meaning": {
+        "annotation": true,
+        "role": "rebuilt",
+        "plain": "True when at least one component is true (with no components, false).",
+        "quote": "false if I(C1) = \u2026 = I(Cn) = false, otherwise true",
+        "row": "6.2 Table 1, E10",
+        "source": {
+          "document": "ISO/IEC JTC1/SC32 N1377",
+          "date": "2005-12-10",
+          "url": "https://www.jtc1sc32.org/doc/N1351-1400/32N1377T-FCD24707_doc",
+          "caveat": "A public draft; the final ISO/IEC 24707:2007 and 2018 texts are licence-gated and were not consulted, so their wording or numbering may differ."
+        },
+        "table": {
+          "columns": [
+            "C1",
+            "C2",
+            "Disjunction"
+          ],
+          "rows": [
+            [
+              "true",
+              "true",
+              "true"
+            ],
+            [
+              "true",
+              "false",
+              "true"
+            ],
+            [
+              "false",
+              "true",
+              "true"
+            ],
+            [
+              "false",
+              "false",
+              "false"
+            ]
+          ]
+        },
+        "rebuilt_as": "not (not C1 and \u2026 and not Cn)",
+        "check": {
+          "agrees": true,
+          "cases": 15,
+          "scope": "every true/false combination for 0, 1, 2, 3 component(s)"
+        }
+      }
     },
     "Importation": {
       "abstract": false,
@@ -438,7 +486,55 @@
           "xmi_id": "_15_5_2c17055e_1218847223579_194941_3504"
         }
       ],
-      "used_by": []
+      "used_by": [],
+      "meaning": {
+        "annotation": true,
+        "role": "rebuilt",
+        "plain": "True when both components have the same truth value.",
+        "quote": "true if I(C1) = I(C2), otherwise false.",
+        "row": "6.2 Table 1, E12",
+        "source": {
+          "document": "ISO/IEC JTC1/SC32 N1377",
+          "date": "2005-12-10",
+          "url": "https://www.jtc1sc32.org/doc/N1351-1400/32N1377T-FCD24707_doc",
+          "caveat": "A public draft; the final ISO/IEC 24707:2007 and 2018 texts are licence-gated and were not consulted, so their wording or numbering may differ."
+        },
+        "table": {
+          "columns": [
+            "C1",
+            "C2",
+            "Biconditional"
+          ],
+          "rows": [
+            [
+              "true",
+              "true",
+              "true"
+            ],
+            [
+              "true",
+              "false",
+              "false"
+            ],
+            [
+              "false",
+              "true",
+              "false"
+            ],
+            [
+              "false",
+              "false",
+              "true"
+            ]
+          ]
+        },
+        "rebuilt_as": "(not (C1 and not C2)) and (not (C2 and not C1))",
+        "check": {
+          "agrees": true,
+          "cases": 4,
+          "scope": "every true/false combination for 2 component(s)"
+        }
+      }
     },
     "Argument": {
       "abstract": false,
@@ -583,7 +679,50 @@
       ],
       "children": [],
       "properties": [],
-      "used_by": []
+      "used_by": [],
+      "meaning": {
+        "annotation": true,
+        "role": "rebuilt",
+        "plain": "True when the body is true for at least one thing the bound name could stand for.",
+        "quote": "false if for every name map A on N, I[A](B) is false; otherwise true.",
+        "row": "6.2 Table 1, E14",
+        "source": {
+          "document": "ISO/IEC JTC1/SC32 N1377",
+          "date": "2005-12-10",
+          "url": "https://www.jtc1sc32.org/doc/N1351-1400/32N1377T-FCD24707_doc",
+          "caveat": "A public draft; the final ISO/IEC 24707:2007 and 2018 texts are licence-gated and were not consulted, so their wording or numbering may differ."
+        },
+        "table": {
+          "columns": [
+            "the body is true of",
+            "ExistentialQuantification"
+          ],
+          "rows": [
+            [
+              "0 of 3 things",
+              "false"
+            ],
+            [
+              "1 of 3 things",
+              "true"
+            ],
+            [
+              "2 of 3 things",
+              "true"
+            ],
+            [
+              "3 of 3 things",
+              "true"
+            ]
+          ]
+        },
+        "rebuilt_as": "not (for every x, not body)",
+        "check": {
+          "agrees": true,
+          "cases": 14,
+          "scope": "every world of 1 to 3 things and every choice of which things the body is true of; a check on small worlds, not a proof"
+        }
+      }
     },
     "Negation": {
       "abstract": false,
@@ -603,7 +742,38 @@
           "xmi_id": "_15_5_2c17055e_1218847223559_196334_3171"
         }
       ],
-      "used_by": []
+      "used_by": [],
+      "meaning": {
+        "annotation": true,
+        "role": "core",
+        "plain": "True when its one component is false.",
+        "quote": "true if I(C) = false, otherwise false",
+        "row": "6.2 Table 1, E8",
+        "source": {
+          "document": "ISO/IEC JTC1/SC32 N1377",
+          "date": "2005-12-10",
+          "url": "https://www.jtc1sc32.org/doc/N1351-1400/32N1377T-FCD24707_doc",
+          "caveat": "A public draft; the final ISO/IEC 24707:2007 and 2018 texts are licence-gated and were not consulted, so their wording or numbering may differ."
+        },
+        "table": {
+          "columns": [
+            "C1",
+            "Negation"
+          ],
+          "rows": [
+            [
+              "true",
+              "false"
+            ],
+            [
+              "false",
+              "true"
+            ]
+          ]
+        },
+        "rebuilt_as": null,
+        "check": null
+      }
     },
     "Conjunction": {
       "abstract": false,
@@ -623,7 +793,51 @@
           "xmi_id": "_15_5_2c17055e_1218847223579_918413_3534"
         }
       ],
-      "used_by": []
+      "used_by": [],
+      "meaning": {
+        "annotation": true,
+        "role": "core",
+        "plain": "True when every component is true (with no components, true).",
+        "quote": "true if I(C1) = \u2026 = I(Cn) = true, otherwise false",
+        "row": "6.2 Table 1, E9",
+        "source": {
+          "document": "ISO/IEC JTC1/SC32 N1377",
+          "date": "2005-12-10",
+          "url": "https://www.jtc1sc32.org/doc/N1351-1400/32N1377T-FCD24707_doc",
+          "caveat": "A public draft; the final ISO/IEC 24707:2007 and 2018 texts are licence-gated and were not consulted, so their wording or numbering may differ."
+        },
+        "table": {
+          "columns": [
+            "C1",
+            "C2",
+            "Conjunction"
+          ],
+          "rows": [
+            [
+              "true",
+              "true",
+              "true"
+            ],
+            [
+              "true",
+              "false",
+              "false"
+            ],
+            [
+              "false",
+              "true",
+              "false"
+            ],
+            [
+              "false",
+              "false",
+              "false"
+            ]
+          ]
+        },
+        "rebuilt_as": null,
+        "check": null
+      }
     },
     "SequenceMarker": {
       "abstract": false,
@@ -794,7 +1008,23 @@
           "xmi_id": "_15_5_2c17055e_1218847223559_634181_3026"
         }
       ],
-      "used_by": []
+      "used_by": [],
+      "meaning": {
+        "annotation": true,
+        "role": "base",
+        "plain": "True when both terms name the same thing.",
+        "quote": "true if I(T1) = I(T2), otherwise false",
+        "row": "6.2 Table 1, E6",
+        "source": {
+          "document": "ISO/IEC JTC1/SC32 N1377",
+          "date": "2005-12-10",
+          "url": "https://www.jtc1sc32.org/doc/N1351-1400/32N1377T-FCD24707_doc",
+          "caveat": "A public draft; the final ISO/IEC 24707:2007 and 2018 texts are licence-gated and were not consulted, so their wording or numbering may differ."
+        },
+        "table": null,
+        "rebuilt_as": null,
+        "check": null
+      }
     },
     "Implication": {
       "abstract": false,
@@ -823,7 +1053,55 @@
           "xmi_id": "_15_5_2c17055e_1218847223559_808148_2943"
         }
       ],
-      "used_by": []
+      "used_by": [],
+      "meaning": {
+        "annotation": true,
+        "role": "rebuilt",
+        "plain": "False only when the first component is true and the second is false.",
+        "quote": "false if I(C1) = true and I(C2) = false, otherwise true",
+        "row": "6.2 Table 1, E11",
+        "source": {
+          "document": "ISO/IEC JTC1/SC32 N1377",
+          "date": "2005-12-10",
+          "url": "https://www.jtc1sc32.org/doc/N1351-1400/32N1377T-FCD24707_doc",
+          "caveat": "A public draft; the final ISO/IEC 24707:2007 and 2018 texts are licence-gated and were not consulted, so their wording or numbering may differ."
+        },
+        "table": {
+          "columns": [
+            "C1",
+            "C2",
+            "Implication"
+          ],
+          "rows": [
+            [
+              "true",
+              "true",
+              "true"
+            ],
+            [
+              "true",
+              "false",
+              "false"
+            ],
+            [
+              "false",
+              "true",
+              "true"
+            ],
+            [
+              "false",
+              "false",
+              "true"
+            ]
+          ]
+        },
+        "rebuilt_as": "not (C1 and not C2)",
+        "check": {
+          "agrees": true,
+          "cases": 4,
+          "scope": "every true/false combination for 2 component(s)"
+        }
+      }
     },
     "UniversalQuantification": {
       "abstract": false,
@@ -833,7 +1111,46 @@
       ],
       "children": [],
       "properties": [],
-      "used_by": []
+      "used_by": [],
+      "meaning": {
+        "annotation": true,
+        "role": "core",
+        "plain": "True when the body is true whichever thing in the universe of discourse the bound name stands for.",
+        "quote": "true if for every name map A on N, I[A](B) is true; otherwise false.",
+        "row": "6.2 Table 1, E13",
+        "source": {
+          "document": "ISO/IEC JTC1/SC32 N1377",
+          "date": "2005-12-10",
+          "url": "https://www.jtc1sc32.org/doc/N1351-1400/32N1377T-FCD24707_doc",
+          "caveat": "A public draft; the final ISO/IEC 24707:2007 and 2018 texts are licence-gated and were not consulted, so their wording or numbering may differ."
+        },
+        "table": {
+          "columns": [
+            "the body is true of",
+            "UniversalQuantification"
+          ],
+          "rows": [
+            [
+              "0 of 3 things",
+              "false"
+            ],
+            [
+              "1 of 3 things",
+              "false"
+            ],
+            [
+              "2 of 3 things",
+              "false"
+            ],
+            [
+              "3 of 3 things",
+              "true"
+            ]
+          ]
+        },
+        "rebuilt_as": null,
+        "check": null
+      }
     },
     "Identifier": {
       "abstract": false,
@@ -1006,7 +1323,23 @@
           "xmi_id": "_15_5_2c17055e_1218847223579_298915_3515"
         }
       ],
-      "used_by": []
+      "used_by": [],
+      "meaning": {
+        "annotation": true,
+        "role": "base",
+        "plain": "True when the things named by the arguments stand in the relation the predicate names.",
+        "quote": "true if I(S) is in relI(I(P)), otherwise false",
+        "row": "6.2 Table 1, E7",
+        "source": {
+          "document": "ISO/IEC JTC1/SC32 N1377",
+          "date": "2005-12-10",
+          "url": "https://www.jtc1sc32.org/doc/N1351-1400/32N1377T-FCD24707_doc",
+          "caveat": "A public draft; the final ISO/IEC 24707:2007 and 2018 texts are licence-gated and were not consulted, so their wording or numbering may differ."
+        },
+        "table": null,
+        "rebuilt_as": null,
+        "check": null
+      }
     },
     "Term": {
       "abstract": true,
