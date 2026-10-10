@@ -1,0 +1,600 @@
+{
+  "schema_version": "planning-method-conformance-receipt.v1",
+  "record_type": "planning_method_conformance_receipt",
+  "receipt_id": "RECEIPT-fol-class-diagram-a3e3fc069d6d",
+  "plan": {
+    "plan_ref": "docs/plans/fol-class-diagram.md",
+    "plan_sha256": "a3e3fc069d6d2f99372f66b1c95381c1778aa618939470132025097825f00813"
+  },
+  "path_decision": {
+    "ref": "docs/plans/fol-class-diagram.path-decision.json",
+    "sha256": "f226d1a2eca0a8a38ae820b9d60c4e4836512bb46bda996b9f57216e0c1b20fb",
+    "selected_path": "durable_solo",
+    "classified_path": "durable_solo",
+    "errors": []
+  },
+  "route": "durable_solo",
+  "profile": {
+    "profile_id": "bounded-design",
+    "revision": "bounded-design@11",
+    "path": "contracts/method-conformance/profiles/bounded-design.v1.json",
+    "sha256": "0261c51b94b32a629bf6255b3c032c18cdbef4e8df6d5bed9db1f72d267c89cb"
+  },
+  "compiler": {
+    "path": "scripts/method_conformance/compiler.py",
+    "sha256": "e08f1a326de035b56e4e20bd6224439145f2373926a66672502c4b78a524105d"
+  },
+  "activation": {
+    "facts_ref": "docs/plans/fol-class-diagram.facts.json",
+    "facts_sha256": "5e80f4f55b41a507a59b2975c54fed89bdbbe7aa489afb522e7fcf72b0257f35",
+    "facts": {
+      "shared_mechanism": false,
+      "empirical_comparison_proposed": false,
+      "llm_central": false,
+      "irreversible_or_spend_action": true,
+      "claims_external_standard": true,
+      "crosses_system_boundary": true,
+      "deploys": false,
+      "aes_governed_target": false,
+      "multiple_writers": false,
+      "consequential_boundary": false,
+      "inline_prototype": false
+    },
+    "fact_origins": {
+      "shared_mechanism": "declared:derived_current_boundary",
+      "empirical_comparison_proposed": "declared:derived_current_boundary",
+      "llm_central": "declared:derived_current_boundary",
+      "irreversible_or_spend_action": "declared:derived_current_boundary",
+      "claims_external_standard": "declared:derived_current_boundary",
+      "crosses_system_boundary": "declared:derived_current_boundary",
+      "deploys": "default:not_declared",
+      "aes_governed_target": "default:not_declared",
+      "multiple_writers": "derived:path_decision.concurrent_writers",
+      "consequential_boundary": "derived:path_decision.persistent_migration|consequential_external_mutation",
+      "inline_prototype": "derived:classified_path==prototype"
+    },
+    "overlays": [
+      {
+        "overlay_id": "OV-PRIOR-ART",
+        "activation_fact": "shared_mechanism",
+        "active": false,
+        "reason": "shared_mechanism=false (declared:derived_current_boundary)"
+      },
+      {
+        "overlay_id": "OV-EMPIRICAL-COMPARISON",
+        "activation_fact": "empirical_comparison_proposed",
+        "active": false,
+        "reason": "empirical_comparison_proposed=false (declared:derived_current_boundary)"
+      },
+      {
+        "overlay_id": "OV-LLM-CENTRAL",
+        "activation_fact": "llm_central",
+        "active": false,
+        "reason": "llm_central=false (declared:derived_current_boundary)"
+      },
+      {
+        "overlay_id": "OV-MULTIPLE-WRITERS",
+        "activation_fact": "multiple_writers",
+        "active": false,
+        "reason": "multiple_writers=false (derived:path_decision.concurrent_writers)"
+      },
+      {
+        "overlay_id": "OV-CONSEQUENTIAL-BOUNDARY",
+        "activation_fact": "consequential_boundary",
+        "active": false,
+        "reason": "consequential_boundary=false (derived:path_decision.persistent_migration|consequential_external_mutation)"
+      },
+      {
+        "overlay_id": "OV-INLINE-PROTOTYPE",
+        "activation_fact": "inline_prototype",
+        "active": false,
+        "reason": "inline_prototype=false (derived:classified_path==prototype)"
+      },
+      {
+        "overlay_id": "OV-SYSTEM-BOUNDARY",
+        "activation_fact": "crosses_system_boundary",
+        "active": true,
+        "reason": "crosses_system_boundary=true (declared:derived_current_boundary)"
+      },
+      {
+        "overlay_id": "OV-DEPLOYMENT",
+        "activation_fact": "deploys",
+        "active": false,
+        "reason": "deploys=false (default:not_declared)"
+      },
+      {
+        "overlay_id": "OV-STANDARD-CONFORMANCE",
+        "activation_fact": "claims_external_standard",
+        "active": true,
+        "reason": "claims_external_standard=true (declared:derived_current_boundary)"
+      },
+      {
+        "overlay_id": "OV-AES",
+        "activation_fact": "aes_governed_target",
+        "active": false,
+        "reason": "aes_governed_target=false (default:not_declared)"
+      }
+    ]
+  },
+  "checklist": {
+    "checklist_id": "method-conformance.bounded-design",
+    "revision": "sha256:22d948794aeffee6005f6f755f5da578a9f409931416e1fbc6afa2f042e241cc",
+    "definition_sha256": "ad444d4b0a012a07587ef79cb4fd1c22136b832eadcffa610ceb78aca8dfc9cd",
+    "bundle_ref": "docs/plans/fol-class-diagram.bundle.json",
+    "bundle_sha256": "558566be5330e311ab150ded479578254d8c27b0e6262e1b93076add8ec3edd3",
+    "coverage": "complete",
+    "definition_matches_recompilation": true
+  },
+  "items": [
+    {
+      "item_id": "CORE-ACTOR-RESULT-EXAMPLE",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/fol-class-diagram.md#actor-and-result",
+          "sha256": "a3e3fc069d6d2f99372f66b1c95381c1778aa618939470132025097825f00813"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/fol-class-diagram/a71f530febf2/CORE-ACTOR-RESULT-EXAMPLE",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence explicitly names the actor as Brian, the desired result as the generated class-diagram page with its behavior, and a stable, concrete user-visible example involving the rendered hierarchy and the QuantifiedSentence side panel.",
+        "reused": true
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-ROUTE",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "structural",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/fol-class-diagram.path-decision.json",
+          "sha256": "f226d1a2eca0a8a38ae820b9d60c4e4836512bb46bda996b9f57216e0c1b20fb"
+        }
+      ],
+      "semantic": null,
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-REQUIREMENTS-TRACED",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/fol-class-diagram.md#requirements",
+          "sha256": "a3e3fc069d6d2f99372f66b1c95381c1778aa618939470132025097825f00813"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/fol-class-diagram/a71f530febf2/CORE-REQUIREMENTS-TRACED",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence provides a requirements list with eleven requirements, and each names an explicit check and a permitted status (`planned`). The listed requirements also include the work’s user-facing claims, including faithful diagram representation of the standard’s generalizations, hierarchical layout, displayed class details, tooltips, and ecosystem registration.",
+        "reused": true
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-SUCCESS-DISPROOF",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/fol-class-diagram.md#success-and-disproof",
+          "sha256": "a3e3fc069d6d2f99372f66b1c95381c1778aa618939470132025097825f00813"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/fol-class-diagram/a71f530febf2/CORE-SUCCESS-DISPROOF",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence defines direct success checks for IR membership, rendered parent-child order, panel text, and tooltips, rather than relying on counts or pipeline agreement. It also gives concrete disproof conditions for each property, including missing/extra pairs, incorrect layout, panel text absent from the IR, and missing tooltips.",
+        "reused": true
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-TRACE-REVIEW",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/fol-class-diagram.md#success-and-disproof",
+          "sha256": "a3e3fc069d6d2f99372f66b1c95381c1778aa618939470132025097825f00813"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/fol-class-diagram/a71f530febf2/CORE-TRACE-REVIEW",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence names the Claude Code session and its URL as the run whose full trace is examined, identifies the recorded tool outputs and artifacts, and specifies what must be seen beyond final outcomes for each criterion. It also explicitly states that R2 and R4 are pure document edits with no run and gives the exemption reason.",
+        "reused": true
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-TRACE-DEBUGGING",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/fol-class-diagram.md#when-a-run-fails-or-surprises-us",
+          "sha256": "a3e3fc069d6d2f99372f66b1c95381c1778aa618939470132025097825f00813"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/fol-class-diagram/a71f530febf2/CORE-TRACE-DEBUGGING",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence provides a separate failure/surprise procedure and explicitly requires preserving the failed run and trace id, reading all listed trace components, citing divergence, classifying the diagnosis, and linking a targeted fix to a new traced run while retaining the original. It also explicitly prohibits causal repair for unresolved diagnoses and separates trace-review completeness from the run verdict.",
+        "reused": true
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-SYSTEM-MODEL",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/fol-class-diagram.md#system-model",
+          "sha256": "a3e3fc069d6d2f99372f66b1c95381c1778aa618939470132025097825f00813"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/fol-class-diagram/d63b90e83652/CORE-SYSTEM-MODEL",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence provides the model link, repository documentation entry point and scope, explicitly names each affected element with what the examined run must show, and identifies source-linked views and an omission reason. It also gives concrete regeneration/drift checks and states that the model documentation, status/view-related artifacts, converter, page, and tests are reconciled in the same change.",
+        "reused": true
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-CAPABILITY-REUSE",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/fol-class-diagram.md#capability-reuse",
+          "sha256": "a3e3fc069d6d2f99372f66b1c95381c1778aa618939470132025097825f00813"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/fol-class-diagram/a71f530febf2/CORE-CAPABILITY-REUSE",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence explicitly states, “No catalogue entry fits, because” neither catalogue file lists graph or diagram rendering, and explains the search and why the only hit is not rendering. It also states that no new shared capability is added.",
+        "reused": true
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-AUTHORITY-NONGOALS",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/fol-class-diagram.md#authority-and-non-goals",
+          "sha256": "a3e3fc069d6d2f99372f66b1c95381c1778aa618939470132025097825f00813"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/fol-class-diagram/a71f530febf2/CORE-AUTHORITY-NONGOALS",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence explicitly identifies authority: Brian owns the repository and approved the work, while the agent merges after local checks. It also explicitly lists multiple non-goals, including no FLAMS server, no semantics layer, no LATIN2 links, and no changes to the shared graph viewer.",
+        "reused": true
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-IRREVERSIBLE-SPEND",
+      "effect": "blocking",
+      "applicability_mode": "conditional",
+      "condition_fact": "irreversible_or_spend_action",
+      "condition_value": true,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/fol-class-diagram.md#irreversible-actions-and-spend",
+          "sha256": "a3e3fc069d6d2f99372f66b1c95381c1778aa618939470132025097825f00813"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/fol-class-diagram/d63b90e83652/CORE-IRREVERSIBLE-SPEND",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence identifies both irreversible actions, states each boundary, names the required authorization, and describes containment. It explicitly covers publication scope and pre-push checks/reversion, and for the local reset specifies the remote-branch prerequisite plus retention in the remote branch and reflog.",
+        "reused": true
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-UNCERTAINTIES",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/fol-class-diagram.md#uncertainties",
+          "sha256": "a3e3fc069d6d2f99372f66b1c95381c1778aa618939470132025097825f00813"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/fol-class-diagram/a71f530febf2/CORE-UNCERTAINTIES",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence explicitly lists three material uncertainties. Each has either an owner (“this session”) or specified resolving evidence, including the converter test for unresolved properties.",
+        "reused": true
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-ACTIVATION-FACTS",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/fol-class-diagram.md#activation-facts",
+          "sha256": "a3e3fc069d6d2f99372f66b1c95381c1778aa618939470132025097825f00813"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/fol-class-diagram/97f364dc7646/CORE-ACTIVATION-FACTS",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The plan declares `irreversible_or_spend_action=true` and `claims_external_standard=true`, matching the proposed public push/reset and the explicit OMG ODM standard claim. The facts declared false are not triggered: the viewer and typed-graph contract are reused rather than newly created, the checks are verification rather than empirical comparison, no LLM is central, and no AES target is evidenced.",
+        "reused": true
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "OV-CONTRACTS-SCHEMAS",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/fol-class-diagram.md#contracts-and-dependencies",
+          "sha256": "a3e3fc069d6d2f99372f66b1c95381c1778aa618939470132025097825f00813"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/fol-class-diagram/97f364dc7646/OV-CONTRACTS-SCHEMAS",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence enumerates four crossed boundaries and identifies the relevant contracts, owners, and file paths or URLs for each. It explicitly states whether each contract is changed or unchanged, including the registry format (unchanged) despite adding an entry to the registry file.",
+        "reused": true
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "OV-CONTRACTS-DEPENDENCIES",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/fol-class-diagram.md#contracts-and-dependencies",
+          "sha256": "a3e3fc069d6d2f99372f66b1c95381c1778aa618939470132025097825f00813"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/fol-class-diagram/97f364dc7646/OV-CONTRACTS-DEPENDENCIES",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence explicitly identifies the producer and consumer on each listed boundary, including both sides of the standards IR flow and the UI index flow. It also specifies a landing sequence—viewer, converter/generated data/test, page, then links and documentation—and states that the series prevents `main` from holding a page without its data.",
+        "reused": true
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "OV-STANDARD-CONFORMANCE-RULES",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/fol-class-diagram.md#standard-conformance",
+          "sha256": "a3e3fc069d6d2f99372f66b1c95381c1778aa618939470132025097825f00813"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/fol-class-diagram/f97593e22414/OV-STANDARD-CONFORMANCE-RULES",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence explicitly names the ODM 1.1 Common Logic standard, gives its normative XMI URL and imported IR path, and lists the three machine-readable rules the diagram must satisfy. It also identifies the merge-gate check that compares the artifact against those rules; the no-machine-readable-rules exception does not apply because machine-readable rules are provided.",
+        "reused": true
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "OV-STANDARD-CONFORMANCE-GATE",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/fol-class-diagram.md#standard-conformance",
+          "sha256": "a3e3fc069d6d2f99372f66b1c95381c1778aa618939470132025097825f00813"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/fol-class-diagram/f97593e22414/OV-STANDARD-CONFORMANCE-GATE",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence names explicit rules, the check command (`python3 -m unittest discover -s tests -v`), and its merge-gate step, stating that it compares the diagram against the IR and fails on missing or extra items. It also states the disproof condition and explicitly labels the added tooltips as project annotations, separate from the standard, in both the artifact/page and generated file.",
+        "reused": true
+      },
+      "suggested_action": null
+    }
+  ],
+  "item_counts": {
+    "pass": 16,
+    "unresolved": 0,
+    "not_applicable": 0,
+    "unavailable": 0,
+    "missing": 0
+  },
+  "semantic_verifier": {
+    "kind": "llm_client",
+    "available": true,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "task": "company_planning.method_conformance.semantic_item_review"
+  },
+  "conformance_report": {
+    "schema_version": "1.0",
+    "record_type": "planning_conformance_report",
+    "report_id": "REPORT-fol-class-diagram-a3e3fc069d6d",
+    "snapshot_ref": "SNAPSHOT-fol-class-diagram",
+    "snapshot_revision": "sha256:558566be5330e311ab150ded479578254d8c27b0e6262e1b93076add8ec3edd3",
+    "packet_ref": "docs/plans/fol-class-diagram.md",
+    "packet_revision": "sha256:a3e3fc069d6d2f99372f66b1c95381c1778aa618939470132025097825f00813",
+    "structural_status": "pass",
+    "semantic_review_status": "complete",
+    "diagnostics": [],
+    "route": "durable_solo",
+    "adoption_readiness": "ready_for_contributor",
+    "limitations": [
+      "Semantic verdicts judge only the cited plan excerpt against the item statement; they do not judge product strategy."
+    ]
+  },
+  "advisory_deviations": [],
+  "result": "pass",
+  "reason_codes": [],
+  "actionable_summary": [
+    "pass: 16 items evidenced, 0 confirmed not applicable, 0 advisory deviation(s)"
+  ],
+  "limitations": [
+    "Semantic verdicts judge only the cited plan excerpt against the item statement; they do not judge product strategy."
+  ],
+  "caller": {
+    "client": "claude-code",
+    "session": "session_01UWLqVtwEQ9x6YTEvprgzje"
+  },
+  "started_at": "2026-10-10T22:48:34Z",
+  "completed_at": "2026-10-10T22:48:34Z",
+  "duration_ms": 241
+}

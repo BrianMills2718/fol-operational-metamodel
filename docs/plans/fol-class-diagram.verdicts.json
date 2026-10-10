@@ -1,0 +1,227 @@
+{
+  "16dda7a516e90b2c811c066849656d1c925209fefffbf4dc6dc5fa81c84e76a6": {
+    "item_id": "CORE-SYSTEM-MODEL",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence provides the model link, repository documentation entry point and scope, explicitly names each affected element with what the examined run must show, and identifies source-linked views and an omission reason. It also gives concrete regeneration/drift checks and states that the model documentation, status/view-related artifacts, converter, page, and tests are reconciled in the same change.",
+    "trace_id": "company-planning/method-conformance/fol-class-diagram/d63b90e83652/CORE-SYSTEM-MODEL",
+    "verdict": "pass"
+  },
+  "1c0349ede4693e93c25c8af443a76d5c13e6e3f238f6a4e166f5171d057ff3d3": {
+    "item_id": "CORE-IRREVERSIBLE-SPEND",
+    "materiality": "material",
+    "missing": "For pushing to the public repository, the evidence does not name who must authorize the push or how the publication is contained. It only states its content boundary and that a secret-pattern grep is performed.",
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The reset of local `main` has an explicit boundary, authorization, and containment. However, pushing to the public repository is also a potentially irreversible publication, and the quoted evidence does not provide all three required elements for it.",
+    "trace_id": "company-planning/method-conformance/fol-class-diagram/a71f530febf2/CORE-IRREVERSIBLE-SPEND",
+    "verdict": "unresolved"
+  },
+  "2a03ad0950a54211838f786e711ad08192176e99ebaa21dfa8f947fc0432e1f6": {
+    "item_id": "OV-STANDARD-CONFORMANCE-GATE",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence names explicit rules for classes, generalizations, properties, and excluding other standard content; names the check command (`python3 -m unittest discover -s tests -v`) and merge-gate step; and states the disproof condition that an artifact labelled as the ODM Common Logic metamodel violates a rule. It also explicitly labels the added tooltip explanations as project annotations, both in the artifact/page and in a separate generated-file field, rather than as part of the standard.",
+    "trace_id": "company-planning/method-conformance/fol-class-diagram/d63b90e83652/OV-STANDARD-CONFORMANCE-GATE",
+    "verdict": "pass"
+  },
+  "2f443873aaf34ea9833dcf6ea62443546711aae2ac84c7edd8b7e32053afdf83": {
+    "item_id": "CORE-ACTIVATION-FACTS",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The plan does not trigger any fact declared false. It explicitly says there is no new shared mechanism, no empirical comparison or bake-off, and no LLM-central behavior; the public push is not a deployment, and no AES-governed target is evidenced. The triggered external-standard and irreversible-action facts are declared true.",
+    "trace_id": "company-planning/method-conformance/fol-class-diagram/f97593e22414/CORE-ACTIVATION-FACTS",
+    "verdict": "pass"
+  },
+  "30708c7db9029277868f94c41793254306212d5b1beb5b2e9d32046f8e0be35f": {
+    "item_id": "OV-CONTRACTS-DEPENDENCIES",
+    "materiality": "material",
+    "missing": "The GitHub boundary does not explicitly identify what produces and consumes the contract. The ecosystem UI index boundary identifies the index generator as a reader but does not explicitly identify the producer of `ui/registry.yaml` or the resulting contract. Therefore, dependencies on each side are not named for every boundary.",
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "Boundaries 1 and 2 explicitly name producers and consumers, and the landing order is provided. However, boundaries 3 and 4 lack the required explicit producer/consumer pairing, so the evidence does not satisfy the requirement for every crossed boundary.",
+    "trace_id": "company-planning/method-conformance/fol-class-diagram/f97593e22414/OV-CONTRACTS-DEPENDENCIES",
+    "verdict": "unresolved"
+  },
+  "38ca36a32b9322acdb479d15ee9d8b312887c1d395d1991cd4225b378e9b42ec": {
+    "item_id": "CORE-ACTIVATION-FACTS",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The plan explicitly declares `irreversible_or_spend_action=true` and `claims_external_standard=true`, matching the public push/reset actions and the OMG ODM Common Logic metamodel claim. The other triggered facts are either explicitly not triggered (`shared_mechanism=false`, `empirical_comparison_proposed=false`, `llm_central=false`) or have no quoted evidence that they apply; no activation fact is incorrectly declared false.",
+    "trace_id": "company-planning/method-conformance/fol-class-diagram/386bfae703bf/CORE-ACTIVATION-FACTS",
+    "verdict": "pass"
+  },
+  "38f877ed568a1391cca80a06e9873790891fa10318cf581aa210836ef61a609a": {
+    "item_id": "CORE-IRREVERSIBLE-SPEND",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence identifies both irreversible actions, states each boundary, names the required authorization, and describes containment. It explicitly covers publication scope and pre-push checks/reversion, and for the local reset specifies the remote-branch prerequisite plus retention in the remote branch and reflog.",
+    "trace_id": "company-planning/method-conformance/fol-class-diagram/d63b90e83652/CORE-IRREVERSIBLE-SPEND",
+    "verdict": "pass"
+  },
+  "396c92f62da7503793c324cf793b2b0da6d9301233d41a1d2efebab59ed004f8": {
+    "item_id": "OV-STANDARD-CONFORMANCE-RULES",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly names the ODM 1.1 Common Logic standard, gives its normative XMI URL and imported IR path, and lists the three machine-readable rules the diagram must satisfy. It also identifies the merge-gate check that compares the artifact against those rules; the no-machine-readable-rules exception does not apply because machine-readable rules are provided.",
+    "trace_id": "company-planning/method-conformance/fol-class-diagram/f97593e22414/OV-STANDARD-CONFORMANCE-RULES",
+    "verdict": "pass"
+  },
+  "4e7484864f0f688125b0c3cd76c5e6e7e1f164522299b4ababff0464c466844a": {
+    "item_id": "CORE-ACTOR-RESULT-EXAMPLE",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly names the actor as Brian, the desired result as the generated class-diagram page with its behavior, and a stable, concrete user-visible example involving the rendered hierarchy and the QuantifiedSentence side panel.",
+    "trace_id": "company-planning/method-conformance/fol-class-diagram/a71f530febf2/CORE-ACTOR-RESULT-EXAMPLE",
+    "verdict": "pass"
+  },
+  "50264fa5e46abfeda6d94bc451fe113682ef18b8e0af819b88691032ab518db0": {
+    "item_id": "OV-CONTRACTS-SCHEMAS",
+    "materiality": "material",
+    "missing": "For the OMG-to-repository boundary, the evidence does not provide the actual URL for the ODM 1.1 XMI contract, and it does not name the owner or file/URL for the `standards-ir/v1` contract. For the repository-to-GitHub boundary, it gives a remote name rather than the required file or URL. Therefore the evidence does not fully identify every contract\u2019s owner and file/URL.",
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The first and fourth boundaries explicitly provide contract names, owners, locations, and change status. However, referring to a URL as being elsewhere (\u201cURL and sha256 in Standard conformance\u201d) does not quote the URL itself, and the other omissions prevent a complete pass.",
+    "trace_id": "company-planning/method-conformance/fol-class-diagram/f97593e22414/OV-CONTRACTS-SCHEMAS",
+    "verdict": "unresolved"
+  },
+  "564a5043361c23b1d6db7a93e3987a3248d1fc645219edfea5c80cb5d29da3bc": {
+    "item_id": "CORE-SYSTEM-MODEL",
+    "materiality": "material",
+    "missing": "An explicit link or path to the project's system model is missing. The evidence identifies `README.md` as the documentation entry point and names the IR as an entity, but does not explicitly identify that IR or another path as the system model itself.",
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence substantively names the affected model elements, required run observations, source-linked views, omission rationale, freshness checks, and same-change reconciliation. However, the requirement requires an explicit system-model link in addition to the documentation entry point, and that link is not provided.",
+    "trace_id": "company-planning/method-conformance/fol-class-diagram/a71f530febf2/CORE-SYSTEM-MODEL",
+    "verdict": "unresolved"
+  },
+  "5a17381f69e2fc93cc81df6da43540d919e93f43463c6b1604b91919d90fd27e": {
+    "item_id": "OV-STANDARD-CONFORMANCE-GATE",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence names explicit rules, the check command (`python3 -m unittest discover -s tests -v`), and its merge-gate step, stating that it compares the diagram against the IR and fails on missing or extra items. It also states the disproof condition and explicitly labels the added tooltips as project annotations, separate from the standard, in both the artifact/page and generated file.",
+    "trace_id": "company-planning/method-conformance/fol-class-diagram/f97593e22414/OV-STANDARD-CONFORMANCE-GATE",
+    "verdict": "pass"
+  },
+  "5fbdbc267ce2f38988b95a205a7a4ab418670ff6168fc5aad15f875b309af39c": {
+    "item_id": "CORE-TRACE-REVIEW",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence names the Claude Code session and its URL as the run whose full trace is examined, identifies the recorded tool outputs and artifacts, and specifies what must be seen beyond final outcomes for each criterion. It also explicitly states that R2 and R4 are pure document edits with no run and gives the exemption reason.",
+    "trace_id": "company-planning/method-conformance/fol-class-diagram/a71f530febf2/CORE-TRACE-REVIEW",
+    "verdict": "pass"
+  },
+  "7d23f85ceeca47a3fec5d35f0ae4f28a3f7de131a72d7072c7d7a851ba37e045": {
+    "item_id": "OV-CONTRACTS-DEPENDENCIES",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly identifies the producer and consumer on each listed boundary, including both sides of the standards IR flow and the UI index flow. It also specifies a landing sequence\u2014viewer, converter/generated data/test, page, then links and documentation\u2014and states that the series prevents `main` from holding a page without its data.",
+    "trace_id": "company-planning/method-conformance/fol-class-diagram/97f364dc7646/OV-CONTRACTS-DEPENDENCIES",
+    "verdict": "pass"
+  },
+  "7f7cc3053f819cb857e6eebe8f1d0faade30d6428db1373866d71103d3153836": {
+    "item_id": "CORE-ACTIVATION-FACTS",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The plan declares `irreversible_or_spend_action=true` and `claims_external_standard=true`, matching the proposed public push/reset and the explicit OMG ODM standard claim. The facts declared false are not triggered: the viewer and typed-graph contract are reused rather than newly created, the checks are verification rather than empirical comparison, no LLM is central, and no AES target is evidenced.",
+    "trace_id": "company-planning/method-conformance/fol-class-diagram/97f364dc7646/CORE-ACTIVATION-FACTS",
+    "verdict": "pass"
+  },
+  "9807446e6c039cc8336c13501827578593e22a320fdf7ed9636c60e311212465": {
+    "item_id": "CORE-CAPABILITY-REUSE",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly states, \u201cNo catalogue entry fits, because\u201d neither catalogue file lists graph or diagram rendering, and explains the search and why the only hit is not rendering. It also states that no new shared capability is added.",
+    "trace_id": "company-planning/method-conformance/fol-class-diagram/a71f530febf2/CORE-CAPABILITY-REUSE",
+    "verdict": "pass"
+  },
+  "985f15c9e723e91ba28417e82a4e017ad018aecb6d7558590a35cc18e0fdc9a6": {
+    "item_id": "CORE-REQUIREMENTS-TRACED",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence provides a requirements list with eleven requirements, and each names an explicit check and a permitted status (`planned`). The listed requirements also include the work\u2019s user-facing claims, including faithful diagram representation of the standard\u2019s generalizations, hierarchical layout, displayed class details, tooltips, and ecosystem registration.",
+    "trace_id": "company-planning/method-conformance/fol-class-diagram/a71f530febf2/CORE-REQUIREMENTS-TRACED",
+    "verdict": "pass"
+  },
+  "9b40efa578dca77d5538e69c69fc2c5097462c652cdf2243278bc5822c12a20c": {
+    "item_id": "CORE-AUTHORITY-NONGOALS",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly identifies authority: Brian owns the repository and approved the work, while the agent merges after local checks. It also explicitly lists multiple non-goals, including no FLAMS server, no semantics layer, no LATIN2 links, and no changes to the shared graph viewer.",
+    "trace_id": "company-planning/method-conformance/fol-class-diagram/a71f530febf2/CORE-AUTHORITY-NONGOALS",
+    "verdict": "pass"
+  },
+  "b546ef0e31f52f573357eb2b2224af25bb3c37f137580329fb320508ee948e41": {
+    "item_id": "CORE-UNCERTAINTIES",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly lists three material uncertainties. Each has either an owner (\u201cthis session\u201d) or specified resolving evidence, including the converter test for unresolved properties.",
+    "trace_id": "company-planning/method-conformance/fol-class-diagram/a71f530febf2/CORE-UNCERTAINTIES",
+    "verdict": "pass"
+  },
+  "ba1663f73b14d89669cdb2b35d64ca663892b763c89173a77d2317b1dc270fe1": {
+    "item_id": "CORE-TRACE-DEBUGGING",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence provides a separate failure/surprise procedure and explicitly requires preserving the failed run and trace id, reading all listed trace components, citing divergence, classifying the diagnosis, and linking a targeted fix to a new traced run while retaining the original. It also explicitly prohibits causal repair for unresolved diagnoses and separates trace-review completeness from the run verdict.",
+    "trace_id": "company-planning/method-conformance/fol-class-diagram/a71f530febf2/CORE-TRACE-DEBUGGING",
+    "verdict": "pass"
+  },
+  "bb8000a4e44785bd90cb5cff3f452a545163a954648c346a302895c646d157ec": {
+    "item_id": "CORE-SUCCESS-DISPROOF",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence defines direct success checks for IR membership, rendered parent-child order, panel text, and tooltips, rather than relying on counts or pipeline agreement. It also gives concrete disproof conditions for each property, including missing/extra pairs, incorrect layout, panel text absent from the IR, and missing tooltips.",
+    "trace_id": "company-planning/method-conformance/fol-class-diagram/a71f530febf2/CORE-SUCCESS-DISPROOF",
+    "verdict": "pass"
+  },
+  "ca4b98fe0b71d2426c1606a4bedb35f9d6fef03da75c0aed1d2d1d349c868308": {
+    "item_id": "OV-CONTRACTS-SCHEMAS",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence enumerates four crossed boundaries and identifies the relevant contracts, owners, and file paths or URLs for each. It explicitly states whether each contract is changed or unchanged, including the registry format (unchanged) despite adding an entry to the registry file.",
+    "trace_id": "company-planning/method-conformance/fol-class-diagram/97f364dc7646/OV-CONTRACTS-SCHEMAS",
+    "verdict": "pass"
+  },
+  "dfe7e9978ddbca965f94e393a02ec3693d98d9d80dc787cdd1094d8b225d9c38": {
+    "item_id": "CORE-ACTIVATION-FACTS",
+    "materiality": "material",
+    "missing": "crosses_system_boundary is declared false, but the plan proposes pushing to the public GitHub repository, which triggers that fact.",
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The plan explicitly proposes publication by pushing to the public GitHub repository and describes its public boundary and containment. Although irreversible_or_spend_action is correctly true, crosses_system_boundary remains false (default:not_declared).",
+    "trace_id": "company-planning/method-conformance/fol-class-diagram/d63b90e83652/CORE-ACTIVATION-FACTS",
+    "verdict": "unresolved"
+  },
+  "fd9d7c41898efcac9bc30cb69e2c12fea6929b0b33f58f46fa85f46c7307734b": {
+    "item_id": "OV-STANDARD-CONFORMANCE-RULES",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly names the ODM 1.1 Common Logic standard, gives its normative XMI URL and imported IR path, and enumerates the machine-readable rules artifacts must satisfy. It also identifies the merge-gate check that enforces those rules and distinguishes project annotations from standard content.",
+    "trace_id": "company-planning/method-conformance/fol-class-diagram/d63b90e83652/OV-STANDARD-CONFORMANCE-RULES",
+    "verdict": "pass"
+  },
+  "ffccde1c0afd5d19da8bfc423c2a7b67641b605c58ef0fd9a5aaafe96f8099bc": {
+    "item_id": "CORE-ACTIVATION-FACTS",
+    "materiality": "material",
+    "missing": "The plan declares irreversible_or_spend_action=false, but it proposes resetting local main (discarding a branch commit) and pushing to the public repository; these are irreversible actions under the requirement and should be declared true with their boundary, authorization, and containment.",
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly describes the reset as the \u201conly near-irreversible action\u201d and says that pushing \u201cpublishes\u201d changes, while the activation facts declare irreversible_or_spend_action false. The other declared false facts are supported by the stated absence of comparisons, shared mechanisms, and LLM calls.",
+    "trace_id": "company-planning/method-conformance/fol-class-diagram/a71f530febf2/CORE-ACTIVATION-FACTS",
+    "verdict": "unresolved"
+  }
+}

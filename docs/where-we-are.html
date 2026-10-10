@@ -1,0 +1,200 @@
+<title>FOL Metamodel: Where We Are</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Fraunces:opsz,wght@9..144,600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: one reading column; diagrams break out to full width with their own scroll */
+:root{
+  --bg:#f6f8fb; --fg:#1b2430; --muted:#5b6675; --line:#d5dce6; --panel:#ffffff;
+  --blue:#1f5fbf; --blue-soft:#e3edfb; --orange:#c76a12; --orange-soft:#fbeedd; --grey-soft:#eceff3;
+  --display:"Fraunces",Georgia,serif; --body:"Atkinson Hyperlegible",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#11161d; --fg:#e6ebf2; --muted:#9aa6b6; --line:#2a3340; --panel:#18202a;
+  --blue:#7fb0ff; --blue-soft:#1b2c45; --orange:#f0a25a; --orange-soft:#3a2a18; --grey-soft:#222b36; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#11161d; --fg:#e6ebf2; --muted:#9aa6b6; --line:#2a3340; --panel:#18202a;
+  --blue:#7fb0ff; --blue-soft:#1b2c45; --orange:#f0a25a; --orange-soft:#3a2a18; --grey-soft:#222b36; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font:17px/1.6 var(--body);margin:0}
+.wrap{max-width:860px;margin:0 auto;padding-inline:16px;padding-block:32px 64px;display:grid;gap:40px}
+h1{font:600 2.2rem/1.15 var(--display);margin:0;text-wrap:balance}
+h2{font:600 1.45rem/1.25 var(--display);margin:0 0 12px;text-wrap:balance}
+h3{font-size:1.05rem;margin:0 0 6px}
+p{margin:0 0 10px;max-width:68ch}
+.lede{color:var(--muted);font-size:1.1rem}
+code,.mono{font-family:var(--mono);font-size:.88em}
+.eyebrow{font:600 .75rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px 18px;min-width:0}
+.card.blue{border-left:4px solid var(--blue)}
+.card.orange{border-left:4px solid var(--orange)}
+.diagram{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px;overflow-x:auto}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:.88rem;color:var(--muted);margin-top:8px}
+.sw{display:inline-block;width:14px;height:14px;border-radius:3px;vertical-align:-2px;margin-right:6px}
+/* class tree */
+.tree,.tree ul{list-style:none;margin:0;padding-left:22px;position:relative}
+.tree{padding-left:0}
+.tree li{position:relative;padding:3px 0 3px 18px}
+.tree ul li::before{content:"";position:absolute;left:0;top:0;bottom:0;border-left:1.5px solid var(--line)}
+.tree ul li:last-child::before{bottom:auto;height:16px}
+.tree ul li::after{content:"";position:absolute;left:0;top:16px;width:14px;border-top:1.5px solid var(--line)}
+.cls{font-family:var(--mono);font-size:.9rem;background:var(--blue-soft);color:var(--fg);padding:1px 8px;border-radius:5px;border:1px solid var(--line)}
+.ann{color:var(--muted);font-size:.86rem;margin-left:8px}
+.link{font-family:var(--mono);font-size:.82rem;background:var(--orange-soft);border:1px dashed var(--orange);padding:0 6px;border-radius:5px;margin-left:8px}
+/* phases */
+.phases{display:grid;gap:12px}
+.phase{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.num{font:600 1.4rem/1 var(--display);color:var(--blue);min-width:1.6em}
+.chip{display:inline-block;font:600 .72rem/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:4px 7px;border-radius:999px;margin-left:8px;vertical-align:2px}
+.chip.next{background:var(--blue-soft);color:var(--blue)}
+.chip.later{background:var(--grey-soft);color:var(--muted)}
+.chip.parked{background:var(--orange-soft);color:var(--orange)}
+.phase p{margin:4px 0 0}
+.status-row{display:flex;flex-wrap:wrap;gap:10px}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:8px 12px;font-size:.92rem}
+.stat b{font-variant-numeric:tabular-nums}
+</style>
+
+<div class="wrap">
+
+<header>
+  <div class="eyebrow">fol-operational-metamodel · status 2026-10-10</div>
+  <h1>What this project is doing, in pictures</h1>
+  <p class="lede">You asked for a type diagram of first-order logic: its parts, which part is a kind of which, and what makes a formula true. This page shows what got built, where it drifted, and a phased way back.</p>
+</header>
+
+<section>
+  <h2>Two terms, with a kitchen example</h2>
+  <div class="cols">
+    <div class="card orange">
+      <h3>Patched server</h3>
+      <p>You buy a dishwasher, but its rack won't hold your tall pots. So you bend one wire in <em>your</em> rack. Now your pots fit, but only in your kitchen, and only if that dishwasher is plugged in.</p>
+      <p>FLAMS is a program a university research group wrote for searching collections of formal math. An agent wrote a small change to FLAMS's code (a 53-line "patch" file) and applied it to our own copy so it would accept files from MMT. A patched server is that changed copy, running on some computer. Right now it isn't running anywhere.</p>
+    </div>
+    <div class="card blue">
+      <h3>Upstream contribution</h3>
+      <p>You mail your bent-wire idea to the dishwasher maker. If they adopt it, every new dishwasher ships with the taller rack, and nobody has to bend wires again.</p>
+      <p>For FLAMS, that means sending that change to its authors on GitHub and asking them to include it. That never happened. Until it does, the "live" part of our viewer only works on a machine where someone has rebuilt FLAMS with our change by hand.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>What exists today</h2>
+  <p>Each box is a real file or program in the repo. Blue boxes work today on any laptop. Orange dashed boxes are the FLAMS branch, which needs the patched server.</p>
+  <div class="diagram">
+<pre class="mermaid">
+flowchart LR
+  subgraph S["Where the knowledge comes from"]
+    CL["Common Logic standard<br/>(official UML diagram of FOL)"]
+    DOL["DOL standard<br/>(how logics relate)"]
+    MMT["MMT's small FOL<br/>test example (16 parts)"]
+    LAT["LATIN2 library<br/>(the real FOL files)"]
+  end
+  CL --> IMP["Importers<br/>(Python scripts)"]
+  DOL --> IMP
+  MMT --> IMP
+  IMP --> GF["Graph files<br/>(JSON)"]
+  GF --> VIEW["Browser viewer<br/>(draws dots and lines)"]
+  LAT -.-> CONV["Converter<br/>(MMT binary to RDF)"]
+  CONV -.-> FL["Patched FLAMS server<br/>(not running anywhere)"]
+  FL -.-> LIVE["Viewer 'live mode'"]
+  classDef ok fill:#e3edfb,stroke:#1f5fbf,color:#1b2430
+  classDef parked fill:#fbeedd,stroke:#c76a12,stroke-dasharray:5 4,color:#1b2430
+  class CL,DOL,MMT,IMP,GF,VIEW ok
+  class LAT,CONV,FL,LIVE parked
+</pre>
+  </div>
+  <div class="legend">
+    <span><span class="sw" style="background:var(--blue-soft);border:1px solid var(--blue)"></span>works on any laptop</span>
+    <span><span class="sw" style="background:var(--orange-soft);border:1px dashed var(--orange)"></span>needs the patched server</span>
+  </div>
+  <div class="status-row" style="margin-top:14px">
+    <div class="stat">Tests: <b>33 of 33</b> pass</div>
+    <div class="stat">Your local copy: <b>12 updates behind</b> GitHub</div>
+    <div class="stat">Links between standard and LATIN2: <b>0</b></div>
+  </div>
+</section>
+
+<section>
+  <h2>The gap</h2>
+  <div class="cols">
+    <div class="card blue">
+      <h3>What you asked for</h3>
+      <p>A picture like a database schema: "Universal quantification is a kind of quantified sentence, which is a kind of sentence", plus what a structure is and when a sentence is true in it.</p>
+    </div>
+    <div class="card orange">
+      <h3>What the viewer shows</h3>
+      <p>A force-directed tangle: 115 dots pushed apart until they settle, so "is a kind of" lines are buried among "has property" lines. The truth side (structures, satisfaction) isn't in any imported source.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Phase 1 preview: the picture already hiding in the data</h2>
+  <p>These are the real "is a kind of" links from the Common Logic standard file the repo already imports. Nothing here is hand-written. Phase 1 turns this into a proper diagram. The orange tags are what Phase 3 adds: links to the matching definition in the LATIN2 library.</p>
+  <div class="diagram">
+  <ul class="tree">
+    <li><span class="cls">Phrase</span><span class="ann">anything you can write in a text</span>
+      <ul>
+        <li><span class="cls">Sentence</span><span class="ann">can be true or false</span>
+          <ul>
+            <li><span class="cls">Atom</span>
+              <ul>
+                <li><span class="cls">AtomicSentence</span><span class="ann">Loves(ann, bob)</span></li>
+                <li><span class="cls">Equation</span><span class="ann">x = y</span><span class="link">→ LATIN2 equal</span></li>
+              </ul>
+            </li>
+            <li><span class="cls">BooleanSentence</span>
+              <ul>
+                <li><span class="cls">Conjunction</span><span class="ann">A and B</span><span class="link">→ LATIN2 and</span></li>
+                <li><span class="cls">Disjunction</span><span class="ann">A or B</span><span class="link">→ LATIN2 or</span></li>
+                <li><span class="cls">Negation</span><span class="ann">not A</span><span class="link">→ LATIN2 not</span></li>
+                <li><span class="cls">Implication</span><span class="ann">if A then B</span><span class="link">→ LATIN2 impl</span></li>
+                <li><span class="cls">Biconditional</span><span class="ann">A if and only if B</span><span class="link">→ LATIN2 equiv</span></li>
+              </ul>
+            </li>
+            <li><span class="cls">QuantifiedSentence</span>
+              <ul>
+                <li><span class="cls">UniversalQuantification</span><span class="ann">for every x, …</span><span class="link">→ LATIN2 forall</span></li>
+                <li><span class="cls">ExistentialQuantification</span><span class="ann">there is an x, …</span><span class="link">→ LATIN2 exists</span></li>
+              </ul>
+            </li>
+            <li><span class="cls">CommentedSentence</span></li>
+            <li><span class="cls">IrregularSentence</span></li>
+          </ul>
+        </li>
+        <li><span class="cls">Module</span></li>
+        <li><span class="cls">Importation</span></li>
+        <li><span class="cls">Comment</span></li>
+      </ul>
+    </li>
+    <li><span class="cls">Argument</span><span class="ann">what you can put inside an atom</span>
+      <ul>
+        <li><span class="cls">Term</span><span class="ann">names a thing</span>
+          <ul>
+            <li><span class="cls">Name</span><span class="ann">ann, bob</span>
+              <ul><li><span class="cls">Identifier</span></li></ul>
+            </li>
+            <li><span class="cls">FunctionalTerm</span><span class="ann">motherOf(ann)</span></li>
+            <li><span class="cls">CommentedTerm</span></li>
+          </ul>
+        </li>
+        <li><span class="cls">SequenceMarker</span></li>
+      </ul>
+    </li>
+  </ul>
+  </div>
+  <p style="margin-top:10px;color:var(--muted);font-size:.92rem">Source: <code>generated/odm-cl-metamodel-ir.json</code>, all 24 "generalizes-to" links. Example formulas and the orange LATIN2 links are illustrations, not yet in the data.</p>
+</section>
+
+<section>
+  <h2>Phases from here</h2>
+  <div class="phases">
+    <div class="phase"><div class="num">0</div><div><h3>Tidy up<span class="chip next">next · ~15 min</span></h3><p>Bring your local copy up to date with GitHub, fix the doc that contradicts the README, and remove the GitHub-hosted test runs.</p></div></div>
+    <div class="phase"><div class="num">1</div><div><h3>The type diagram<span class="chip next">next</span></h3><p>Draw the Common Logic classes as a real class diagram (the tree above, plus "has a" links such as "a quantified sentence has a body"), using an off-the-shelf layout tool. You get a page to click through.</p></div></div>
+    <div class="phase"><div class="num">2</div><div><h3>The truth side<span class="chip later">after 1</span></h3><p>Add the semantics: a structure (a set of things plus what each name and predicate means), an assignment, and "this sentence is true in this structure". Each piece cites its section of the Common Logic standard and is marked as our annotation.</p></div></div>
+    <div class="phase"><div class="num">3</div><div><h3>Link to the real library<span class="chip later">after 2</span></h3><p>Add about 15 marked links from each class to its machine-checked definition in LATIN2, the orange tags above. One picture then runs from "what a quantifier is" to "where it is formally defined".</p></div></div>
+    <div class="phase"><div class="num">4</div><div><h3>FLAMS live search<span class="chip parked">parked</span></h3><p>Only if you want a searchable, always-up-to-date version: send the small change to the FLAMS authors, or run our patched copy somewhere. The code is kept; no new work goes into it until you ask.</p></div></div>
+  </div>
+</section>
+
+</div>

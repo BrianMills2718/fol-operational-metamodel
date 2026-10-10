@@ -1,0 +1,15 @@
+{
+  "schema_version": "method-adoption-decision.v1",
+  "record_type": "method_adoption_decision",
+  "decision": "adopted",
+  "plan_ref": "docs/plans/fol-class-diagram.md",
+  "plan_sha256": "a3e3fc069d6d2f99372f66b1c95381c1778aa618939470132025097825f00813",
+  "receipt_ref": "docs/plans/fol-class-diagram.receipt.json",
+  "receipt_sha256": "fdd07e4cae19267dfdbbe848bbea248fb53907087df3da11591aac3dea5f9c71",
+  "receipt_result": "pass",
+  "reason_codes": [],
+  "summary": [
+    "pass: 16 items evidenced, 0 confirmed not applicable, 0 advisory deviation(s)"
+  ],
+  "decided_at": "2026-10-10T22:48:34Z"
+}
