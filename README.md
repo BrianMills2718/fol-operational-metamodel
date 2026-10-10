@@ -28,7 +28,9 @@ python3 -m http.server 8000
 
 Then open <http://localhost:8000/visualizer/>.
 
-### Live FLAMS focus mode
+### Live FLAMS focus mode (parked)
+
+**Parked since 2026-10-10.** This mode needs a FLAMS server built with this repository's unmerged patch (`upstream/patches/flams-external-rdf.patch`); no such server is running and the patch was not sent to the FLAMS project. The code and docs stay (`docs/mmt-flams-rdf-bridge.md`, `docs/flams-external-rdf-hook.md`, `docs/first-flams-view.md`); no new work goes into it unless that changes. Current direction: [`docs/where-we-are.html`](docs/where-we-are.html).
 
 The same visualizer can now query a FLAMS SPARQL endpoint directly instead of loading the generated IR. Supply a formal focus URI and endpoint:
 

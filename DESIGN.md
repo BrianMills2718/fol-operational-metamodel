@@ -2,16 +2,34 @@
 
 ## Authority and generated views
 
-`spec/fol.json` is the only canonical metamodel. Its top-level `schema` defines the data shape; `model` lists entity types, relations, constructors, judgments, semantic rules, satisfaction, theories, and semantic consequence. Stable string IDs connect those declarations. The D3 app reads this file directly and constructs graph nodes and edges from those declarations and their `references` fields. Do not hand-edit a graph export or duplicate graph structure in JavaScript.
+This repository does not author its own account of first-order logic. Formal
+authority comes from upstream sources, imported as generated graph IR:
 
-`schema/fol.tql` is an initial TypeDB-like projection for conceptual comparison. It is not a second authority: keep its entity and relation names aligned with the canonical model, and extend `tests/test_model.py` when either representation changes. The test suite checks the shared names and exercises the concrete semantics; it is intentionally dependency-free.
+- `generated/odm-cl-metamodel-ir.json` and `generated/dol-oms-metamodel-ir.json`:
+  OMG ODM Common Logic and DOL metamodels, imported verbatim from normative XMI
+  by `scripts/import_standards.py` (see `docs/standards-metamodel.md`).
+- `generated/pinned-fol-ir.json` and other MMT IR: compiled MMT OMDoc,
+  archivegraph and relational indexes, imported by `scripts/import_mmt.py`
+  (see `upstream/README.md`).
 
-## Extending the model
+`spec/fol.json`, `schema/fol.tql` and `examples/abc.json` are a legacy,
+hand-written comparison fixture. They are kept for their finite-semantics
+tests, not as the canonical metamodel. Do not hand-edit generated IR or
+duplicate graph structure in JavaScript; regenerate from the upstream source.
 
-1. Add or revise a declaration in `spec/fol.json`, with a stable ID, description, and references to related declarations.
-2. If the change affects the TypeDB-like view, update `schema/fol.tql` in the same change.
-3. Add a small running example or test that distinguishes the intended rule from an incorrect implementation.
-4. Check that the graph remains useful: graph edges represent declared references, not inferred claims.
-5. Run `python3 -m unittest discover -s tests -v` and serve the repository root with `python3 -m http.server 8000` to inspect the visualizer.
+Anything the project adds beyond an upstream source (a plain-language note, a
+link between a standard class and an MMT declaration) is a marked annotation,
+never presented as upstream fact (bridge policy in `docs/standards-metamodel.md`).
 
-JSON is used instead of YAML so the canonical file is directly parseable by both Python's standard library and browsers without a dependency or custom YAML subset. Keep the schema embedded in the canonical file and maintain `schema_version` when its structure changes.
+## Extending
+
+1. Add or change an importer or converter under `scripts/`, and regenerate its
+   output under `generated/`.
+2. Add a test that compares the output with the upstream input by membership
+   (which items are present), not by count.
+3. Run `python3 -m unittest discover -s tests -v` locally; that run is the
+   merge gate (no GitHub-hosted CI). Serve the repository root with
+   `python3 -m http.server 8000` and check the page in a browser.
+
+JSON is used so files parse with Python's standard library and in browsers
+without extra dependencies.
