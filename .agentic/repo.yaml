@@ -1,0 +1,10 @@
+# AES repository descriptor. Only the durable document set is declared here (AES plan aes-durable-docs, M5).
+durable_documents:
+  schema_version: "0.1"
+  goal: docs/architecture/GOAL.md
+  requirements: docs/architecture/REQUIREMENTS.md
+  system_model: {prose: docs/model/ARCHITECTURE.md, trace: docs/model/trace.yaml}
+  decisions: docs/decisions/
+  plans: docs/plans/
+  glossary: {not_applicable: "logic terms are defined by the imported Common Logic standard and in plain words on the diagram page; no separate glossary"}
+  catalog: {not_applicable: "wiki/index.md is a short hand-written route page; this repository has no generated wiki catalog"}

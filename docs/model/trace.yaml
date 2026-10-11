@@ -1,0 +1,96 @@
+# Checked trace for the FOL metamodel system model (prose: ARCHITECTURE.md beside this file).
+# Each rule names one owner file that enforces it, the tests that show it holds or can fail,
+# and the decision records that say why.
+# Checked by company-planning plugins/company-planning/scripts/durable_docs_check.py.
+scope: >-
+  The importers, the meaning checker, the class-diagram converter and the read-only pages.
+  The parked FLAMS bridge (scripts/mmt_brf_to_flams_rdf.py, upstream/patches/) and the legacy
+  comparison fixture (spec/fol.json, schema/fol.tql, examples/abc.json) are not modelled as rules.
+entities:
+  - {id: ENT-STANDARD-IR, what: "generated/odm-cl-metamodel-ir.json and generated/dol-oms-metamodel-ir.json, standards metamodel graphs"}
+  - {id: ENT-MMT-IR, what: "generated/pinned-fol-ir.json and other MMT graph IR"}
+  - {id: ENT-MEANING, what: "spec/cl-meaning.json, the marked truth-rule annotation"}
+  - {id: ENT-MEANING-CHECKS, what: "generated/cl-meaning-checks.json, computed truth tables and rebuild verdicts"}
+  - {id: ENT-CLASS-DIAGRAM, what: "generated/cl-class-diagram.json, typed-graph/v1 class diagram"}
+processes:
+  - id: PROC-IMPORT-STANDARDS
+    what: "scripts/import_standards.py odm-cl|dol reads normative XMI and writes standards IR"
+    enforces: [RULE-STANDARDS-VERBATIM]
+  - id: PROC-IMPORT-MMT
+    what: "scripts/import_mmt.py fetch|omdoc|archivegraph|relational|merge|assemble writes MMT IR"
+    enforces: [RULE-MMT-PINNED, RULE-MMT-EXPLICIT-ONLY]
+  - id: PROC-CHECK-MEANING
+    what: "scripts/cl_meaning.py evaluates every rebuild and writes cl-meaning-checks.json"
+    enforces: [RULE-MEANING-CHECKED]
+  - id: PROC-BUILD-DIAGRAM
+    what: "scripts/cl_class_diagram.py converts CL IR plus meaning checks to cl-class-diagram.json"
+    enforces: [RULE-DIAGRAM-GENERATED, RULE-ANNOTATION-MARKED]
+  - id: PROC-VIEW
+    what: "visualizer/class-diagram.html and visualizer/app.js fetch generated JSON; they write nothing"
+    enforces: []
+views:
+  - {id: VIEW-CLASS-DIAGRAM, what: "visualizer/class-diagram.html, canonical"}
+  - {id: VIEW-EXPLORER, what: "visualizer/index.html, older force-layout explorer and parked FLAMS focus mode"}
+rules:
+  - id: RULE-STANDARDS-VERBATIM
+    statement: >-
+      A UML package is imported from normative OMG XMI with its own xmi:ids, classes, properties,
+      generalizations and associations; no logical category is inferred from names.
+    owner: scripts/import_standards.py
+    checks:
+      - tests/test_standards.py::test_minimal_xmi_preserves_structure
+      - tests/test_standards.py::test_normative_odm_common_logic_snapshot_shape
+      - tests/test_standards.py::test_dol_oms_snapshot_is_standards_derived
+    decisions: [docs/decisions/0001-standards-are-the-authority.md]
+  - id: RULE-MMT-PINNED
+    statement: >-
+      A fetched MMT artifact is refused unless its SHA-256 or Git blob hash matches the pin in
+      upstream/sources.json; the checked-in snapshot records that hash.
+    owner: scripts/import_mmt.py
+    checks:
+      - tests/test_model.py::test_fixture_checksums_are_pinned_in_upstream_manifest
+      - tests/test_model.py::test_upstream_manifest_pins_real_mmt_and_latin_revisions
+      - tests/test_model.py::test_pinned_real_fol_snapshot_matches_upstream_artifact
+    decisions: [docs/decisions/0001-standards-are-the-authority.md]
+  - id: RULE-MMT-EXPLICIT-ONLY
+    statement: >-
+      MMT import keeps only explicit structure (theories, constants, includes, views, OpenMath symbol
+      references, MMT relational predicates) and joins layers by MMT URI without inventing relations.
+    owner: scripts/import_mmt.py
+    checks:
+      - tests/test_model.py::test_omdoc_fixture_extracts_mmt_structure_and_symbol_dependencies
+      - tests/test_model.py::test_relational_abox_preserves_mmt_unary_and_binary_predicates
+      - tests/test_model.py::test_merge_prefers_omdoc_detail_for_shared_theory_uri
+    decisions: [docs/decisions/0001-standards-are-the-authority.md]
+  - id: RULE-MEANING-CHECKED
+    statement: >-
+      Every rebuilt connective agrees with the draft's truth rule on every true/false combination for
+      its arities, every rebuilt quantifier on every world of 1-3 things, and a rebuild may use only
+      not, and, for every.
+    owner: scripts/cl_meaning.py
+    checks:
+      - tests/test_cl_meaning.py::test_every_rebuild_agrees_with_the_official_rule_on_every_case
+      - tests/test_cl_meaning.py::test_checker_catches_a_wrong_rebuild
+      - tests/test_cl_meaning.py::test_checker_refuses_non_core_operations
+      - tests/test_cl_meaning.py::test_checked_in_checks_match_a_fresh_run
+    decisions: [docs/decisions/0001-standards-are-the-authority.md]
+  - id: RULE-DIAGRAM-GENERATED
+    statement: >-
+      The class diagram draws every CL class and exactly the UML generalizations of the imported IR,
+      laid out top-down, and the checked-in diagram equals a fresh build.
+    owner: scripts/cl_class_diagram.py
+    checks:
+      - tests/test_class_diagram.py::test_diagram_draws_every_generalization_and_no_other_line
+      - tests/test_class_diagram.py::test_diagram_has_every_class_of_the_package
+      - tests/test_class_diagram.py::test_checked_in_diagram_matches_a_fresh_generation
+      - tests/e2e/class_diagram_e2e.mjs
+    decisions: [docs/decisions/0001-standards-are-the-authority.md]
+  - id: RULE-ANNOTATION-MARKED
+    statement: >-
+      Every meaning record on the diagram carries annotation true and the quote from spec/cl-meaning.json;
+      the annotation may name only classes present in the IR.
+    owner: scripts/cl_class_diagram.py
+    checks:
+      - tests/test_cl_meaning.py::test_diagram_carries_meaning_marked_as_annotation
+      - tests/test_cl_meaning.py::test_every_covered_class_quotes_its_draft_row
+    decisions: [docs/decisions/0001-standards-are-the-authority.md]
