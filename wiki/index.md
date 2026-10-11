@@ -15,6 +15,13 @@ Brian, 2026-10-10: learning checked visual models (metamodels, semantics, diagra
 - [Standards-derived metamodel layers](../docs/standards-metamodel.md): which source is authoritative for what.
 - [Design and contribution guide](../DESIGN.md)
 
+## Goal, requirements and system model
+
+- [Goal and thesis](../docs/architecture/GOAL.md): what this repo is for and what would disprove it.
+- [Requirements](../docs/architecture/REQUIREMENTS.md): numbered, each with success and disproof.
+- [System model](../docs/model/ARCHITECTURE.md): sources, scripts, generated files and pages, with the [checked rule trace](../docs/model/trace.yaml).
+- [Decision 0001: upstream sources are the authority](../docs/decisions/0001-standards-are-the-authority.md)
+
 ## Plans
 
 - [Goal: clickable class diagram](../docs/goals/fol-class-diagram.md)
